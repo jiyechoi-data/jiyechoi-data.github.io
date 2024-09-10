@@ -1,7 +1,7 @@
 
 ---
 title: ""
-author: "John Appleseed"
+author: "Jiye Choi"
 date: 
 output: html_document
 ---
@@ -12,9 +12,10 @@ output: html_document
 
 <br><br><br><br><br><br>
 
-#### **John Appleseed**
-##### M.S. Candidate in Data Science | ABC University <img src="images/college_logo.png" style="width:35%;" align="right">
+#### **Jiye Choi**
+##### B.S. in Information and Statistics | Gyeongsang National University <img src="images/college_logo.png" style="width:30%;" align="right">
 
-📍 Seoul <br>
-📱 (123) 456 - 7890 <br>
-✉️ [jappleseed@abc.edu](mailto:jappleseed@abc.edu) <br>
+📍 Jinju <br>
+📱 (+82) 10 - 8312 - 8838 <br>
+✉️ [jiyechoi-data@gmail.com](mailto:jiyechoi-data@gmail.com) <br>
+
