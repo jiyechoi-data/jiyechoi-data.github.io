@@ -17,5 +17,7 @@ output: html_document
 
 📍 Jinju <br>
 📱 (+82) 10 - 8312 - 8838 <br>
-✉️ [jiyechoi-data@gmail.com](mailto:jiyechoi-data@gmail.com) <br>
+✉️ [jiyechoi.data@gmail.com](mailto:jiyechoi.data@gmail.com) <br>
+
+
 

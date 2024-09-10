@@ -15,34 +15,36 @@ output: html_document
 
 
 <br><br><br>
-👋🏽 Hello, my name is Jiye Choi. 
+👋 **Hello, I'm Jiye Choi.** <br><br><br>
 
-🎓 I have a solid background in data analysis and statistical modeling, honed through multiple projects during my undergraduate studies in Information and Statistics at Gyeongsang National University. My expertise spans both academic research and practical applications, focusing on various statistical methods and data-driven decision-making processes. (Feb 2019)
-
-👩‍💻 Some key experiences include:
-
-- Bank Customer Behavior Analysis: Conducted association rule mining using SAS Enterprise Miner, analyzing customer transactions to uncover behavioral patterns between banking services and web navigation. I used support, confidence, and lift metrics to identify key customer segments, ultimately proposing data-driven marketing strategies.
-
-- Regional Birth Rate Disparities in South Korea: Collaborated with a team of students to perform multivariate statistical methods like PCA and Factor Analysis, leading to the development of an "Urban Development Index." Our work highlighted critical socioeconomic drivers behind birth rate disparities across 69 districts.
-
-- Facebook Page Analysis of "National Geographic": Analyzed over 2,000 posts from the National Geographic Facebook page using R and text mining techniques. Through word frequency analysis and Latent Dirichlet Allocation (LDA) topic modeling, I identified key engagement themes like wildlife, photography, and environmental issues, which provided insights for optimizing content strategy.
+🎓 **Background**:  
+I have a strong foundation in data analysis and statistical modeling, with hands-on experience from multiple projects during my undergraduate studies in Information and Statistics at Gyeongsang National University (Feb 2019). <br><br><br>
 
 
-💼 Future Aspirations:
+👩‍💻 **Key Projects**:
 
-I aim to work as a Data Scientist in the marketing industry, applying my expertise in data analysis and statistical modeling to create data-driven strategies. By leveraging advanced analytics, my goal is to help businesses better understand their customers, optimize marketing campaigns, and drive growth through actionable insights.
+   - **Bank Customer Analysis**: SAS | Identified customer behaviors driving cross-selling strategies.
 
-🎨 Hobbies:
+   - **Birth Rate Disparities**: PCA, Factor Analysis | Uncovered socioeconomic factors explaining 80% of variance.
 
-In my free time, I enjoy dancing, playing the piano, and traveling. 
+   - **Facebook "National Geographic" Analysis**: Text mining, LDA in R, on Linux | Revealed key engagement themes from 2,000+ posts. <br><br><br>
 
-💪 Highlight My Strengths:
 
-I have strong technical expertise in data analysis, statistical modeling, and programming, with hands-on experience in various tools and technologies. My ability to analyze large datasets, uncover meaningful patterns, and develop data-driven strategies has been proven through multiple academic and practical projects. Key strengths include:
+💡 **Future Goal**:  
+    Aspiring Data Scientist <br> passionate about using data to solve business problems and create impactful marketing strategies in the tech and ecommerce industries.<br><br><br>
 
-- **Programming Proficiency**: Skilled in R, Python, SAS, SPSS, and AMOS for statistical analysis and data manipulation.
-- **Database Management**: Proficient in managing and querying databases using SQL, MySQL, and PostgreSQL.
-- **Data Visualization**: Experienced in using ggplot2, matplotlib, and seaborn to create impactful visualizations that support data storytelling.
-- **Statistical Analysis**: Expertise in applying multivariate analysis, association rule mining, PCA, and time series forecasting for uncovering insights and trends.
-- **Project Management**: Successfully led and contributed to various team-based projects, using analytical tools to solve real-world problems and propose actionable business strategies.
-- **Version Control**: Familiar with Git and GitHub for collaborative development and version control.
+
+
+💪 **Highlight My Strengths**:
+
+- **Programming Expertise**: Proficient in **R**, **Python**, **SAS**, **SPSS**, **AMOS**, and **Minitab** for statistical analysis and data manipulation.
+
+- **Database Management**: Skilled in managing and querying databases using **SQL**, **MySQL**, and **PostgreSQL**.
+
+- **Data Visualization**: Experienced in using **ggplot2**, **matplotlib**, and **seaborn** to create impactful visualizations.
+
+- **Version Control**: Familiar with **GitHub** for collaborative version control and project management.<br><br><br>
+
+
+💃 **Hobbies**:  
+In my free time, I enjoy dancing, playing the piano, and traveling. <br><br><br>
