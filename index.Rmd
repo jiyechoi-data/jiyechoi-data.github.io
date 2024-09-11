@@ -9,33 +9,33 @@ output: html_document
 <br>
 
 <p align="center">
-<img src="images/jiye_profile.jpg" style="width:50%; border:0.5px solid; margin-right: 20px" align="center">
+<img src="images/jiye_profile.jpg" style="width:45%; border:0.5px solid; margin-right: 20px" align="center">
 </p>
 <br>
-
-
 
 <br><br>
 <div style="width: 85%; margin: 0 auto;">
 
-## Hello, I'm Jiye Choi.
+<h1 style="text-align: center; font-size: 36px;">Hello, I'm Jiye Choi.</h1>
 <br><br>
 
-### 🎓 Background:
-I have a strong foundation in data analysis and statistical modeling, with hands-on experience from multiple projects during my undergraduate studies in Information and Statistics at Gyeongsang National University (Feb 2019).<br><br><br>
+<h2 style="font-size: 28px; text-align: left;">🎓 Background:</h2>
+<p style="font-size: 18px;">I have a strong foundation in data analysis and statistical modeling, with hands-on experience from multiple projects during my undergraduate studies in Information and Statistics at Gyeongsang National University (Feb 2019).</p>
+<br><br>
 
-### 👩‍💻 Key Projects: <br>
+<h2 style="font-size: 28px; text-align: left; margin-bottom: 20px;">👩‍💻 Key Projects:</h2>
+<ul style="font-size: 18px; list-style-type: disc;">
+  <li style="margin-bottom: 20px; margin-top: 10px;"><strong>Bank Customer Analysis:</strong> <em>SAS</em> | Identified that customers with savings accounts were 1.02x more likely to hold checking accounts, leading to targeted cross-selling strategies and improved customer engagement by up to 15%.</li>
+  <li style="margin-bottom: 20px;"><strong>Birth Rate Disparities:</strong> <em>PCA, Factor Analysis</em> | Revealed that urban development and access to childcare and education explained 80% of birth rate variance, offering actionable insights for improving birth rates in underdeveloped areas.</li>
+  <li style="margin-bottom: 20px;"><strong>Facebook “National Geographic” Analysis:</strong> <em>Text mining, LDA in R, on Linux</em> | Analyzed 2,000+ posts, uncovering key engagement themes such as wildlife and photography, providing insights to optimize content strategy and increase audience interaction.</li>
+</ul>
+<br><br>
 
-- **Bank Customer Analysis:** *SAS* | Identified customer behaviors driving cross-selling strategies.
-  
-- **Birth Rate Disparities:** *PCA, Factor Analysis* | Uncovered socioeconomic factors explaining 80% of variance.
-  
-- **Facebook “National Geographic” Analysis:** *Text mining, LDA in R, on Linux* | Revealed key engagement themes from 2,000+ posts.<br><br><br>
+<h2 style="font-size: 28px; text-align: left;">💡 Future Goal:</h2>
+<p style="font-size: 18px;">Aspiring Data Scientist passionate about using data to solve business problems and create impactful marketing strategies in the tech and e-commerce industries.</p>
+<br><br>
 
-### 💡 Future Goal:
-Aspiring Data Scientist passionate about using data to solve business problems and create impactful marketing strategies in the tech and e-commerce industries.<br><br><br>
-
-### 💪 Highlight My Strengths: <br>
+<h2 style="font-size: 28px; text-align: left;">💪 Highlight My Strengths:</h2>
 
 | Strength                | Tools                                                                                  |
 |-------------------------|----------------------------------------------------------------------------------------|
@@ -44,9 +44,16 @@ Aspiring Data Scientist passionate about using data to solve business problems a
 | ![Data Visualization](https://img.shields.io/badge/-Data%20Visualization-yellow) | **ggplot2**, **matplotlib**, **seaborn** |
 | ![Version Control](https://img.shields.io/badge/-Version%20Control-orange) | **GitHub** |
 
-<br>
+<br><br>
 
-### 💃 Hobbies:
-In my free time, I enjoy dancing, playing the piano, traveling, and writing blogs.
+<h2 style="font-size: 28px; text-align: left;">💃 Hobbies:</h2>
+<p style="font-size: 18px;">In my free time, I enjoy dancing, playing the piano, traveling, and writing blogs.</p>
+
+<br><br>
+
+<h2 style="font-size: 28px; text-align: left;">💬 Let's Connect!</h2>
+<p style="font-size: 18px;">
+If you'd like to connect, collaborate, or discuss anything data-related, feel free to reach out via the email or LinkedIn links located in the top right corner.
+</p>
 
 </div><br><br><br>
