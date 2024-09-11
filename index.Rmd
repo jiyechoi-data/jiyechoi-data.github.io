@@ -53,7 +53,7 @@ output: html_document
 
 <h2 style="font-size: 28px; text-align: left;">💬 Let's Connect!</h2>
 <p style="font-size: 18px;">
-If you'd like to connect, collaborate, or discuss anything data-related, feel free to reach out via the email or LinkedIn links located in the top right corner.
+If you'd like to connect, collaborate, or discuss anything data-related, feel free to reach out via the email or LinkedIn links located in the top of the page.
 </p>
 
 </div><br><br><br>
