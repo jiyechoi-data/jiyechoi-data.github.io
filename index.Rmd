@@ -14,37 +14,39 @@ output: html_document
 <br>
 
 
-<br><br><br>
-👋 **Hello, I'm Jiye Choi.** <br><br><br>
 
-🎓 **Background**:  
-I have a strong foundation in data analysis and statistical modeling, with hands-on experience from multiple projects during my undergraduate studies in Information and Statistics at Gyeongsang National University (Feb 2019). <br><br><br>
+<br><br>
+<div style="width: 85%; margin: 0 auto;">
 
+## Hello, I'm Jiye Choi.
+<br><br>
 
-👩‍💻 **Key Projects**:
+### 🎓 Background:
+I have a strong foundation in data analysis and statistical modeling, with hands-on experience from multiple projects during my undergraduate studies in Information and Statistics at Gyeongsang National University (Feb 2019).<br><br><br>
 
-   - **Bank Customer Analysis**: SAS | Identified customer behaviors driving cross-selling strategies.
+### 👩‍💻 Key Projects: <br>
 
-   - **Birth Rate Disparities**: PCA, Factor Analysis | Uncovered socioeconomic factors explaining 80% of variance.
+- **Bank Customer Analysis:** *SAS* | Identified customer behaviors driving cross-selling strategies.
+  
+- **Birth Rate Disparities:** *PCA, Factor Analysis* | Uncovered socioeconomic factors explaining 80% of variance.
+  
+- **Facebook “National Geographic” Analysis:** *Text mining, LDA in R, on Linux* | Revealed key engagement themes from 2,000+ posts.<br><br><br>
 
-   - **Facebook "National Geographic" Analysis**: Text mining, LDA in R, on Linux | Revealed key engagement themes from 2,000+ posts. <br><br><br>
+### 💡 Future Goal:
+Aspiring Data Scientist passionate about using data to solve business problems and create impactful marketing strategies in the tech and e-commerce industries.<br><br><br>
 
+### 💪 Highlight My Strengths: <br>
 
-💡 **Future Goal**:  
-    Aspiring Data Scientist <br> passionate about using data to solve business problems and create impactful marketing strategies in the tech and e-commerce industries.<br><br><br>
+| Strength                | Tools                                                                                  |
+|-------------------------|----------------------------------------------------------------------------------------|
+| ![Programming](https://img.shields.io/badge/-Programming-blue) | **R**, **Python**, **SAS**, **SPSS**, **AMOS**, **Minitab** |
+| ![Database Management](https://img.shields.io/badge/-Database%20Management-green) | **SQL**, **MySQL**, **PostgreSQL** |
+| ![Data Visualization](https://img.shields.io/badge/-Data%20Visualization-yellow) | **ggplot2**, **matplotlib**, **seaborn** |
+| ![Version Control](https://img.shields.io/badge/-Version%20Control-orange) | **GitHub** |
 
+<br>
 
+### 💃 Hobbies:
+In my free time, I enjoy dancing, playing the piano, traveling, and writing blogs.
 
-💪 **Highlight My Strengths**:
-
-- **Programming Expertise**: Proficient in **R**, **Python**, **SAS**, **SPSS**, **AMOS**, and **Minitab** for statistical analysis and data manipulation.
-
-- **Database Management**: Skilled in managing and querying databases using **SQL**, **MySQL**, and **PostgreSQL**.
-
-- **Data Visualization**: Experienced in using **ggplot2**, **matplotlib**, and **seaborn** to create impactful visualizations.
-
-- **Version Control**: Familiar with **GitHub** for collaborative version control and project management.<br><br><br>
-
-
-💃 **Hobbies**:  
-In my free time, I enjoy dancing, playing the piano, and traveling. <br><br><br>
+</div><br><br><br>
