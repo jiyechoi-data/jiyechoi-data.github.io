@@ -323,30 +323,37 @@ $(document).ready(function () {
 <p><link rel="stylesheet" href="styles.css" type="text/css">
 <link rel="stylesheet" href="site_libs/academicons-1.9.1/css/academicons.min.css"/></p>
 <p><br></p>
+<!-- Profile Picture with Animation -->
 <p align="center">
-<img src="images/jiye_profile.JPG" style="width:45%; border:0.5px solid; margin-right: 20px" align="center">
+<img src="images/jiye_profile.JPG" class="profile-picture" style="width:45%; border:0.5px solid; margin-right: 20px" align="center">
 </p>
 <p><br></p>
-<br><br>
 <div style="width: 85%; margin: 0 auto;">
-<h1 style="text-align: center; font-size: 36px;">
+<!-- Hello, I'm Jiye Choi with animation -->
+<h1 class="fade-in-text" style="text-align: center; font-size: 36px;">
 Hello, I’m Jiye Choi.
 </h1>
 <p><br><br></p>
-<h2 style="font-size: 28px; text-align: left;">
+<!-- About Me Section -->
+<h2 style="letter-spacing: 1px; font-weight: 500; font-size: 18px; text-transform: uppercase; color: #A9A9A9;">
+About Me
+</h2>
+<p><br></p>
+<!-- Fade-in sections for scrolling effect -->
+<h2 class="fade-in-section" style="font-size: 28px; text-align: left;">
 🎓 Background:
 </h2>
-<p style="font-size: 18px;">
+<p class="fade-in-section" style="font-size: 18px;">
 I have a strong foundation in data analysis and statistical modeling,
 with hands-on experience from multiple projects during my undergraduate
 studies in Information and Statistics at Gyeongsang National University
 (Feb 2019).
 </p>
 <p><br><br></p>
-<h2 style="font-size: 28px; text-align: left; margin-bottom: 20px;">
+<h2 class="fade-in-section" style="font-size: 28px; text-align: left; margin-bottom: 20px;">
 👩‍💻 Key Projects:
 </h2>
-<ul style="font-size: 18px; list-style-type: disc;">
+<ul class="fade-in-section" style="font-size: 18px; list-style-type: disc;">
 <li style="margin-bottom: 20px; margin-top: 10px;">
 <strong>Bank Customer Analysis:</strong> <em>SAS</em> | Identified that
 customers with savings accounts were 1.02x more likely to hold checking
@@ -367,16 +374,16 @@ to optimize content strategy and increase audience interaction.
 </li>
 </ul>
 <p><br><br></p>
-<h2 style="font-size: 28px; text-align: left;">
+<h2 class="fade-in-section" style="font-size: 28px; text-align: left;">
 💡 Future Goal:
 </h2>
-<p style="font-size: 18px;">
+<p class="fade-in-section" style="font-size: 18px;">
 Aspiring Data Scientist passionate about using data to solve business
 problems and create impactful marketing strategies in the tech and
 e-commerce industries.
 </p>
 <p><br><br></p>
-<h2 style="font-size: 28px; text-align: left;">
+<h2 class="fade-in-section" style="font-size: 28px; text-align: left;">
 💪 Highlight My Strengths:
 </h2>
 <table>
@@ -418,24 +425,83 @@ alt="Version Control" /></td>
 </tbody>
 </table>
 <p><br><br></p>
-<h2 style="font-size: 28px; text-align: left;">
+<h2 class="fade-in-section" style="font-size: 28px; text-align: left;">
 💃 Hobbies:
 </h2>
-<p style="font-size: 18px;">
+<p class="fade-in-section" style="font-size: 18px;">
 In my free time, I enjoy dancing, playing the piano, traveling, and
 writing blogs.
 </p>
 <p><br><br></p>
-<h2 style="font-size: 28px; text-align: left;">
+<h2 class="fade-in-section" style="font-size: 28px; text-align: left;">
 💬 Let’s Connect!
 </h2>
-<p style="font-size: 18px;">
+<p class="fade-in-section" style="font-size: 18px;">
 If you’d like to connect, collaborate, or discuss anything data-related,
 feel free to reach out via the email or LinkedIn links located in the
 top of the page.
 </p>
 </div>
 <p><br><br><br></p>
+<!-- Add CSS for the animation effects -->
+<style>
+/* Animation for profile picture */
+.profile-picture {
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+  opacity: 0;
+  animation: fadeIn 1s forwards ease-in-out;
+}
+
+.profile-picture:hover {
+  transform: scale(1.05);
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.4);
+}
+
+@keyframes fadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+/* Animation for Hello, I'm Jiye Choi */
+.fade-in-text {
+  opacity: 0;
+  animation: fadeInText 3s forwards;
+}
+
+@keyframes fadeInText {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+/* Fade-in animation for sections */
+.fade-in-section {
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+}
+
+/* Animation trigger based on scroll */
+.is-visible {
+  opacity: 1;
+}
+</style>
+<!-- Add JavaScript for scroll-triggered fade-in animations -->
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  const fadeElements = document.querySelectorAll('.fade-in-section');
+  
+  function handleScroll() {
+    fadeElements.forEach(el => {
+      const rect = el.getBoundingClientRect();
+      if (rect.top < window.innerHeight && rect.bottom >= 0) {
+        el.classList.add('is-visible');
+      }
+    });
+  }
+
+  window.addEventListener('scroll', handleScroll);
+});
+</script>
 
 
 <br><br>

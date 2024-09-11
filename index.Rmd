@@ -8,34 +8,41 @@ output: html_document
 
 <br>
 
+<!-- Profile Picture with Animation -->
 <p align="center">
-<img src="images/jiye_profile.jpg" style="width:45%; border:0.5px solid; margin-right: 20px" align="center">
+<img src="images/jiye_profile.jpg" class="profile-picture" style="width:45%; border:0.5px solid; margin-right: 20px" align="center">
 </p>
 <br>
 
-<br><br>
 <div style="width: 85%; margin: 0 auto;">
 
-<h1 style="text-align: center; font-size: 36px;">Hello, I'm Jiye Choi.</h1>
+<!-- Hello, I'm Jiye Choi with animation -->
+<h1 class="fade-in-text" style="text-align: center; font-size: 36px;">Hello, I'm Jiye Choi.</h1>
 <br><br>
 
-<h2 style="font-size: 28px; text-align: left;">🎓 Background:</h2>
-<p style="font-size: 18px;">I have a strong foundation in data analysis and statistical modeling, with hands-on experience from multiple projects during my undergraduate studies in Information and Statistics at Gyeongsang National University (Feb 2019).</p>
+<!-- About Me Section -->
+<h2 style="letter-spacing: 1px; font-weight: 500; font-size: 18px; text-transform: uppercase; color: #A9A9A9;">About Me</h2>
+<br>
+
+<!-- Fade-in sections for scrolling effect -->
+
+<h2 class="fade-in-section" style="font-size: 28px; text-align: left;">🎓 Background:</h2>
+<p class="fade-in-section" style="font-size: 18px;">I have a strong foundation in data analysis and statistical modeling, with hands-on experience from multiple projects during my undergraduate studies in Information and Statistics at Gyeongsang National University (Feb 2019).</p>
 <br><br>
 
-<h2 style="font-size: 28px; text-align: left; margin-bottom: 20px;">👩‍💻 Key Projects:</h2>
-<ul style="font-size: 18px; list-style-type: disc;">
+<h2 class="fade-in-section" style="font-size: 28px; text-align: left; margin-bottom: 20px;">👩‍💻 Key Projects:</h2>
+<ul class="fade-in-section" style="font-size: 18px; list-style-type: disc;">
   <li style="margin-bottom: 20px; margin-top: 10px;"><strong>Bank Customer Analysis:</strong> <em>SAS</em> | Identified that customers with savings accounts were 1.02x more likely to hold checking accounts, leading to targeted cross-selling strategies and improved customer engagement by up to 15%.</li>
   <li style="margin-bottom: 20px;"><strong>Birth Rate Disparities:</strong> <em>PCA, Factor Analysis</em> | Revealed that urban development and access to childcare and education explained 80% of birth rate variance, offering actionable insights for improving birth rates in underdeveloped areas.</li>
   <li style="margin-bottom: 20px;"><strong>Facebook “National Geographic” Analysis:</strong> <em>Text mining, LDA in R, on Linux</em> | Analyzed 2,000+ posts, uncovering key engagement themes such as wildlife and photography, providing insights to optimize content strategy and increase audience interaction.</li>
 </ul>
 <br><br>
 
-<h2 style="font-size: 28px; text-align: left;">💡 Future Goal:</h2>
-<p style="font-size: 18px;">Aspiring Data Scientist passionate about using data to solve business problems and create impactful marketing strategies in the tech and e-commerce industries.</p>
+<h2 class="fade-in-section" style="font-size: 28px; text-align: left;">💡 Future Goal:</h2>
+<p class="fade-in-section" style="font-size: 18px;">Aspiring Data Scientist passionate about using data to solve business problems and create impactful marketing strategies in the tech and e-commerce industries.</p>
 <br><br>
 
-<h2 style="font-size: 28px; text-align: left;">💪 Highlight My Strengths:</h2>
+<h2 class="fade-in-section" style="font-size: 28px; text-align: left;">💪 Highlight My Strengths:</h2>
 
 | Strength                | Tools                                                                                  |
 |-------------------------|----------------------------------------------------------------------------------------|
@@ -46,14 +53,75 @@ output: html_document
 
 <br><br>
 
-<h2 style="font-size: 28px; text-align: left;">💃 Hobbies:</h2>
-<p style="font-size: 18px;">In my free time, I enjoy dancing, playing the piano, traveling, and writing blogs.</p>
+<h2 class="fade-in-section" style="font-size: 28px; text-align: left;">💃 Hobbies:</h2>
+<p class="fade-in-section" style="font-size: 18px;">In my free time, I enjoy dancing, playing the piano, traveling, and writing blogs.</p>
 
 <br><br>
 
-<h2 style="font-size: 28px; text-align: left;">💬 Let's Connect!</h2>
-<p style="font-size: 18px;">
+<h2 class="fade-in-section" style="font-size: 28px; text-align: left;">💬 Let's Connect!</h2>
+<p class="fade-in-section" style="font-size: 18px;">
 If you'd like to connect, collaborate, or discuss anything data-related, feel free to reach out via the email or LinkedIn links located in the top of the page.
 </p>
 
 </div><br><br><br>
+
+<!-- Add CSS for the animation effects -->
+<style>
+/* Animation for profile picture */
+.profile-picture {
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+  opacity: 0;
+  animation: fadeIn 1s forwards ease-in-out;
+}
+
+.profile-picture:hover {
+  transform: scale(1.05);
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.4);
+}
+
+@keyframes fadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+/* Animation for Hello, I'm Jiye Choi */
+.fade-in-text {
+  opacity: 0;
+  animation: fadeInText 3s forwards;
+}
+
+@keyframes fadeInText {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+/* Fade-in animation for sections */
+.fade-in-section {
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+}
+
+/* Animation trigger based on scroll */
+.is-visible {
+  opacity: 1;
+}
+</style>
+
+<!-- Add JavaScript for scroll-triggered fade-in animations -->
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  const fadeElements = document.querySelectorAll('.fade-in-section');
+  
+  function handleScroll() {
+    fadeElements.forEach(el => {
+      const rect = el.getBoundingClientRect();
+      if (rect.top < window.innerHeight && rect.bottom >= 0) {
+        el.classList.add('is-visible');
+      }
+    });
+  }
+
+  window.addEventListener('scroll', handleScroll);
+});
+</script>
