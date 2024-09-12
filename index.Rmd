@@ -32,9 +32,21 @@ output: html_document
 
 <h2 class="fade-in-section" style="font-size: 28px; text-align: left; margin-bottom: 20px;">👩‍💻 Key Projects:</h2>
 <ul class="fade-in-section" style="font-size: 18px; list-style-type: disc;">
-  <li style="margin-bottom: 20px; margin-top: 10px;"><strong>Bank Customer Analysis:</strong> <em>SAS</em> | Identified that customers with savings accounts were 1.02x more likely to hold checking accounts, leading to targeted cross-selling strategies and improved customer engagement by up to 15%.</li>
-  <li style="margin-bottom: 20px;"><strong>Birth Rate Disparities:</strong> <em>PCA, Factor Analysis</em> | Revealed that urban development and access to childcare and education explained 80% of birth rate variance, offering actionable insights for improving birth rates in underdeveloped areas.</li>
-  <li style="margin-bottom: 20px;"><strong>Facebook “National Geographic” Analysis:</strong> <em>Text mining, LDA in R, on Linux</em> | Analyzed 2,000+ posts, uncovering key engagement themes such as wildlife and photography, providing insights to optimize content strategy and increase audience interaction.</li>
+  <li style="margin-bottom: 20px; margin-top: 10px;">
+    <a href="stat1.html" style="text-decoration: none; color: inherit;">
+      <strong>Bank Customer Behavior Analysis:</strong> <em>SAS</em> | Identified customer behaviors to drive cross-selling strategies.
+    </a>
+  </li>
+  <li style="margin-bottom: 20px;">
+    <a href="stat2.html" style="text-decoration: none; color: inherit;">
+      <strong>Regional Birth Rate Disparities:</strong> <em>PCA, Factor Analysis</em> | Analyzed socioeconomic factors explaining birth rate variance.
+    </a>
+  </li>
+  <li style="margin-bottom: 20px;">
+    <a href="stat4.html" style="text-decoration: none; color: inherit;">
+      <strong>Facebook "National Geographic" Engagement Analysis:</strong> <em>Text mining, LDA in R, on Linux</em> | Analyzed 2,000+ posts to identify key engagement themes.
+    </a>
+  </li>
 </ul>
 <br><br>
 
@@ -60,7 +72,7 @@ output: html_document
 
 <h2 class="fade-in-section" style="font-size: 28px; text-align: left;">💬 Let's Connect!</h2>
 <p class="fade-in-section" style="font-size: 18px;">
-If you'd like to connect, collaborate, or discuss anything data-related, feel free to reach out via the email or LinkedIn links located in the top of the page.
+If you'd like to connect, collaborate, or discuss anything data-related, feel free to reach out via the email or LinkedIn, or explore my GitHub projects for more insights into my work.
 </p>
 
 </div><br><br><br>
