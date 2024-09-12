@@ -11,10 +11,16 @@ navbar:
       href: tutorials.html
     - text: "Stat/ML"
       menu: 
-      - text: "Predicting House Prices in Iowa"
+      - text: "Bank Customer Behavior Analysis"
         href: stat1.html
-      - text: "Predicting Airbnb Prices in NYC"
+      - text: "Regional Birth Rate Disparities in South Korea"
         href: stat2.html
+      - text: "Predicting Jeju Island Tourism Revenue"
+        href: stat3.html
+      - text: "Fackbook National Geographic Engagement Analysis"
+        href: stat4.html
+      - text: "Analyzing Monthly Living Expenses"
+        href: stat5.html
     - text: "DB/SQL"
       menu: 
       - text: "Movie Explorer"

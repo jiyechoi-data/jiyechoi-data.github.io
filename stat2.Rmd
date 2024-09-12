@@ -14,7 +14,7 @@ output:
 
 <br><br><br>
 
-## **Predicting Airbnb Prices in NYC**
+## **Regional Birth Rate Disparities in South Korea**
 
 ![](https://img.shields.io/badge/Using-Python-blue)
 ![](https://img.shields.io/badge/-LASSO-red)

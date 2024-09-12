@@ -1,5 +1,5 @@
 ---
-pagetitle: "Stat1"
+pagetitle: "Stat3"
 output:
   html_document:
     toc: true
@@ -14,7 +14,7 @@ output:
 
 <br><br><br>
 
-## **Bank Customer Behavior Analysis**
+## **Predicting Jeju Island Tourism Revenue**
 
 ![](https://img.shields.io/badge/Using-Python-blue)
 ![](https://img.shields.io/badge/-LASSO-red)
