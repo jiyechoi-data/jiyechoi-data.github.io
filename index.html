@@ -502,9 +502,18 @@ ul li {
     transition: all 0.3s ease-in-out; /* Smooth transition for hover effects */
 }
 
+/* Hover effect for desktop */
 ul li:hover {
     transform: translateX(5px); /* Move the whole line slightly to the right */
     text-decoration: underline; /* Add underline on hover */
+}
+
+/* For mobile, add tap effect */
+@media (hover: none) {
+  ul li:active {
+    transform: translateX(5px); /* Move the whole line slightly to the right */
+    text-decoration: underline; /* Add underline on tap */
+  }
 }
 </style>
 <!-- Add JavaScript for scroll-triggered fade-in animations -->
