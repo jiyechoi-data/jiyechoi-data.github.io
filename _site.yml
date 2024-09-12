@@ -15,7 +15,7 @@ navbar:
         href: stat1.html
       - text: "Regional Birth Rate Disparities in South Korea"
         href: stat2.html
-      - text: "Predicting Jeju Island Tourism Revenue"
+      - text: "Forecasting Jeju Island Tourism Revenue"
         href: stat3.html
       - text: "Fackbook National Geographic Engagement Analysis"
         href: stat4.html

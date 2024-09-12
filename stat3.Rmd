@@ -14,7 +14,7 @@ output:
 
 <br><br><br>
 
-## **Predicting Jeju Island Tourism Revenue**
+## **Forecasting Jeju Island Tourism Revenue**
 
 ![](https://img.shields.io/badge/Using-Python-blue)
 ![](https://img.shields.io/badge/-LASSO-red)
