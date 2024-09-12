@@ -3,6 +3,48 @@ pagetitle: "Index"
 output: html_document
 ---
 
+<!-- Add Georgia font directly -->
+<style>
+  body {
+    font-family: Georgia, "Times New Roman", Times, serif;
+  }
+
+  /* 미디어 쿼리 - 모바일 화면을 위한 스타일 */
+  @media (max-width: 600px) {
+    body {
+      font-size: 16px;
+      line-height: 1.4; /* 줄 간격도 조금 줄여서 가독성을 높일 수 있음 */
+    }
+
+    h1 {
+      font-size: 28px; /* 큰 제목의 크기를 줄여 모바일에서도 보기 좋게 */
+    }
+
+    h2 {
+      font-size: 24px;
+    }
+
+    p {
+      font-size: 16px;
+    }
+
+    .profile-picture {
+      width: 100%; /* 모바일에서는 프로필 이미지를 100% 너비로 설정하여 반응형 유지 */
+    }
+
+    /* 모바일에서 여백을 줄이기 */
+    div {
+      margin-bottom: 20px;
+    }
+
+    /* 특정 섹션 여백을 추가로 조절할 수 있음 */
+    .fade-in-section {
+      margin-bottom: 15px;
+    }
+  }
+</style>
+
+<!-- Keep your existing stylesheet links -->
 <link rel="stylesheet" href="styles.css" type="text/css">
 <link rel="stylesheet" href="site_libs/academicons-1.9.1/css/academicons.min.css"/>
 
@@ -14,24 +56,29 @@ output: html_document
 </p>
 <br>
 
-<div style="width: 85%; margin: 0 auto;">
+<div style="width: 85%; margin: 0 auto; font-family: 'Roboto', sans-serif; line-height: 1.6; color: #333;">
 
-<!-- Hello, I'm Jiye Choi with animation -->
-<h1 class="fade-in-text" style="text-align: center; font-size: 36px;">Hello, I'm Jiye Choi.</h1>
+<!-- Hello, I'm Jiye Choi with animation and About Me color -->
+<h1 class="fade-in-text" style="text-align: center; font-size: 36px; color: #505050;">Hello, I'm Jiye Choi.</h1>
 <br><br>
 
-<!-- About Me Section -->
-<h2 style="letter-spacing: 1px; font-weight: 500; font-size: 18px; text-transform: uppercase; color: #A9A9A9;">About Me</h2>
-<br>
+<!-- About Me Section with Improved Design -->
+<div style="text-align: left; margin-bottom: 30px;">
+  <h2 style="font-size: 26px; font-weight: normal; color: #696969; margin-right: 10px; text-transform: uppercase;">About Me</h2>
+  <p style="font-size: 18px; color: #333; line-height: 1.8;">
+    I'm someone who loves finding patterns in data and turning them into meaningful stories. My passion for problem-solving keeps me curious and excited to take on new challenges.
+  </p>
+</div>
+<br><br>
 
 <!-- Fade-in sections for scrolling effect -->
 
-<h2 class="fade-in-section" style="font-size: 28px; text-align: left;">🎓 Background:</h2>
+<h2 class="fade-in-section" style="font-size: 28px; text-align: left; background-color: #f4f4f4; padding: 10px; border-radius: 5px;"> 🎓 Background</h2><br>
 <p class="fade-in-section" style="font-size: 18px;">I have a strong foundation in data analysis and statistical modeling, with hands-on experience from multiple projects during my undergraduate studies in Information and Statistics at Gyeongsang National University (Feb 2019).</p>
-<br><br>
+<br><br><br>
 
 <!-- Key Projects Section -->
-<h2 class="fade-in-section" style="font-size: 28px; text-align: left; margin-bottom: 20px;">👩‍💻 Key Projects:</h2>
+<h2 class="fade-in-section" style="font-size: 28px; text-align: left; background-color: #f4f4f4; padding: 10px; border-radius: 5px;">  👩🏻‍💻 Key Projects</h2><br>
 <ul class="fade-in-section" style="font-size: 18px; list-style-type: disc;">
   <li style="margin-bottom: 20px; margin-top: 10px;">
     <a href="stat1.html" style="text-decoration: none; color: inherit;">
@@ -49,13 +96,13 @@ output: html_document
     </a>
   </li>
 </ul>
-<br><br>
+<br><br><br>
 
-<h2 class="fade-in-section" style="font-size: 28px; text-align: left;">💡 Future Goal:</h2>
+<h2 class="fade-in-section" style="font-size: 28px; text-align: left; background-color: #f4f4f4; padding: 10px; border-radius: 5px;">💡 Future Goal</h2><br>
 <p class="fade-in-section" style="font-size: 18px;"><em>Aspiring Data Scientist</em><br> I am passionate about using data science to solve complex problems and drive meaningful change in the tech and e-commerce sectors. By leveraging my skills in statistical modeling, data visualization, and machine learning, I aim to deliver insights that optimize user experiences, enhance marketing strategies, and improve operational efficiency.</p>
-<br><br>
+<br><br><br>
 
-<h2 class="fade-in-section" style="font-size: 28px; text-align: left;">💪 Highlight My Strengths:</h2>
+<h2 class="fade-in-section" style="font-size: 28px; text-align: left; background-color: #f4f4f4; padding: 10px; border-radius: 5px;"> 🔍 Highlight My Strengths</h2>
 
 | Strength                | Tools                                                                                  |
 |-------------------------|----------------------------------------------------------------------------------------|
@@ -64,14 +111,14 @@ output: html_document
 | ![Data Visualization](https://img.shields.io/badge/-Data%20Visualization-yellow) | **ggplot2**, **matplotlib**, **seaborn** |
 | ![Version Control](https://img.shields.io/badge/-Version%20Control-orange) | **GitHub** |
 
-<br><br>
+<br><br><br>
 
-<h2 class="fade-in-section" style="font-size: 28px; text-align: left;">💃 Hobbies:</h2>
+<h2 class="fade-in-section" style="font-size: 28px; text-align: left; background-color: #f4f4f4; padding: 10px; border-radius: 5px;"> 🤸‍♀️️️️️ Hobbies</h2><br>
 <p class="fade-in-section" style="font-size: 18px;">In my free time, I enjoy dancing, playing the piano, traveling, and writing blogs.</p>
 
-<br><br>
+<br><br><br>
 
-<h2 class="fade-in-section" style="font-size: 28px; text-align: left;">💬 Let's Connect!</h2>
+<h2 class="fade-in-section" style="font-size: 28px; text-align: left; background-color: #f4f4f4; padding: 10px; border-radius: 5px;">💬 Let's Connect!</h2><br>
 <p class="fade-in-section" style="font-size: 18px;">
 If you'd like to connect, collaborate, or discuss anything data-related, feel free to reach out via the email or LinkedIn, or explore my GitHub projects for more insights into my work.
 </p>
@@ -122,21 +169,18 @@ If you'd like to connect, collaborate, or discuss anything data-related, feel fr
 
 /* Hover effect for entire list item: move to the right and add underline */
 ul li {
-    transition: all 0.3s ease-in-out; /* Smooth transition for hover effects */
+    transition: all 0.3s ease-in-out;
 }
 
-/* Hover effect for desktop */
 ul li:hover {
-    transform: translateX(5px); /* Move the whole line slightly to the right */
-    text-decoration: underline; /* Add underline on hover */
+    transform: translateX(5px);
+    text-decoration: underline;
 }
 
-/* For mobile, add tap effect */
 @media (hover: none) {
   ul li:active {
-    transform: translateX(5px); /* Move the whole line slightly to the right */
-    text-decoration: underline; /* Add underline on tap */
-  }
+    transform: translateX(5px);
+    text-decoration: underline;
 }
 </style>
 
