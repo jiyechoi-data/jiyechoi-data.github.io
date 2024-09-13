@@ -2,9 +2,7 @@
 pagetitle: "Index"
 output: html_document
 ---
-<head>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lora:wght@400;700&display=swap">
-</head>
+
 <!-- Add Georgia font directly -->
 <style>
   body {
@@ -25,19 +23,6 @@ output: html_document
     color: #A9A9A9;
     text-transform: uppercase;
     margin-bottom: 30px;
-  }
-
-  /* Large Quotation Style with Lora Font */
-  .about-me-section .quote {
-    font-family: '', serif; /* Lora 폰트 적용 */
-    font-size: 30px;
-    font-weight: 400;
-    line-height: 1.6;
-    font-style: italic;
-    margin: 20px 0;
-    color: #666666;
-    position: relative;
-    margin-bottom: 35px; /*인용구 아래쪽 간격 조정*/
   }
 
 
@@ -114,10 +99,6 @@ output: html_document
 <div class="about-me-section">
   <!-- About Me Title -->
   <h2>About Me</h2>
-  <!-- Quotation Style Text -->
-  <p class="quote">
-    "Where data meets the world. "
-  </p>
   <!-- Regular Text -->
   <p>
     I'm someone who loves finding patterns in data and turning them into meaningful stories. My passion for problem-solving keeps me curious and excited to take on new challenges.
