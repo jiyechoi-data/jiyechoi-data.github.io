@@ -7,7 +7,7 @@ output_dir: "."
 navbar:
   title: "Jiye Choi"
   left:
-      # - text: "Tutorials"
+    # - text: "Tutorials"
       #   href: tutorials.html
     - text: "Stat/ML"
       menu: 
@@ -21,9 +21,9 @@ navbar:
         href: stat4.html
       - text: "Analyzing Monthly Living Expenses"
         href: stat5.html
-     # - text: "DB/SQL"
+    # - text: "DB/SQL"
      #   menu: 
-     #   - text: "Movie Explorer"
+    #   - text: "Movie Explorer"
      #     href: dbsql1.html
     - text: "Visualization"
       menu: 
