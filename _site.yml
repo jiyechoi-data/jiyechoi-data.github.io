@@ -8,40 +8,40 @@ navbar:
   title: "Jiye Choi"
   left:
     # - text: "Tutorials"
-      #   href: tutorials.html
+    #   href: tutorials.html
     - text: "Stat/ML"
       menu: 
-      - text: "Bank Customer Behavior Analysis"
-        href: stat1.html
-      - text: "Regional Birth Rate Disparities in South Korea"
-        href: stat2.html
-      - text: "Forecasting Jeju Island Tourism Revenue"
-        href: stat3.html
-      - text: "Fackbook National Geographic Engagement Analysis"
-        href: stat4.html
-      - text: "Analyzing Monthly Living Expenses"
-        href: stat5.html
+        - text: "Bank Customer Behavior Analysis"
+          href: stat1.html
+        - text: "Regional Birth Rate Disparities in South Korea"
+          href: stat2.html
+        - text: "Forecasting Jeju Island Tourism Revenue"
+          href: stat3.html
+        - text: "Fackbook National Geographic Engagement Analysis"
+          href: stat4.html
+        - text: "Analyzing Monthly Living Expenses"
+          href: stat5.html
     # - text: "DB/SQL"
-     #   menu: 
-    #   - text: "Movie Explorer"
-     #     href: dbsql1.html
+    #   menu: 
+    #     - text: "Movie Explorer"
+    #       href: dbsql1.html
     - text: "Visualization"
       menu: 
-      - text: "Squid Game Elimination Analysis"
-        href: visualization1.html
+        - text: "Squid Game Elimination Analysis"
+          href: visualization1.html
   right:
     - icon: fas fa-envelope
       href: contact.html
     - icon: ai-cv ai-lg
       href: files/sample_resume.pdf
     # - icon: fab fa-github
-      # href: http://github.com/
+    #   href: http://github.com/
     - icon: fab fa-linkedin-in
       href: https://www.linkedin.com/in/jiyechoi-data/
     #- icon: ai-google-scholar ai-lg
-     # href: https://scholar.google.com/
+    #  href: https://scholar.google.com/
     #- icon: ai-researchgate ai-lg
-     # href: https://www.researchgate.net/
+    #  href: https://www.researchgate.net/
 output:
   html_document:
     theme: cosmo
