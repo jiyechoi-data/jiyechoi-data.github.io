@@ -9,6 +9,16 @@ output:
      smooth_scroll: false
 ---
 
+<style>
+  body {
+    font-family: Georgia, "Times New Roman", Times, serif;
+  }
+
+  h1, h2 {
+    color: #333;
+  }
+</style>
+
 <link rel="stylesheet" href="styles.css" type="text/css">
 <link rel="stylesheet" href="site_libs/academicons-1.9.1/css/academicons.min.css"/>
 
