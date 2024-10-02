@@ -24,49 +24,121 @@ output:
 
 <br><br><br>
 
-## **Fackbook "National Geopraphic" Engagement Analysis**
+## **Facebook "National Geographic" Engagement Analysis**
 
-![](https://img.shields.io/badge/Using-Python-blue)
-![](https://img.shields.io/badge/-LASSO-red)
-![](https://img.shields.io/badge/-XGBoost-success)
+![](https://img.shields.io/badge/Using-R-blue)
+![](https://img.shields.io/badge/Platform-Linux-yellow)
+![](https://img.shields.io/badge/-Text_Mining-orange)
+![](https://img.shields.io/badge/-Topic_Modeling-green)
+![](https://img.shields.io/badge/-Clustering-purple)
 
 <br>
 
-🚨**THIS IS A FICTIONAL PROJECT MEANT AS AN EXAMPLE FOR THE STEPBYSTAT COMMUNITY.**
 
 <br><br><br>
 
 ### 1. Figure
 
+<!-- Word Cloud -->
 <p align="center">
-<img src="images/predict_houseprice.png" style="width:80%; border:0px solid; margin-right: 20px" align="center">
+  <img src="images/wordcloud_facebook.png" style="width:60%; border:0px solid; margin-right: 20px" align="center">
+    <br><br>
 </p>
-<p align="center">
-[Fig. LASSO regression features by importance]
+<p align="center" style="font-size: 14px; font-weight: bold;">
+  [Fig. Word Cloud of National Geographic Facebook Page]
+    <br>
 </p>
 
+<br><br><br>
 
-<br>
+<!-- Bar Chart -->
+<p align="center">
+  <img src="images/barchart_facebook.png" style="width:60%; border:0px solid; margin-right: 20px" align="center">
+    <br><br>
+</p>
+<p align="center" style="font-size: 14px; font-weight: bold;">
+  [Fig. Bar Chart of Word Frequencies]
+    <br>
+</p>
+
+<br><br><br>
+
+<!-- Dendrogram -->
+<p align="center">
+  <img src="images/dendrogram_facebook.png" style="width:60%; border:0px solid; margin-right: 20px" align="center">
+    <br><br>
+</p>
+<p align="center" style="font-size: 14px; font-weight: bold;">
+  [Fig. Dendrogram for Text Clustering]
+    <br>
+</p>
+
+<br><br><br>
+
+<!-- Topic Modeling -->
+<p align="center">
+  <img src="images/topicmodeling_facebook.png" style="width:50%; border:0px solid; margin-right: 20px" align="center">
+  <br><br>
+</p>
+<p align="center" style="font-size: 14px; font-weight: bold;">
+  [Fig. Topic Modeling Output]
+  <br>
+</p>
 
 <br><br>
 
 ### 2. Goal
-To predict the final price of each home using 79 explanatory variables describing (almost) every aspect of residential homes in Ames, Iowa.
+To analyze the engagement patterns of the "National Geographic" Facebook page by applying text mining techniques on the posts. The goal is to identify key themes, frequent topics, and clusters of related words, providing insights into the page’s content and audience interaction.
 
-<br>
+<br><br>
 
-### 3. Methodology & Summary
+### 3. Method & Summary:
+<div style="line-height: 2;">
+<p style="margin-bottom: 20px;">
+  <p>1. Data Collection:</p>
+  <ul>
+    <li>Used the Facebook API to extract up to 2000 posts from the National Geographic page.</li>
+    <li>Data cleaning included converting text to lowercase, removing punctuation, numbers, and stopwords, and applying specific filters for unnecessary words.</li>
+  </ul>
 
-  + LASSO regressions showed the best performance with a cross validation RMSE-score of 0.1121. Although there is a lot of multicollinearity among the variables, LASSO regression include feature selection; it does not select a substantial number of the available variables in its model, as it is supposed to do.
-  + The XGBoost model also performs very well with a cross validation RMSE of 0.1162.
-  + As those two algorithms are very different, averaging predictions is likely to improve the predictions. As the Lasso cross validated RMSE is better than XGBoost's CV score, I decided to weight the Lasso results double.
+<p style="margin-bottom: 20px;">
+  <p>2. Text Mining Techniques:</p>
+  <ul>
+    <li><strong>Word Cloud</strong>: A word cloud was generated using term-document matrices to visualize the most common words.</li>
+    <li><strong>Bar Plot</strong>: A bar chart was created to display the frequency of words that appeared more than 40 times.</li>
+    <li><strong>Clustering</strong>: Hierarchical clustering was applied to group similar words, visualized through a dendrogram.</li>
+    <li><strong>Topic Modeling</strong>: Latent Dirichlet Allocation (LDA) was used to extract 10 topics from the posts.</li>
+  </ul>
 
-<br>
+<p style="margin-bottom: 20px;">
+  <p>3. Key Findings:</p>
+<ul>
+    <li><strong>Most frequent words</strong> include “photo,” “image,” “world,” and “animal,” reflecting the page’s focus on photography and wildlife.</li>
+    <li><strong>Clustering results</strong> show related words grouped into distinct themes, and the LDA model highlights topics such as photography, wildlife, and environmental awareness.</li>
+    <li><strong>Engagement Patterns</strong>: Posts related to wildlife conservation received the most audience engagement.</li>
+</ul>
+</div>
+
+<br><br>
 
 ### 4. Code
 
-Please click [HERE](https://www.kaggle.com/erikbruin/house-prices-lasso-xgboost-and-a-detailed-eda/report) for the analysis report and code.
+The full code for this project, including data collection, text cleaning, word cloud generation, clustering, and topic modeling, is available on [GitHub](https://github.com/jiyechoi-data/natgeo-facebook-engagement/blob/main/scripts/Facebook_analysis.R).
 
-<br>
+Key tools and libraries used in this project:
+
+- **R** for text mining and analysis.
+- **Rfacebook** for accessing the Facebook API.
+- **tm**, **SnowballC**, **wordcloud** for text preprocessing and visualization.
+- **lda** for topic modeling.
+<br><br><br>
+
+### 5. Conclusion
+
+In this project, we successfully analyzed the engagement patterns of the "National Geographic" Facebook page through various text mining techniques. Key findings indicate a strong focus on wildlife photography and conservation. 
+Future improvements could involve sentiment analysis to determine audience reactions and further investigation into time-based engagement trends.
+
+
+
 
 
