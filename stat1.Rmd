@@ -73,7 +73,7 @@ The dataset includes 13 types of services offered, as detailed in the appendix.
 The BNKSERV dataset was analyzed using Association Analysis, Graph Exploration, and Market Basket Analysis nodes.
 
 <br><br>
-<!-- Frequency -->
+<!-- Frequency1 -->
 <p align="center">
   <img src="images/frequency.JPEG" style="width:60%; border:0px solid; margin-right: 20px" align="center">
     <br><br>
@@ -91,15 +91,13 @@ Graph Exploration :
 
 <br><br><br>
 
-
-<br><br>
-<!-- confidence -->
+<!-- confidence1 -->
 <p align="center">
-  <img src="images/confidence.JPEG" style="width:60%; border:0px solid; margin-right: 20px" align="center">
+  <img src="images/confidence1.PNG" style="width:60%; border:0px solid; margin-right: 20px" align="center">
     <br><br>
 </p>
 <p align="center" style="font-size: 14px; font-weight: bold;">
-  [Fig. Confidence vs. Support Scatter Plot for Association Rules]
+  [Fig. Confidence vs. Support Scatter Plot for the Rule SVG → CKING]
     <br>
 </p>
 <br><br>
@@ -108,6 +106,42 @@ Market Basket Analysis :
 
 - CKING had the highest support of 85.7840%.
 - The "Confidence vs. Support" graph from the association analysis revealed that the rule ‘SVG → CKING’ had both high confidence and support values.
+
+<br><br><br>
+
+<!-- network1 -->
+<p align="center">
+  <img src="images/network1.PNG" style="width:60%; border:0px solid; margin-right: 20px" align="center">
+    <br><br>
+</p>
+<p align="center" style="font-size: 14px; font-weight: bold;">
+  [Fig. Association Rule Network Graph]
+    <br>
+</p>
+<br><br>
+
+Graph Representation of Rules :  
+
+- Nodes represent transaction frequency (larger nodes = higher frequency).  
+- Edge thickness indicates confidence (thicker edges = higher confidence).  
+- CKING and SVG had the largest nodes, and CKING showed notably high confidence levels with other services.  
+
+- Key Metrics for Rule SVG → CKING:  
+
+- Transaction Count (\(n(\text{SVG}, \text{CKING})\)): 4,329  
+- Support:  
+  \[
+  \text{Support} = \frac{4,329}{7,991} = 54.17\%
+  \]
+- Confidence:  
+  \[
+  \text{Confidence} = \frac{4,329}{4,944} = 87.56\%
+  \]
+- Lift:  
+  \[
+  \text{Lift} = \frac{87.56\%}{\frac{6,855}{7,991}} = 1.02
+  \]
+
 
 <br><br><br>
 

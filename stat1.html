@@ -451,7 +451,7 @@ appendix.</p>
 </h4>
 <p><br> The BNKSERV dataset was analyzed using Association Analysis,
 Graph Exploration, and Market Basket Analysis nodes.</p>
-<br><br> <!-- Frequency -->
+<br><br> <!-- Frequency1 -->
 <p align="center">
 <img src="images/frequency.JPEG" style="width:60%; border:0px solid; margin-right: 20px" align="center">
 <br><br>
@@ -468,13 +468,13 @@ Graph Exploration, and Market Basket Analysis nodes.</p>
 subscription frequency, with a total of 6,855 occurrences.</li>
 </ul>
 <p><br><br><br></p>
-<br><br> <!-- confidence -->
+<!-- confidence1 -->
 <p align="center">
-<img src="images/confidence.JPEG" style="width:60%; border:0px solid; margin-right: 20px" align="center">
+<img src="images/confidence1.PNG" style="width:60%; border:0px solid; margin-right: 20px" align="center">
 <br><br>
 </p>
 <p align="center" style="font-size: 14px; font-weight: bold;">
-[Fig. Confidence vs. Support Scatter Plot for Association Rules] <br>
+[Fig. Confidence vs. Support Scatter Plot for the Rule SVG → CKING] <br>
 </p>
 <p><br><br></p>
 <p>Market Basket Analysis :</p>
@@ -483,6 +483,43 @@ subscription frequency, with a total of 6,855 occurrences.</li>
 <li>The “Confidence vs. Support” graph from the association analysis
 revealed that the rule ‘SVG → CKING’ had both high confidence and
 support values.</li>
+</ul>
+<p><br><br><br></p>
+<!-- network1 -->
+<p align="center">
+<img src="images/network1.PNG" style="width:60%; border:0px solid; margin-right: 20px" align="center">
+<br><br>
+</p>
+<p align="center" style="font-size: 14px; font-weight: bold;">
+[Fig. Association Rule Network Graph] <br>
+</p>
+<p><br><br></p>
+<p>Graph Representation of Rules :</p>
+<ul>
+<li><p>Nodes represent transaction frequency (larger nodes = higher
+frequency).<br />
+</p></li>
+<li><p>Edge thickness indicates confidence (thicker edges = higher
+confidence).<br />
+</p></li>
+<li><p>CKING and SVG had the largest nodes, and CKING showed notably
+high confidence levels with other services.</p></li>
+<li><p>Key Metrics for Rule SVG → CKING:</p></li>
+<li><p>Transaction Count (<span class="math inline">\(n(\text{SVG},
+\text{CKING})\)</span>): 4,329<br />
+</p></li>
+<li><p>Support:<br />
+<span class="math display">\[
+\text{Support} = \frac{4,329}{7,991} = 54.17\%
+\]</span></p></li>
+<li><p>Confidence:<br />
+<span class="math display">\[
+\text{Confidence} = \frac{4,329}{4,944} = 87.56\%
+\]</span></p></li>
+<li><p>Lift:<br />
+<span class="math display">\[
+\text{Lift} = \frac{87.56\%}{\frac{6,855}{7,991}} = 1.02
+\]</span></p></li>
 </ul>
 <p><br><br><br></p>
 <p><br></p>
