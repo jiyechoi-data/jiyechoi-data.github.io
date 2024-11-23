@@ -54,11 +54,23 @@ This project aims to predict monthly tourism revenue based on the number of fore
 
 ### 3. Figure
 <br><br>
-<h4>1-1. Data Preparation and Plotting</h4>
+<h4>1-1. Plotting</h4>
 <br>
 The following process was conducted to analyze monthly data of foreign tourists and tourism revenue over time.
 <br><br><br><br>
 **Raw Time Series Plots**
+
+```r
+symbol1 i=join v=star ci=red; 
+proc gplot data=travel;
+plot x*time=1;
+run;
+
+symbol1 i=join v=star ci=blue; 
+proc gplot data=travel;
+plot y*time=1;
+run;
+```
 
 <br><br>
 <!-- raw_x -->
@@ -82,6 +94,45 @@ The following process was conducted to analyze monthly data of foreign tourists 
     <br>
 </p>
 <br><br>
+
+From the raw plots, it was determined that variable transformation was necessary to stabilize the variance, although differencing was not required.
+<br><br><br>
+
+**Square Root Transformation**
+
+```r
+data travel1; 
+set travel; 
+x1 = sqrt(x); 
+y1 = sqrt(y);
+```
+
+<br><br>
+<!-- squre_x -->
+<p align="center">
+  <img src="images/squre_x.png.png" style="width:60%; border:0px solid; margin-right: 20px" align="center">
+    <br><br>
+</p>
+<p align="center" style="font-size: 14px; font-weight: bold;">
+  [Fig. Transformed Monthly Foreign Tourist Count (x1)]
+    <br>
+</p>
+<br><br>
+
+<!-- squre_y -->
+<p align="center">
+  <img src="images/squre_y.png.png" style="width:60%; border:0px solid; margin-right: 20px" align="center">
+    <br><br>
+</p>
+<p align="center" style="font-size: 14px; font-weight: bold;">
+  [Fig. Transformed Monthly Tourism Revenue (y1)]
+    <br>
+</p>
+<br><br>
+
+The transformed plots indicate that the variance has been stabilized. These transformed data will be used as the basis for further analysis, starting with the identification of ACF and PACF.
+<br><br><br>
+
 
 ### 3. Methodology & Summary
 

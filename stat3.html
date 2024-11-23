@@ -434,11 +434,20 @@ insights to support strategic decision-making in the tourism sector.
 <h3>3. Figure</h3>
 <br><br>
 <h4>
-1-1. Data Preparation and Plotting
+1-1. Plotting
 </h4>
 <p><br> The following process was conducted to analyze monthly data of
 foreign tourists and tourism revenue over time. <br><br><br><br>
 <strong>Raw Time Series Plots</strong></p>
+<pre class="r"><code>symbol1 i=join v=star ci=red; 
+proc gplot data=travel;
+plot x*time=1;
+run;
+
+symbol1 i=join v=star ci=blue; 
+proc gplot data=travel;
+plot y*time=1;
+run;</code></pre>
 <br><br> <!-- raw_x -->
 <p align="center">
 <img src="images/x_plot.png.png" style="width:60%; border:0px solid; margin-right: 20px" align="center">
@@ -457,6 +466,35 @@ foreign tourists and tourism revenue over time. <br><br><br><br>
 [Fig. Monthly Tourism Revenue (y)] <br>
 </p>
 <p><br><br></p>
+<p>From the raw plots, it was determined that variable transformation
+was necessary to stabilize the variance, although differencing was not
+required. <br><br><br></p>
+<p><strong>Square Root Transformation</strong></p>
+<pre class="r"><code>data travel1; 
+set travel; 
+x1 = sqrt(x); 
+y1 = sqrt(y);</code></pre>
+<br><br> <!-- squre_x -->
+<p align="center">
+<img src="images/squre_x.png.png" style="width:60%; border:0px solid; margin-right: 20px" align="center">
+<br><br>
+</p>
+<p align="center" style="font-size: 14px; font-weight: bold;">
+[Fig. Transformed Monthly Foreign Tourist Count (x1)] <br>
+</p>
+<p><br><br></p>
+<!-- squre_y -->
+<p align="center">
+<img src="images/squre_y.png.png" style="width:60%; border:0px solid; margin-right: 20px" align="center">
+<br><br>
+</p>
+<p align="center" style="font-size: 14px; font-weight: bold;">
+[Fig. Transformed Monthly Tourism Revenue (y1)] <br>
+</p>
+<p><br><br></p>
+<p>The transformed plots indicate that the variance has been stabilized.
+These transformed data will be used as the basis for further analysis,
+starting with the identification of ACF and PACF. <br><br><br></p>
 </div>
 <div id="methodology-summary" class="section level3">
 <h3>3. Methodology &amp; Summary</h3>
