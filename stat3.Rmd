@@ -200,7 +200,7 @@ estimate p=(1) q=(1) plot; run;
 <br><br><br>
 <!-- ARIMA -->
 <p align="center">
-  <img src="images/arima1.png.png" style="width:60%; border:0px solid; margin-right: 20px" align="center">
+  <img src="images/arima1.png.png" style="width:50%; border:0px solid; margin-right: 20px" align="center">
     <br><br>
 </p>
 <p align="center" style="font-size: 14px; font-weight: bold;">
@@ -211,7 +211,7 @@ estimate p=(1) q=(1) plot; run;
 
 <!-- ARIMA -->
 <p align="center">
-  <img src="images/arima2.png.png" style="width:60%; border:0px solid; margin-right: 20px" align="center">
+  <img src="images/arima2.png.png" style="width:50%; border:0px solid; margin-right: 20px" align="center">
     <br><br>
 </p>
 <p align="center" style="font-size: 14px; font-weight: bold;">
@@ -222,7 +222,7 @@ estimate p=(1) q=(1) plot; run;
 
 <!-- AIC -->
 <p align="center">
-  <img src="images/aic1.png.png" style="width:40%; border:0px solid; margin-right: 20px" align="center">
+  <img src="images/aic1.png.png" style="width:30%; border:0px solid; margin-right: 20px" align="center">
     <br><br>
 </p>
 <p align="center" style="font-size: 14px; font-weight: bold;">
@@ -233,7 +233,7 @@ estimate p=(1) q=(1) plot; run;
 
 <!-- AIC -->
 <p align="center">
-  <img src="images/aic2.png.png" style="width:40%; border:0px solid; margin-right: 20px" align="center">
+  <img src="images/aic2.png.png" style="width:30%; border:0px solid; margin-right: 20px" align="center">
     <br><br>
 </p>
 <p align="center" style="font-size: 14px; font-weight: bold;">
@@ -243,6 +243,33 @@ estimate p=(1) q=(1) plot; run;
 <br><br>
 
 Based on the AIC (Akaike Information Criterion), ARIMA((1), 1, 0) was selected as the most appropriate model due to its lower AIC value and significance in parameter estimates.
+
+<br><br><br><br>
+
+**Portmanteau Test Results** <br>
+<br><br>
+<!-- Portmanteau -->
+<p align="center">
+  <img src="images/port1.png.png" style="width:50%; border:0px solid; margin-right: 20px" align="center">
+    <br><br>
+</p>
+<p align="center" style="font-size: 14px; font-weight: bold;">
+  [Fig. Portmanteau Test Results for the ARIMA((1), 1, 0) Model ]
+    <br>
+</p>
+<br><br>
+
+<!-- Portmanteau -->
+<p align="center">
+  <img src="images/port2.png.png" style="width:50%; border:0px solid; margin-right: 20px" align="center">
+    <br><br>
+</p>
+<p align="center" style="font-size: 14px; font-weight: bold;">
+  [Fig. Portmanteau Test Results for the ARIMA(0, 1, (1)) Model ]
+    <br>
+</p>
+<br><br>
+Residual diagnostic checks (Portmanteau test) confirmed no significant autocorrelation in the residuals of ARIMA((1), 1, 0), validating the model.
 
 <br><br><br><br>
 
