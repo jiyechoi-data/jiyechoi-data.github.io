@@ -26,34 +26,62 @@ output:
 
 ## **Forecasting Jeju Island Tourism Revenue**
 
-![](https://img.shields.io/badge/Using-Python-blue)
-![](https://img.shields.io/badge/-LASSO-red)
-![](https://img.shields.io/badge/-XGBoost-success)
+![](https://img.shields.io/badge/Using-SAS_Enterprise_Miner-blue)
+![](https://img.shields.io/badge/Method-ARIMA-orange)
+![](https://img.shields.io/badge/Method-Transfer_Function_Model-purple)
+![](https://img.shields.io/badge/Technique-Time_Series_Analysis-green)
+![](https://img.shields.io/badge/Evaluation-ACF_PACF_CCF-yellow)
+![](https://img.shields.io/badge/Application-Tourism_Revenue_Prediction-teal)
+
 
 <br>
 
-🚨**THIS IS A FICTIONAL PROJECT MEANT AS AN EXAMPLE FOR THE STEPBYSTAT COMMUNITY.**
+
 
 <br><br><br>
 
-### 1. Figure
 
-<p align="center">
-<img src="images/predict_houseprice.png" style="width:80%; border:0px solid; margin-right: 20px" align="center">
-</p>
-<p align="center">
-[Fig. LASSO regression features by importance]
-</p>
-
-
+### 1. Introduction
 <br>
-
-<br><br>
+Time series analysis is a powerful tool for understanding trends, patterns, and relationships in sequential data. <br>
+This project focuses on analyzing the relationship between the number of monthly foreign tourists visiting Jeju Island and the corresponding tourism revenue. By leveraging advanced time series modeling techniques, we aim to provide meaningful insights into the dynamics of tourism and its economic impact. 
+<br><br><br>
 
 ### 2. Goal
-To predict the final price of each home using 79 explanatory variables describing (almost) every aspect of residential homes in Ames, Iowa.
-
 <br>
+This project aims to predict monthly tourism revenue based on the number of foreign visitors to Jeju Island using Transfer Function Models and ARIMA modeling. By identifying and quantifying the relationship between these variables, the analysis provides actionable insights to support strategic decision-making in the tourism sector.
+<br><br><br>
+
+### 3. Figure
+<br><br>
+<h4>1-1. Data Preparation and Plotting</h4>
+<br>
+The following process was conducted to analyze monthly data of foreign tourists and tourism revenue over time.
+<br><br><br><br>
+**Raw Time Series Plots**
+
+<br><br>
+<!-- raw_x -->
+<p align="center">
+  <img src="images/x_plot.png.png" style="width:60%; border:0px solid; margin-right: 20px" align="center">
+    <br><br>
+</p>
+<p align="center" style="font-size: 14px; font-weight: bold;">
+  [Fig. Monthly Foreign Tourist Count (x)]
+    <br>
+</p>
+<br><br>
+
+<!-- raw_y -->
+<p align="center">
+  <img src="images/y_plot.png.png" style="width:60%; border:0px solid; margin-right: 20px" align="center">
+    <br><br>
+</p>
+<p align="center" style="font-size: 14px; font-weight: bold;">
+  [Fig. Monthly Tourism Revenue (y)]
+    <br>
+</p>
+<br><br>
 
 ### 3. Methodology & Summary
 
