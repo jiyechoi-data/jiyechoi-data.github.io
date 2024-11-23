@@ -494,7 +494,50 @@ y1 = sqrt(y);</code></pre>
 <p><br><br></p>
 <p>The transformed plots indicate that the variance has been stabilized.
 These transformed data will be used as the basis for further analysis,
-starting with the identification of ACF and PACF. <br><br><br></p>
+starting with the identification of ACF and PACF. <br><br><br><br></p>
+<h4>
+1-2. Model Identification and Parameter Estimation
+</h4>
+<p><br><br> <strong>ACF and PACF Analysis</strong></p>
+<pre class="r"><code>symbol1 i=join v=star ci=red; proc gplot data=travel1;
+plot x1*time=1;
+run;
+symbol1 i=join v=star ci=blue; proc gplot data=travel1;
+plot y1*time=1 ;
+run;
+
+proc arima data=travel1; identify var=x1 ;
+run;
+proc arima data=travel1; identify var=y1 ;
+run;</code></pre>
+<br><br> <!-- ACF,PACF_x1 -->
+<p align="center">
+<img src="images/acf_x1.png.png" style="width:60%; border:0px solid; margin-right: 20px" align="center">
+<br><br>
+</p>
+<p align="center" style="font-size: 14px; font-weight: bold;">
+[Fig. Trend and Correlation Analysis for (x1)] <br>
+</p>
+<p><br><br></p>
+<!-- ACF,PACF_y1 -->
+<p align="center">
+<img src="images/acf_y1.png.png" style="width:60%; border:0px solid; margin-right: 20px" align="center">
+<br><br>
+</p>
+<p align="center" style="font-size: 14px; font-weight: bold;">
+[Fig. Trend and Correlation Analysis for (y1)] <br>
+</p>
+<p><br><br></p>
+<ul>
+<li>The transformed input series (x1) and output series (y1) were
+analyzed using their respective ACF (Autocorrelation Function) and PACF
+(Partial Autocorrelation Function) plots. <br><br></li>
+<li>Both the AR (Auto-Regressive) and MA (Moving Average) components
+show significant spikes at lag 1, suggesting <span
+class="math inline">\(p = 1\)</span> and <span class="math inline">\(q =
+1\)</span>.</li>
+</ul>
+<p><br><br><br><br></p>
 </div>
 <div id="methodology-summary" class="section level3">
 <h3>3. Methodology &amp; Summary</h3>
