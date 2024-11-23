@@ -101,7 +101,7 @@ output: html_document
 <br><br><br>
 
 <h2 class="fade-in-section" style="font-size: 28px; text-align: left; background-color: #f4f4f4; padding: 10px; border-radius: 5px;">💡 Future Goal</h2><br>
-<p class="fade-in-section" style="font-size: 18px;"><em>Aspiring Data Scientist</em><br> I am passionate about using data science to solve complex problems and drive meaningful change in the tech and e-commerce sectors. By leveraging my skills in statistical modeling, data visualization, and machine learning, I aim to deliver insights that optimize user experiences, enhance marketing strategies, and improve operational efficiency.</p>
+<p class="fade-in-section" style="font-size: 18px;"><em>Aspiring Data Scientist</em><br> I am passionate about using data science to solve complex problems and drive meaningful change. By leveraging my skills in statistical modeling, data visualization, and machine learning, I aim to deliver insights that optimize decision-making, improve strategies, and enhance efficiency.</p>
 <br><br><br>
 
 <h2 class="fade-in-section" style="font-size: 28px; text-align: left; background-color: #f4f4f4; padding: 10px; border-radius: 5px;"> 🔍 Highlight My Strengths</h2>
