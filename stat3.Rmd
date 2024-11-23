@@ -177,6 +177,48 @@ run;
 - The transformed input series (x1) and output series (y1) were analyzed using their respective ACF (Autocorrelation Function) and PACF (Partial Autocorrelation Function) plots. 
 <br><br>
 - Both the AR (Auto-Regressive) and MA (Moving Average) components show significant spikes at lag 1, suggesting \( p = 1 \) and \( q = 1 \).
+<br><br><br><br>
+
+**ARIMA Model Selection** <br>
+<br>
+Candidate ARIMA models for the input series \( x_1 \):
+
+```r
+/*ARIMA((1),1,0)*/
+proc arima data=travel1; identify var=x1 ; estimate p=(1) plot;
+run;
+
+/*ARIMA(0,1,(1))*/
+proc arima data=travel1; identify var=x1 ; estimate q=(1) plot;
+run;
+
+/*ARIMA((1),1,(1))*/
+proc arima data=travel1; identify var=x1 ;
+estimate p=(1) q=(1) plot; run;
+
+```
+<br><br><br>
+<!-- ARIMA -->
+<p align="center">
+  <img src="images/arima1.png.png" style="width:60%; border:0px solid; margin-right: 20px" align="center">
+    <br><br>
+</p>
+<p align="center" style="font-size: 14px; font-weight: bold;">
+  [Fig. ARIMA((1), 1, 0) ]
+    <br>
+</p>
+<br><br>
+
+<!-- ARIMA -->
+<p align="center">
+  <img src="images/arima2.png.png" style="width:60%; border:0px solid; margin-right: 20px" align="center">
+    <br><br>
+</p>
+<p align="center" style="font-size: 14px; font-weight: bold;">
+  [Fig. ARIMA(0, 1, (1)) ]
+    <br>
+</p>
+<br><br>
 
 <br><br><br><br>
 

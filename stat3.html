@@ -535,8 +535,41 @@ analyzed using their respective ACF (Autocorrelation Function) and PACF
 <li>Both the AR (Auto-Regressive) and MA (Moving Average) components
 show significant spikes at lag 1, suggesting <span
 class="math inline">\(p = 1\)</span> and <span class="math inline">\(q =
-1\)</span>.</li>
+1\)</span>. <br><br><br><br></li>
 </ul>
+<p><strong>ARIMA Model Selection</strong> <br> <br> Candidate ARIMA
+models for the input series <span
+class="math inline">\(x_1\)</span>:</p>
+<pre class="r"><code>/*ARIMA((1),1,0)*/
+proc arima data=travel1; identify var=x1 ; estimate p=(1) plot;
+run;
+
+/*ARIMA(0,1,(1))*/
+proc arima data=travel1; identify var=x1 ; estimate q=(1) plot;
+run;
+
+/*ARIMA((1),1,(1))*/
+proc arima data=travel1; identify var=x1 ;
+estimate p=(1) q=(1) plot; run;
+</code></pre>
+<br><br><br> <!-- ARIMA -->
+<p align="center">
+<img src="images/arima1.png.png" style="width:60%; border:0px solid; margin-right: 20px" align="center">
+<br><br>
+</p>
+<p align="center" style="font-size: 14px; font-weight: bold;">
+[Fig. ARIMA((1), 1, 0) ] <br>
+</p>
+<p><br><br></p>
+<!-- ARIMA -->
+<p align="center">
+<img src="images/arima2.png.png" style="width:60%; border:0px solid; margin-right: 20px" align="center">
+<br><br>
+</p>
+<p align="center" style="font-size: 14px; font-weight: bold;">
+[Fig. ARIMA(0, 1, (1)) ] <br>
+</p>
+<p><br><br></p>
 <p><br><br><br><br></p>
 </div>
 <div id="methodology-summary" class="section level3">
