@@ -327,7 +327,7 @@ These values were used as candidates for further model estimation.
 
 <br><br><br><br>
 
-<h4>1-4. Noise Series \( n_t \) Model Identification </h4>
+<h4>1-4. Noise Series \( n_t \) Model </h4>
 <br><br>
 Initially, the transfer function model with \( b = 0 \), \( r = 2 \), and \( s = 1 \) was estimated, and the corresponding ACF and PACF plots for the residuals were generated.
 
@@ -345,10 +345,106 @@ Initially, the transfer function model with \( b = 0 \), \( r = 2 \), and \( s =
 - The residuals were not white noise, indicating that further adjustments to the model were necessary.
 - An ARMA model with \( p = 1 \) and \( q = 1 \) was applied to refine the noise series model.
 
+<br><br><br>
+
+```r
+proc arima data=travel1;
+identify var=y1 crosscorr=x1;
+estimate p=1 q=1 input=(0$(1)/(0)x1) noconstant plot; run;
+```
+<br><br>
+<!-- stimated Parameter -->
+<p align="center">
+  <img src="images/finalmodel.png.png" style="width:60%; border:0px solid; margin-right: 20px" align="center">
+    <br><br>
+</p>
+<p align="center" style="font-size: 14px; font-weight: bold;">
+  [Fig. stimated Parameters for the Final Model (b = 0, r = 0, s = 1) ]
+    <br>
+</p>
+<br>
+
+- This table shows the estimated parameters for the final transfer function model with \( b = 0 \), \( r = 0 \), and \( s = 1 \).  
+- All parameters are statistically significant, confirming the suitability of this model.
+
+<br><br><br>
+<!-- Portmanteau Test Results for the Final Model -->
+<p align="center">
+  <img src="images/finalmodel2.png.png" style="width:60%; border:0px solid; margin-right: 20px" align="center">
+    <br><br>
+</p>
+<p align="center" style="font-size: 14px; font-weight: bold;">
+  [Fig. Portmanteau Test Results for the Final Model ]
+    <br>
+</p>
+<br>
+
+- The results indicate that the residuals of the final model exhibit no significant autocorrelation, as all p-values are large.
+- This confirms that the residuals behave as white noise, validating the adequacy of the final model.
+
+<br><br><br>
+<!-- ACF and PACF Plots for the Residuals of the Final Model -->
+<p align="center">
+  <img src="images/finalmodel3.png.png" style="width:60%; border:0px solid; margin-right: 20px" align="center">
+    <br><br>
+</p>
+<p align="center" style="font-size: 14px; font-weight: bold;">
+  [Fig. ACF and PACF Plots for the Residuals of the Final Model ]
+    <br>
+</p>
+<br>
+
+- These plots visually confirm that the residuals of the final model show no significant autocorrelation.
+- The results further support the conclusion that the model captures the underlying structure of the data effectively.
+
+<br><br>
+The results of the Portmanteau test indicate that the p-values are large, confirming that there is no autocorrelation in the residuals.  
+Additionally, the estimated parameters of the model are all statistically significant.  
+The ACF and PACF plots of the residuals further demonstrate that \( n_t \) behaves as white noise.  
+Therefore, the **ARIMA(0, 0, 1)** model is selected as the final model.
+
 <br><br>
 
 
+The final model is as follows:
 
+\[
+(1 - B)Y_t = \frac{0.71569}{1 - 0.39636B}BX_t + a_t, \quad \hat{a}_t = 380.9856
+\]
+
+<br><br>
+ **Model Summary:** <br>
+ <br>
+ 
+- Variance Estimate: 2807.963 <br>
+- Standard Error Estimate: 52.99021 <br>
+- AIC: 380.9856 <br>
+- SBC: 387.207 <br>
+- Number of Residuals: 35
+
+<br><br><br>
+
+ **Model Components:** <br>
+ <br>
+ 
+- Autoregressive Factors:
+  \[
+  1 - 0.73679B^{1}
+  \]
+- Moving Average Factors:
+  \[
+  1 - 0.13378B^{1}
+  \]
+- Input Variable: \( x_1 \) <br><br>
+- Numerator Factors:
+  \[
+  0.71569 + 0.39636B^{1}
+  \]
+
+
+
+
+<br><br><br><br>
 ### 3. Methodology & Summary
 
   + LASSO regressions showed the best performance with a cross validation RMSE-score of 0.1121. Although there is a lot of multicollinearity among the variables, LASSO regression include feature selection; it does not select a substantial number of the available variables in its model, as it is supposed to do.

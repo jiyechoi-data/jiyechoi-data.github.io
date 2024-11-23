@@ -659,7 +659,6 @@ estimation.</p>
 <p><br><br><br><br></p>
 <h4>
 1-4. Noise Series <span class="math inline">\(n_t\)</span> Model
-Identification
 </h4>
 <p><br><br> Initially, the transfer function model with <span
 class="math inline">\(b = 0\)</span>, <span class="math inline">\(r =
@@ -684,10 +683,99 @@ adjustments to the model were necessary.</li>
 <span class="math inline">\(q = 1\)</span> was applied to refine the
 noise series model.</li>
 </ul>
+<p><br><br><br></p>
+<pre class="r"><code>proc arima data=travel1;
+identify var=y1 crosscorr=x1;
+estimate p=1 q=1 input=(0$(1)/(0)x1) noconstant plot; run;</code></pre>
+<br><br> <!-- stimated Parameter -->
+<p align="center">
+<img src="images/finalmodel.png.png" style="width:60%; border:0px solid; margin-right: 20px" align="center">
+<br><br>
+</p>
+<p align="center" style="font-size: 14px; font-weight: bold;">
+[Fig. stimated Parameters for the Final Model (b = 0, r = 0, s = 1) ]
+<br>
+</p>
+<p><br></p>
+<ul>
+<li>This table shows the estimated parameters for the final transfer
+function model with <span class="math inline">\(b = 0\)</span>, <span
+class="math inline">\(r = 0\)</span>, and <span class="math inline">\(s
+= 1\)</span>.<br />
+</li>
+<li>All parameters are statistically significant, confirming the
+suitability of this model.</li>
+</ul>
+<br><br><br> <!-- Portmanteau Test Results for the Final Model -->
+<p align="center">
+<img src="images/finalmodel2.png.png" style="width:60%; border:0px solid; margin-right: 20px" align="center">
+<br><br>
+</p>
+<p align="center" style="font-size: 14px; font-weight: bold;">
+[Fig. Portmanteau Test Results for the Final Model ] <br>
+</p>
+<p><br></p>
+<ul>
+<li>The results indicate that the residuals of the final model exhibit
+no significant autocorrelation, as all p-values are large.</li>
+<li>This confirms that the residuals behave as white noise, validating
+the adequacy of the final model.</li>
+</ul>
+<br><br><br>
+<!-- ACF and PACF Plots for the Residuals of the Final Model -->
+<p align="center">
+<img src="images/finalmodel3.png.png" style="width:60%; border:0px solid; margin-right: 20px" align="center">
+<br><br>
+</p>
+<p align="center" style="font-size: 14px; font-weight: bold;">
+[Fig. ACF and PACF Plots for the Residuals of the Final Model ] <br>
+</p>
+<p><br></p>
+<ul>
+<li>These plots visually confirm that the residuals of the final model
+show no significant autocorrelation.</li>
+<li>The results further support the conclusion that the model captures
+the underlying structure of the data effectively.</li>
+</ul>
+<p><br><br> The results of the Portmanteau test indicate that the
+p-values are large, confirming that there is no autocorrelation in the
+residuals.<br />
+Additionally, the estimated parameters of the model are all
+statistically significant.<br />
+The ACF and PACF plots of the residuals further demonstrate that <span
+class="math inline">\(n_t\)</span> behaves as white noise.<br />
+Therefore, the <strong>ARIMA(0, 0, 1)</strong> model is selected as the
+final model.</p>
 <p><br><br></p>
-</div>
-<div id="methodology-summary" class="section level3">
-<h3>3. Methodology &amp; Summary</h3>
+<p>The final model is as follows:</p>
+<p><span class="math display">\[
+(1 - B)Y_t = \frac{0.71569}{1 - 0.39636B}BX_t + a_t, \quad \hat{a}_t =
+380.9856
+\]</span></p>
+<p><br><br> <strong>Model Summary:</strong> <br> <br></p>
+<ul>
+<li>Variance Estimate: 2807.963 <br></li>
+<li>Standard Error Estimate: 52.99021 <br></li>
+<li>AIC: 380.9856 <br></li>
+<li>SBC: 387.207 <br></li>
+<li>Number of Residuals: 35</li>
+</ul>
+<p><br><br><br></p>
+<p><strong>Model Components:</strong> <br> <br></p>
+<ul>
+<li>Autoregressive Factors: <span class="math display">\[
+1 - 0.73679B^{1}
+\]</span></li>
+<li>Moving Average Factors: <span class="math display">\[
+1 - 0.13378B^{1}
+\]</span></li>
+<li>Input Variable: <span class="math inline">\(x_1\)</span>
+<br><br></li>
+<li>Numerator Factors: <span class="math display">\[
+0.71569 + 0.39636B^{1}
+\]</span></li>
+</ul>
+<p><br><br><br><br> ### 3. Methodology &amp; Summary</p>
 <ul>
 <li>LASSO regressions showed the best performance with a cross
 validation RMSE-score of 0.1121. Although there is a lot of
