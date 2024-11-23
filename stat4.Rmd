@@ -145,7 +145,7 @@ top.words <- top.topic.words(ldaModel$topics, 10, by.score=TRUE)
 
 <!-- Topic Modeling -->
 <p align="center">
-  <img src="images/topicmodeling_facebook.png" style="width:50%; border:0px solid; margin-right: 20px" align="center">
+  <img src="images/topicmodeling_facebook.png.png" style="width:80%; border:0px solid; margin-right: 20px" align="center">
   <br><br>
 </p>
 <p align="center" style="font-size: 14px; font-weight: bold;">
