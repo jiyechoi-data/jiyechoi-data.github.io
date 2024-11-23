@@ -478,7 +478,7 @@ The final model is as follows:
 
 ### 4. Code
 
-Please click [HERE](https://github.com/jiyechoi-data/natgeo-facebook-engagement/blob/main/scripts/tourism_revenue_analysis.sas) for the code.
+Please click [HERE](https://github.com/jiyechoi-data/tourism-revenue-forecasting/blob/main/script/tourism_revenue_analysis.sas) for the code.
 
 <br><br>
 
