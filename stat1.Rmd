@@ -26,16 +26,38 @@ output:
 
 ## **Bank Customer Behavior Analysis**
 
-![](https://img.shields.io/badge/Using-Python-blue)
-![](https://img.shields.io/badge/-LASSO-red)
-![](https://img.shields.io/badge/-XGBoost-success)
+![](https://img.shields.io/badge/Using-SAS_Enterprise_Miner-blue)
+![](https://img.shields.io/badge/Method-Association_Rule_Discovery-orange)
+![](https://img.shields.io/badge/Method-Path_Analysis-purple)
+![](https://img.shields.io/badge/Data-Bank_Customer_Data-green)
+![](https://img.shields.io/badge/Evaluation-Support_Confidence_Lift-yellow)
+![](https://img.shields.io/badge/Application-Customer_Insight-teal)
+
+
 
 <br>
 
 
 <br><br><br>
 
-### 1. Figure
+### 1. Introduction
+<br>
+The digital economy has led to the generation of vast amounts of data, offering opportunities for companies to predict customer behavior, enhance productivity, and innovate their business practices. In this environment, companies need to effectively manage resources while also improving product and service quality for customer satisfaction.  
+
+Customer Relationship Management (CRM) emphasizes the importance of analyzing customer data to develop effective strategies. In this project, Association Rule Discovery is applied to identify key insights such as Target Marketing, Churn Analysis, and Sales Forecasting, supporting better decision-making and customer satisfaction.
+
+<br><br><br>
+
+### 2. Goal
+<br>
+The primary goal of this project is to analyze bank customer data using Association Rule Discovery and Path Analysis techniques to uncover the relationships between various financial services that customers subscribe to.  
+By identifying these associations, the project aims to recommend additional financial products to customers, ultimately enhancing customer satisfaction and loyalty.
+
+
+
+<br><br>
+
+### 3. Figure
 
 <p align="center">
 <img src="images/predict_houseprice.png" style="width:80%; border:0px solid; margin-right: 20px" align="center">
@@ -47,14 +69,8 @@ output:
 
 <br>
 
-<br><br>
 
-### 2. Goal
-To predict the final price of each home using 79 explanatory variables describing (almost) every aspect of residential homes in Ames, Iowa.
-
-<br>
-
-### 3. Methodology & Summary
+### 4. Methodology & Summary
 
   + LASSO regressions showed the best performance with a cross validation RMSE-score of 0.1121. Although there is a lot of multicollinearity among the variables, LASSO regression include feature selection; it does not select a substantial number of the available variables in its model, as it is supposed to do.
   + The XGBoost model also performs very well with a cross validation RMSE of 0.1162.
@@ -62,10 +78,15 @@ To predict the final price of each home using 79 explanatory variables describin
 
 <br>
 
-### 4. Code
+### 5. Code
 
 Please click [HERE](https://www.kaggle.com/erikbruin/house-prices-lasso-xgboost-and-a-detailed-eda/report) for the analysis report and code.
 
-<br>
+<br><br><br>
+
+### 6. Conclusion
+
+In this project, we successfully analyzed the engagement patterns of the "National Geographic" Facebook page through various text mining techniques. Key findings indicate a strong focus on wildlife photography and conservation. 
+Future improvements could involve sentiment analysis to determine audience reactions and further investigation into time-based engagement trends.
 
 
