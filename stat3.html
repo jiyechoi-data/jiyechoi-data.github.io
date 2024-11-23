@@ -775,28 +775,79 @@ final model.</p>
 0.71569 + 0.39636B^{1}
 \]</span></li>
 </ul>
-<p><br><br><br><br> ### 3. Methodology &amp; Summary</p>
+<p><br><br><br><br></p>
+</div>
+<div id="methodology-summary" class="section level3">
+<h3>3. Methodology &amp; Summary</h3>
+<p><br><br> <strong>Data Preprocessing</strong>:</p>
 <ul>
-<li>LASSO regressions showed the best performance with a cross
-validation RMSE-score of 0.1121. Although there is a lot of
-multicollinearity among the variables, LASSO regression include feature
-selection; it does not select a substantial number of the available
-variables in its model, as it is supposed to do.</li>
-<li>The XGBoost model also performs very well with a cross validation
-RMSE of 0.1162.</li>
-<li>As those two algorithms are very different, averaging predictions is
-likely to improve the predictions. As the Lasso cross validated RMSE is
-better than XGBoost’s CV score, I decided to weight the Lasso results
-double.</li>
+<li>Monthly data for foreign tourist counts (<span
+class="math inline">\(x\)</span>) and tourism revenue (<span
+class="math inline">\(y\)</span>) were transformed using a square root
+transformation to stabilize variance.</li>
+<li>Cross-correlation analysis (CCF) was used to identify the lag
+structure between <span class="math inline">\(x_1\)</span> (transformed
+tourist counts) and <span class="math inline">\(y_1\)</span>
+(transformed revenue). <br><br></li>
 </ul>
-<p><br></p>
+<p><strong>Model Development</strong>:</p>
+<ul>
+<li>Multiple transfer function models were estimated for combinations of
+<span class="math inline">\((b, r, s)\)</span>, where the final model
+with <span class="math inline">\(b = 0\)</span>, <span
+class="math inline">\(r = 0\)</span>, and <span class="math inline">\(s
+= 1\)</span> was selected based on the Portmanteau test and residual
+diagnostics.</li>
+<li>The final model coefficients were statistically significant, with
+residuals behaving as white noise. <br><br></li>
+</ul>
+<p><strong>Final Model</strong>:</p>
+<ul>
+<li>The chosen ARIMA model for the input series <span
+class="math inline">\(x_1\)</span> and its impact on the output series
+<span class="math inline">\(y_1\)</span> is represented as: <span
+class="math display">\[
+    (1 - B)Y_t = \frac{0.71569}{1 - 0.39636B}BX_t + a_t, \quad \hat{a}_t
+= 380.9856
+    \]</span></li>
+<li>The model achieved high accuracy with a low variance estimate of
+2807.963 and an AIC value of 380.9856, demonstrating its predictive
+capability. <br><br></li>
+</ul>
+<p><strong>Significance of Results</strong>:</p>
+<ul>
+<li>The model effectively captures the relationship between foreign
+tourist counts and tourism revenue, making it suitable for short-term
+forecasting.</li>
+<li>These findings can guide tourism stakeholders in optimizing
+marketing strategies and resource allocation.</li>
+</ul>
+<p><br><br></p>
 </div>
 <div id="code" class="section level3">
 <h3>4. Code</h3>
 <p>Please click <a
 href="https://www.kaggle.com/erikbruin/house-prices-lasso-xgboost-and-a-detailed-eda/report">HERE</a>
 for the analysis report and code.</p>
-<p><br></p>
+<p><br><br></p>
+</div>
+<div id="conclusion" class="section level3">
+<h3>5. Conclusion</h3>
+<p><br><br> This project successfully analyzed the relationship between
+monthly foreign tourist counts and tourism revenue using transfer
+function models and ARIMA modeling. <br> <br> The key findings include:
+<br><br> <strong>Variance Stabilization</strong>: The square root
+transformation proved effective in stabilizing variance, improving model
+fit. <br></p>
+<p><strong>Optimal Model Selection</strong>: The final transfer function
+model (<span class="math inline">\(b=0\)</span>, <span
+class="math inline">\(r=0\)</span>, <span
+class="math inline">\(s=1\)</span>) accurately captured the dynamic
+relationship, supported by statistically significant coefficients and
+white noise residuals. <br></p>
+<p><strong>Practical Implications</strong>: The model provides
+actionable insights for forecasting future revenue trends based on
+expected tourist numbers.</p>
 </div>
 </div>
 

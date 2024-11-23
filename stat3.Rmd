@@ -445,18 +445,53 @@ The final model is as follows:
 
 
 <br><br><br><br>
+
 ### 3. Methodology & Summary
+<br><br>
+**Data Preprocessing**: 
 
-  + LASSO regressions showed the best performance with a cross validation RMSE-score of 0.1121. Although there is a lot of multicollinearity among the variables, LASSO regression include feature selection; it does not select a substantial number of the available variables in its model, as it is supposed to do.
-  + The XGBoost model also performs very well with a cross validation RMSE of 0.1162.
-  + As those two algorithms are very different, averaging predictions is likely to improve the predictions. As the Lasso cross validated RMSE is better than XGBoost's CV score, I decided to weight the Lasso results double.
+- Monthly data for foreign tourist counts (\(x\)) and tourism revenue (\(y\)) were transformed using a square root transformation to stabilize variance. 
+- Cross-correlation analysis (CCF) was used to identify the lag structure between \(x_1\) (transformed tourist counts) and \(y_1\) (transformed revenue).
+<br><br>
 
-<br>
+**Model Development**:
+
+- Multiple transfer function models were estimated for combinations of \((b, r, s)\), where the final model with \(b = 0\), \(r = 0\), and \(s = 1\) was selected based on the Portmanteau test and residual diagnostics.
+- The final model coefficients were statistically significant, with residuals behaving as white noise.
+<br><br>
+
+**Final Model**:
+
+- The chosen ARIMA model for the input series \(x_1\) and its impact on the output series \(y_1\) is represented as:
+      \[
+      (1 - B)Y_t = \frac{0.71569}{1 - 0.39636B}BX_t + a_t, \quad \hat{a}_t = 380.9856
+      \]
+- The model achieved high accuracy with a low variance estimate of 2807.963 and an AIC value of 380.9856, demonstrating its predictive capability.
+<br><br>
+
+**Significance of Results**:
+
+- The model effectively captures the relationship between foreign tourist counts and tourism revenue, making it suitable for short-term forecasting.
+- These findings can guide tourism stakeholders in optimizing marketing strategies and resource allocation.
+
+<br><br>
 
 ### 4. Code
 
 Please click [HERE](https://www.kaggle.com/erikbruin/house-prices-lasso-xgboost-and-a-detailed-eda/report) for the analysis report and code.
 
+<br><br>
+
+### 5. Conclusion
+<br><br>
+This project successfully analyzed the relationship between monthly foreign tourist counts and tourism revenue using transfer function models and ARIMA modeling. <br>
 <br>
+The key findings include:
+<br><br>
+**Variance Stabilization**: The square root transformation proved effective in stabilizing variance, improving model fit. <br>
+
+**Optimal Model Selection**: The final transfer function model (\(b=0\), \(r=0\), \(s=1\)) accurately captured the dynamic relationship, supported by statistically significant coefficients and white noise residuals. <br>
+
+**Practical Implications**: The model provides actionable insights for forecasting future revenue trends based on expected tourist numbers.
 
 
