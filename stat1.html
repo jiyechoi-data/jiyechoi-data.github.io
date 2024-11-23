@@ -447,7 +447,7 @@ that bank customers frequently subscribe to together.</p>
 appendix.</p>
 <br><br>
 <h4>
-1-2. Association Rule Discovery
+1-2. Association Rule
 </h4>
 <p><br> The BNKSERV dataset was analyzed using Association Analysis,
 Graph Exploration, and Market Basket Analysis nodes.</p>
@@ -522,40 +522,134 @@ high confidence levels with other services.</p></li>
 \]</span></p></li>
 </ul>
 <p><br><br><br></p>
+<strong>Case 2: Web Visitor Behavior and Path Analysis</strong>
+<br><br><br>
+<h4>
+2-1. Research Subject
+</h4>
+<p><br> This analysis examines website visitor behavior to identify:</p>
+<ul>
+<li><p>The number of visitors.</p></li>
+<li><p>The most and least viewed webpages.</p></li>
+<li><p>The webpages with the longest viewing durations. <br> Dataset:
+The dataset, WEBPATH, consists of the following variables:</p></li>
+<li><p>REFERRER: Referrer source.</p></li>
+<li><p>REQUESTED_FILE: Webpage visited.</p></li>
+<li><p>SESSION_ID: Unique session identifier.</p></li>
+<li><p>SESSION_SEQUENCE: Order of webpage visits within the same
+session.</p></li>
+</ul>
+<br><br>
+<h4>
+2-2. Path Analysis
+</h4>
+<p><br> The WEBPATH dataset was analyzed using Graph Exploration and
+Path Analysis nodes to uncover visitor behavior patterns.</p>
+<br><br> <!-- confidence2 -->
+<p align="center">
+<img src="images/confidence2.JPEG" style="width:60%; border:0px solid; margin-right: 20px" align="center">
+<br><br>
+</p>
+<p align="center" style="font-size: 14px; font-weight: bold;">
+[Fig. Confidence vs. Support Scatter Plot for Association Rules] <br>
+</p>
+<p><br><br></p>
+<p>Session Identification: Sessions were identified by combining session
+IDs and visit times. <br><br> “Confidence vs. Support” Graph:
+<br><br></p>
+<ul>
+<li>The rule ‘/Department.jsp → /Subcategory.jsp’ had the highest
+support (40.0%) and confidence (84.1%).</li>
+</ul>
+<br><br> <!-- confidence2 -->
+<p align="center">
+<img src="images/network2.PNG" style="width:60%; border:0px solid; margin-right: 20px" align="center">
+<br><br>
+</p>
+<p align="center" style="font-size: 14px; font-weight: bold;">
+[Fig. Path Analysis Network Graph] <br>
+</p>
+<p><br><br> Most Frequently Visited Webpage: <br><br></p>
+<ul>
+<li>‘/Home.jsp’</li>
+<li>Visit count: 197</li>
+<li>Visit ratio: 67.9%</li>
+</ul>
+<p><br><br> Path Representation of Rules: <br><br></p>
+<ul>
+<li>Nodes represent visit counts (larger nodes = higher counts).</li>
+<li>Edge thickness indicates confidence (thicker edges = higher
+confidence).</li>
+<li>‘/Home.jsp’ had the largest node, while the strongest associations
+were:</li>
+<li>‘/Billing.jsp ↔︎ /Summary.jsp’</li>
+<li>‘/Registration.jsp → /Confirm.jsp’</li>
+</ul>
+<p><br><br> - Key Metrics for Rule ‘/Department.jsp →
+/Subcategory.jsp’</p>
+<ul>
+<li>Transaction Count (n): 40<br />
+</li>
+<li>Support:<br />
+<span class="math display">\[
+\text{Support} = \frac{40}{100} = 40.0\%
+\]</span><br />
+</li>
+<li>Confidence:<br />
+<span class="math display">\[
+\text{Confidence} = \frac{40}{47.6} = 84.1\%
+\]</span><br />
+</li>
+<li>Lift: <span class="math display">\[
+\text{Lift} = \frac{84.1\%}{67.9\%} = 1.24
+\]</span></li>
+</ul>
 <p><br></p>
 </div>
 <div id="methodology-summary" class="section level3">
 <h3>4. Methodology &amp; Summary</h3>
+<p>This project used data-driven techniques to analyze customer
+behaviors and web visitor patterns, leveraging the following
+methodologies: <br><br></p>
 <ul>
-<li>LASSO regressions showed the best performance with a cross
-validation RMSE-score of 0.1121. Although there is a lot of
-multicollinearity among the variables, LASSO regression include feature
-selection; it does not select a substantial number of the available
-variables in its model, as it is supposed to do.</li>
-<li>The XGBoost model also performs very well with a cross validation
-RMSE of 0.1162.</li>
-<li>As those two algorithms are very different, averaging predictions is
-likely to improve the predictions. As the Lasso cross validated RMSE is
-better than XGBoost’s CV score, I decided to weight the Lasso results
-double.</li>
+<li><p>Association Rule Discovery: Applied to identify frequent patterns
+and relationships between subscribed financial services. Metrics such as
+Support, Confidence, and Lift were used to evaluate the strength and
+significance of the discovered rules.</p></li>
+<li><p>Path Analysis: Implemented to uncover visitor navigation patterns
+on the website. Combined session data with sequence information to
+reveal key navigation paths and identify the most frequently visited
+pages.</p></li>
+<li><p>Visualization Techniques: Graph Exploration nodes were used to
+visually represent relationships between entities, such as financial
+services and webpage navigation paths. Network graphs highlighted
+significant nodes (e.g., frequently subscribed services or visited
+pages) and connections (e.g., transitions between pages or
+services).</p></li>
 </ul>
-<p><br></p>
-</div>
-<div id="code" class="section level3">
-<h3>5. Code</h3>
-<p>Please click <a
-href="https://www.kaggle.com/erikbruin/house-prices-lasso-xgboost-and-a-detailed-eda/report">HERE</a>
-for the analysis report and code.</p>
 <p><br><br><br></p>
 </div>
 <div id="conclusion" class="section level3">
-<h3>6. Conclusion</h3>
-<p>In this project, we successfully analyzed the engagement patterns of
-the “National Geographic” Facebook page through various text mining
-techniques. Key findings indicate a strong focus on wildlife photography
-and conservation. Future improvements could involve sentiment analysis
-to determine audience reactions and further investigation into
-time-based engagement trends.</p>
+<h3>5. Conclusion</h3>
+<p><br><br> Case 1: Banking Services</p>
+<p>The analysis of customer subscription patterns revealed that CKING
+(Checking Account) is a central service with high demand, and its strong
+association with SVG (Savings Account) presents a valuable cross-selling
+opportunity. By targeting SVG customers with personalized CKING
+recommendations, banks can drive service adoption while enhancing
+customer loyalty. This approach can be further scaled using predictive
+analytics to identify other key service pairs, tailoring campaigns to
+maximize customer satisfaction and retention.</p>
+<p><br> Case 2: Website Navigation</p>
+<p>The path analysis identified ‘/Department.jsp → /Subcategory.jsp’ as
+a crucial navigation path with high confidence and support. This finding
+suggests an opportunity to improve website engagement through optimized
+page layouts and targeted content placement. Additionally, focusing on
+the most visited page, ‘/Home.jsp,’ as a central hub for user
+interaction could enhance navigation flow and reduce drop-off rates.
+Implementing real-time monitoring of navigation behavior could further
+refine user experiences, leading to higher conversion rates and improved
+audience retention.</p>
 </div>
 </div>
 
