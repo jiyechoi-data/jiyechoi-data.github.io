@@ -133,7 +133,7 @@ y1 = sqrt(y);
 The transformed plots indicate that the variance has been stabilized. These transformed data will be used as the basis for further analysis, starting with the identification of ACF and PACF.
 <br><br><br><br>
 
-<h4>1-2. Model Identification and Parameter Estimation</h4>
+<h4>1-2. Model Identification</h4>
 <br><br>
 **ACF and PACF Analysis**
 
@@ -244,7 +244,7 @@ estimate p=(1) q=(1) plot; run;
 
 Based on the AIC (Akaike Information Criterion), ARIMA((1), 1, 0) was selected as the most appropriate model due to its lower AIC value and significance in parameter estimates.
 
-<br><br><br><br>
+<br><br><br>
 
 **Portmanteau Test Results** <br>
 <br><br>
@@ -283,7 +283,70 @@ Based on the AIC (Akaike Information Criterion), ARIMA((1), 1, 0) was selected a
 
 Residual diagnostic checks (Portmanteau test) confirmed no significant autocorrelation in the residuals of ARIMA((1), 1, 0), validating the model.
 
+<br><br><br>
+
+**Final Model** <br>
+<br><br>
+The final model for \( x_1 \):
+
+\[
+(1 - 0.6794B)(1 - B)X_t = a_t
+\]
+
+where \( B \) is the lag operator.
+
 <br><br><br><br>
+
+<h4>1-3. Prewhitening Process</h4>
+<br><br>
+The cross-correlation function (CCF) between the input series \( x_1 \) and the output series \( y_1 \) was analyzed.
+
+
+```r
+proc arima data=travel1; identify var=y1 crosscorr=x1; run;
+```
+<br><br>
+
+<!-- b,r,s -->
+<p align="center">
+  <img src="images/brs.png.png" style="width:60%; border:0px solid; margin-right: 20px" align="center">
+    <br><br>
+</p>
+<p align="center" style="font-size: 14px; font-weight: bold;">
+  [Fig. CCF Plot (Cross-Correlation Function Plot) ]
+    <br><br>
+</p>
+<br>
+From the CCF plot, the following \( (b, r, s) \) values were estimated:
+
+- \( (b, r, s) = (0, 2, 1) \)
+- \( (b, r, s) = (0, 1, 1) \)
+- \( (b, r, s) = (0, 0, 1) \)
+
+These values were used as candidates for further model estimation.
+
+<br><br><br><br>
+
+<h4>1-4. Noise Series \( n_t \) Model Identification </h4>
+<br><br>
+Initially, the transfer function model with \( b = 0 \), \( r = 2 \), and \( s = 1 \) was estimated, and the corresponding ACF and PACF plots for the residuals were generated.
+
+<br><br>
+<!-- ACF,PACF -->
+<p align="center">
+  <img src="images/lag.png.png" style="width:60%; border:0px solid; margin-right: 20px" align="center">
+    <br><br>
+</p>
+<p align="center" style="font-size: 14px; font-weight: bold;">
+  [Fig. ACF and PACF Plots for Residuals of the Transfer Function Model with \( b = 0 \), \( r = 2 \), and \( s = 1 \) ]
+    <br><br>
+</p>
+
+- The residuals were not white noise, indicating that further adjustments to the model were necessary.
+- An ARMA model with \( p = 1 \) and \( q = 1 \) was applied to refine the noise series model.
+
+<br><br>
+
 
 
 ### 3. Methodology & Summary
