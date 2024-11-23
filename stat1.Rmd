@@ -73,9 +73,22 @@ The dataset includes 13 types of services offered, as detailed in the appendix.
 The BNKSERV dataset was analyzed using Association Analysis, Graph Exploration, and Market Basket Analysis nodes.
 <br>
 In the Graph Exploration results:
+<br><br>
+<!-- Frequency -->
+<p align="center">
+  <img src="images/frequency.JPEG" style="width:60%; border:0px solid; margin-right: 20px" align="center">
+    <br><br><br>
+</p>
+<p align="center" style="font-size: 14px; font-weight: bold;">
+  [Fig. Frequency of Subscribed Services]
+    <br>
+</p>
+<br><br>
 
 - Each customer’s (ACCT) subscribed services are identified.  
 - Among the services, CKING (Checking Account) had the highest subscription frequency, with a total of 6,855 occurrences.
+
+<br><br><br>
 
 
 
