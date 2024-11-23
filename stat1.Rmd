@@ -42,29 +42,41 @@ output:
 
 ### 1. Introduction
 <br>
-The digital economy has led to the generation of vast amounts of data, offering opportunities for companies to predict customer behavior, enhance productivity, and innovate their business practices. In this environment, companies need to effectively manage resources while also improving product and service quality for customer satisfaction.  
-
-Customer Relationship Management (CRM) emphasizes the importance of analyzing customer data to develop effective strategies. In this project, Association Rule Discovery is applied to identify key insights such as Target Marketing, Churn Analysis, and Sales Forecasting, supporting better decision-making and customer satisfaction.
-
+Customer Relationship Management (CRM) leverages customer data to design strategies that improve decision-making and customer satisfaction. This project focuses on using Association Rule Discovery to uncover valuable insights such as Target Marketing, Churn Analysis, and Sales Forecasting.
 <br><br><br>
 
 ### 2. Goal
 <br>
-The primary goal of this project is to analyze bank customer data using Association Rule Discovery and Path Analysis techniques to uncover the relationships between various financial services that customers subscribe to.  
-By identifying these associations, the project aims to recommend additional financial products to customers, ultimately enhancing customer satisfaction and loyalty.
+This project aims to analyze bank customer data to uncover relationships between financial services using Association Rule Discovery and Path Analysis. The insights will support personalized product recommendations, enhancing customer satisfaction and loyalty.
 
 
 
 <br><br>
 
 ### 3. Figure
+<br>
+**Case 1: Customer Subscription Patterns in Banking Services**
+<br><br><br>
+<h4>1-1. Research Subject</h4>
+<br>
+This analysis aims to identify the types of financial services that bank customers frequently subscribe to together.
 
-<p align="center">
-<img src="images/predict_houseprice.png" style="width:80%; border:0px solid; margin-right: 20px" align="center">
-</p>
-<p align="center">
-[Fig. LASSO regression features by importance]
-</p>
+- Dataset: BNKSERV  
+- ACCT: Unique customer ID  
+- SERVICE: Subscribed financial services  
+
+The dataset includes 13 types of services offered, as detailed in the appendix.
+
+<br><br>
+<h4>1-2. Association Rule Discovery</h4>
+<br>
+The BNKSERV dataset was analyzed using Association Analysis, Graph Exploration, and Market Basket Analysis nodes.
+<br>
+In the Graph Exploration results:
+
+- Each customer’s (ACCT) subscribed services are identified.  
+- Among the services, CKING (Checking Account) had the highest subscription frequency, with a total of 6,855 occurrences.
+
 
 
 <br>
