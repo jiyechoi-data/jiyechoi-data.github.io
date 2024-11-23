@@ -37,7 +37,49 @@ output:
 
 <br><br><br>
 
-### 1. Figure
+### 1. Goal
+To analyze the engagement patterns of the "National Geographic" Facebook page by applying text mining techniques on the posts. The goal is to identify key themes, frequent topics, and clusters of related words, providing insights into the page’s content and audience interaction.
+
+<br><br>
+
+### 2. Figure
+
+<br>
+
+```r
+# Load required libraries
+library(tm)
+library(Rfacebook)
+library(wordcloud)
+library(SnowballC)
+library(lda)
+
+# Step 1: Facebook API Data Collection
+token <- "YOUR_FACEBOOK_API_TOKEN"
+N_timeline <- getPage(page = "NatGeo", token, n = 2000)
+test <- N_timeline$message
+test <- test[!is.na(test)]
+
+# Step 2: Text Cleaning
+myCorpus <- Corpus(VectorSource(test))
+myCorpus <- tm_map(myCorpus, content_transformer(tolower))
+myCorpus <- tm_map(myCorpus, removePunctuation)
+myCorpus <- tm_map(myCorpus, removeNumbers)
+myCorpus <- tm_map(myCorpus, removeWords, stopwords("english"))
+
+# Step 3: Word Cloud
+TDM <- TermDocumentMatrix(myCorpus, control=list(wordLengths=c(2, Inf)))
+m <- as.matrix(TDM)
+wordFreq <- sort(rowSums(m), decreasing=TRUE)
+wordcloud(words=names(wordFreq), freq=wordFreq, scale=c(5, 0.5), min.freq=40)
+
+# Save Word Cloud
+png("images/wordcloud_facebook.png", width = 800, height = 800)
+wordcloud(words=names(wordFreq), freq=wordFreq, scale=c(5, 0.5), min.freq=40)
+dev.off()
+```
+
+<br><br>
 
 <!-- Word Cloud -->
 <p align="center">
@@ -48,6 +90,13 @@ output:
   [Fig. Word Cloud of National Geographic Facebook Page]
     <br>
 </p>
+
+<br><br><br>
+
+```r
+# Step 4: Bar Plot
+barplot(subset(wordFreq, wordFreq>=40), las=2)
+```
 
 <br><br><br>
 
@@ -63,6 +112,17 @@ output:
 
 <br><br><br>
 
+```r
+# Step 5: Clustering (Dendrogram)
+plot(hclust(dist(wordFreq)))
+
+# Save Dendrogram
+png("images/dendrogram_facebook.png", width = 800, height = 600)
+plot(hclust(dist(wordFreq)))
+dev.off()
+```
+<br><br><br>
+
 <!-- Dendrogram -->
 <p align="center">
   <img src="images/dendrogram_facebook.png" style="width:60%; border:0px solid; margin-right: 20px" align="center">
@@ -73,6 +133,14 @@ output:
     <br>
 </p>
 
+<br><br><br>
+
+```r
+# Step 6: Topic Modeling (LDA)
+corpusLDA <- lexicalize(myCorpus)
+ldaModel <- lda.collapsed.gibbs.sampler(corpusLDA$documents, K=10, vocab=corpusLDA$vocab, burnin=9999, num.iterations=1000, alpha=1, eta=0.1)
+top.words <- top.topic.words(ldaModel$topics, 10, by.score=TRUE)
+```
 <br><br><br>
 
 <!-- Topic Modeling -->
@@ -87,10 +155,6 @@ output:
 
 <br><br>
 
-### 2. Goal
-To analyze the engagement patterns of the "National Geographic" Facebook page by applying text mining techniques on the posts. The goal is to identify key themes, frequent topics, and clusters of related words, providing insights into the page’s content and audience interaction.
-
-<br><br>
 
 ### 3. Method & Summary:
 <div style="line-height: 2;">

@@ -407,8 +407,49 @@ src="https://img.shields.io/badge/-Topic_Modeling-green" /> <img
 src="https://img.shields.io/badge/-Clustering-purple" /></p>
 <p><br></p>
 <p><br><br><br></p>
+<div id="goal" class="section level3">
+<h3>1. Goal</h3>
+<p>To analyze the engagement patterns of the “National Geographic”
+Facebook page by applying text mining techniques on the posts. The goal
+is to identify key themes, frequent topics, and clusters of related
+words, providing insights into the page’s content and audience
+interaction.</p>
+<p><br><br></p>
+</div>
 <div id="figure" class="section level3">
-<h3>1. Figure</h3>
+<h3>2. Figure</h3>
+<p><br></p>
+<pre class="r"><code># Load required libraries
+library(tm)
+library(Rfacebook)
+library(wordcloud)
+library(SnowballC)
+library(lda)
+
+# Step 1: Facebook API Data Collection
+token &lt;- &quot;YOUR_FACEBOOK_API_TOKEN&quot;
+N_timeline &lt;- getPage(page = &quot;NatGeo&quot;, token, n = 2000)
+test &lt;- N_timeline$message
+test &lt;- test[!is.na(test)]
+
+# Step 2: Text Cleaning
+myCorpus &lt;- Corpus(VectorSource(test))
+myCorpus &lt;- tm_map(myCorpus, content_transformer(tolower))
+myCorpus &lt;- tm_map(myCorpus, removePunctuation)
+myCorpus &lt;- tm_map(myCorpus, removeNumbers)
+myCorpus &lt;- tm_map(myCorpus, removeWords, stopwords(&quot;english&quot;))
+
+# Step 3: Word Cloud
+TDM &lt;- TermDocumentMatrix(myCorpus, control=list(wordLengths=c(2, Inf)))
+m &lt;- as.matrix(TDM)
+wordFreq &lt;- sort(rowSums(m), decreasing=TRUE)
+wordcloud(words=names(wordFreq), freq=wordFreq, scale=c(5, 0.5), min.freq=40)
+
+# Save Word Cloud
+png(&quot;images/wordcloud_facebook.png&quot;, width = 800, height = 800)
+wordcloud(words=names(wordFreq), freq=wordFreq, scale=c(5, 0.5), min.freq=40)
+dev.off()</code></pre>
+<p><br><br></p>
 <!-- Word Cloud -->
 <p align="center">
 <img src="images/wordcloud_facebook.png" style="width:60%; border:0px solid; margin-right: 20px" align="center">
@@ -417,6 +458,9 @@ src="https://img.shields.io/badge/-Clustering-purple" /></p>
 <p align="center" style="font-size: 14px; font-weight: bold;">
 [Fig. Word Cloud of National Geographic Facebook Page] <br>
 </p>
+<p><br><br><br></p>
+<pre class="r"><code># Step 4: Bar Plot
+barplot(subset(wordFreq, wordFreq&gt;=40), las=2)</code></pre>
 <p><br><br><br></p>
 <!-- Bar Chart -->
 <p align="center">
@@ -427,6 +471,14 @@ src="https://img.shields.io/badge/-Clustering-purple" /></p>
 [Fig. Bar Chart of Word Frequencies] <br>
 </p>
 <p><br><br><br></p>
+<pre class="r"><code># Step 5: Clustering (Dendrogram)
+plot(hclust(dist(wordFreq)))
+
+# Save Dendrogram
+png(&quot;images/dendrogram_facebook.png&quot;, width = 800, height = 600)
+plot(hclust(dist(wordFreq)))
+dev.off()</code></pre>
+<p><br><br><br></p>
 <!-- Dendrogram -->
 <p align="center">
 <img src="images/dendrogram_facebook.png" style="width:60%; border:0px solid; margin-right: 20px" align="center">
@@ -436,6 +488,11 @@ src="https://img.shields.io/badge/-Clustering-purple" /></p>
 [Fig. Dendrogram for Text Clustering] <br>
 </p>
 <p><br><br><br></p>
+<pre class="r"><code># Step 6: Topic Modeling (LDA)
+corpusLDA &lt;- lexicalize(myCorpus)
+ldaModel &lt;- lda.collapsed.gibbs.sampler(corpusLDA$documents, K=10, vocab=corpusLDA$vocab, burnin=9999, num.iterations=1000, alpha=1, eta=0.1)
+top.words &lt;- top.topic.words(ldaModel$topics, 10, by.score=TRUE)</code></pre>
+<p><br><br><br></p>
 <!-- Topic Modeling -->
 <p align="center">
 <img src="images/topicmodeling_facebook.png" style="width:50%; border:0px solid; margin-right: 20px" align="center">
@@ -444,15 +501,6 @@ src="https://img.shields.io/badge/-Clustering-purple" /></p>
 <p align="center" style="font-size: 14px; font-weight: bold;">
 [Fig. Topic Modeling Output] <br>
 </p>
-<p><br><br></p>
-</div>
-<div id="goal" class="section level3">
-<h3>2. Goal</h3>
-<p>To analyze the engagement patterns of the “National Geographic”
-Facebook page by applying text mining techniques on the posts. The goal
-is to identify key themes, frequent topics, and clusters of related
-words, providing insights into the page’s content and audience
-interaction.</p>
 <p><br><br></p>
 </div>
 <div id="method-summary" class="section level3">
