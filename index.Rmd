@@ -53,11 +53,12 @@ output: html_document
 
 <!-- Profile Picture with Animation -->
 <p align="center">
-<img src="images/jiye_profile.jpg" class="profile-picture" style="width:45%; border:0.5px solid; margin-right: 20px" align="center">
+  <img src="images/profile_new.jpg" class="profile-picture" style="width:40%; border:none; margin-right: 20px;" align="center">
 </p>
 <br>
 
 <div style="width: 85%; margin: 0 auto; font-family: 'Roboto', sans-serif; line-height: 1.6; color: #333;">
+
 
 <!-- Hello, I'm Jiye Choi with animation and About Me color -->
 <h1 class="fade-in-text" style="text-align: center; font-size: 36px; color: #505050;">Hello, I'm Jiye Choi.</h1>
@@ -84,7 +85,7 @@ output: html_document
 <ul class="fade-in-section" style="font-size: 18px; list-style-type: disc;">
   <li style="margin-bottom: 20px; margin-top: 10px;">
     <a href="stat1.html" style="text-decoration: none; color: inherit;">
-      <strong>Bank Customer Behavior Analysis:</strong> <em>SAS</em> | Identified customer behaviors to drive cross-selling strategies.
+      <strong>Bank Customer Behavior Analysis:</strong> <em>SAS, Data Mining</em> | Used association rule mining to uncover customer behaviors for cross-selling strategies.
     </a>
   </li>
   <li style="margin-bottom: 20px;">
