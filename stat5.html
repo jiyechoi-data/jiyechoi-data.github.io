@@ -681,7 +681,7 @@ Living Expenses.</p>
 Education Expenses, Monthly Savings, and Living Expenses. It also
 assumes that Private Education Expenses impact Monthly Savings and
 Living Expenses, and that Monthly Savings influence Living Expenses.</p>
-<p><br><br> Model Fit Evaluation (Default Model) <br></p>
+<p><br><br> (1)Model Fit Evaluation (Default Model) <br></p>
 <ul>
 <li>Number of distinct sample moments: 14</li>
 <li>Number of distinct parameters to be estimated: 14</li>
@@ -1080,7 +1080,7 @@ by Amos, <strong>Full Information Maximum Likelihood (FIML)</strong>, is
 utilized to ensure accurate estimation by using all available data
 points without imputing missing values.</p>
 <p><br><br></p>
-<p>Model Fit Evaluation <br></p>
+<p>(1)Model Fit Evaluation <br></p>
 <table>
 <thead>
 <tr class="header">
@@ -1154,19 +1154,19 @@ points without imputing missing values.</p>
 <p><br><br></p>
 <ul>
 <li><p>The default model’s Chi-square statistic (<span
-class="math inline">\(\chi^2 = 32.272\)</span>) with <strong>df =
-3</strong> and <strong>p-value = 0.000</strong> indicates a poor fit to
-the data.</p></li>
-<li><p>The <strong>CMIN/DF value of 10.757</strong> exceeds the
-acceptable threshold (typically <span class="math inline">\(&lt;
-5\)</span>), further supporting that the model does not fit
-well.</p></li>
+class="math inline">\(\chi^2 = 32.272\)</span>) with df = 3 and p-value
+= 0.000 indicates a poor fit to the data.</p></li>
+<li><p>The CMIN/DF value of 10.757 exceeds the acceptable threshold
+(typically <span class="math inline">\(&lt; 5\)</span>), further
+supporting that the model does not fit well.</p></li>
 <li><p>Compared to the independence model (<span
 class="math inline">\(\text{CMIN/DF} = 2046.685\)</span>), the default
 model shows a relatively better fit but is still inadequate
 overall.</p></li>
 </ul>
 <p><br><br><br><br></p>
+<p><strong>Model Without Constraints on Error Variance</strong>
+<br><br></p>
 <!-- LGCM2 -->
 <p align="center">
 <img src="images/LGCM2.png.png" style="width:50%; border:0px solid; margin-right: 20px" align="center">
@@ -1176,7 +1176,9 @@ overall.</p></li>
 [Fig. Model Without Constraints on Error Variance] <br>
 </p>
 <p><br><br></p>
-<p>Model Fit Results <br></p>
+<ol style="list-style-type: decimal">
+<li>Model Fit Results <br></li>
+</ol>
 <table>
 <thead>
 <tr class="header">
@@ -1329,9 +1331,9 @@ for the Default and Saturated models, indicating a good fit.
 Furthermore, the RMSEA value of 0.000 is below the threshold of 0.05,
 which supports the conclusion that the model fits well. Therefore, the
 estimation of parameters can proceed with confidence.</p>
-<p><br><br><br><br><br> Model Estimation without Variance Constraints on
-Error Terms <br><br><br> Null and Alternative Hypotheses for ICEPT and
-SLOPE: <br><br></p>
+<p><br><br><br><br><br> (2) Model Estimation without Variance
+Constraints on Error Terms <br><br><br> Null and Alternative Hypotheses
+for ICEPT and SLOPE: <br><br></p>
 <ul>
 <li><strong>Null hypothesis (H₀):</strong>
 <ul>
@@ -1442,7 +1444,7 @@ three years can be calculated as follows: <br><br></p>
 206.288
 \]</span></p>
 <p><br><br><br></p>
-<p><strong>Implied Mean</strong></p>
+<p>Implied Mean</p>
 <p><br></p>
 <table>
 <thead>
@@ -1471,12 +1473,13 @@ three years can be calculated as follows: <br><br></p>
 2014 can be predicted as: <br><br></p>
 <p><span class="math display">\[
 \text{2014 Monthly Living Expenses} = 178.688 + 1.5 \times 27.600 =
-220.088
+**220.088**
 \]</span></p>
 <p><br><br><br></p>
 <p>A model was created to examine whether the pattern of changes in
 monthly living expenses differs based on the level of savings.</p>
 <p><br><br></p>
+<p><strong>Covariate-Added Model</strong> <br></p>
 <!-- LGCM3 -->
 <p align="center">
 <img src="images/LGCM3.PNG" style="width:50%; border:0px solid; margin-right: 20px" align="center">
@@ -1486,7 +1489,567 @@ monthly living expenses differs based on the level of savings.</p>
 [Fig. Covariate-Added Model] <br>
 </p>
 <p><br><br></p>
-<p>Model Fit Results <br></p>
+<p>(1)Model Fit Results <br></p>
+<table>
+<thead>
+<tr class="header">
+<th>Metric</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Number of distinct sample moments</td>
+<td>14</td>
+</tr>
+<tr class="even">
+<td>Number of distinct parameters to be estimated</td>
+<td>12</td>
+</tr>
+<tr class="odd">
+<td>Degrees of freedom (14 - 12)</td>
+<td>2</td>
+</tr>
+<tr class="even">
+<td>Chi-square (<span class="math inline">\(\chi^2\)</span>)</td>
+<td>0.133</td>
+</tr>
+<tr class="odd">
+<td>Probability level (<span class="math inline">\(p\)</span>)</td>
+<td>0.936</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p>The results show that the degrees of freedom (<span
+class="math inline">\(df\)</span>) are 2, the chi-square statistic
+(<span class="math inline">\(\chi^2\)</span>) is 0.133, and the
+probability level (<span class="math inline">\(p\)</span>) is 0.936.
+Since the <span class="math inline">\(p\)</span>-value is greater than
+0.05, the null hypothesis that the model fits well cannot be rejected.
+<br> Therefore, according to the chi-square statistic, the model is
+considered a good fit.</p>
+<p><br><br></p>
+<p>CMIN and Model Fit <br></p>
+<table>
+<thead>
+<tr class="header">
+<th>Model</th>
+<th>NPAR</th>
+<th>CMIN</th>
+<th>DF</th>
+<th>P</th>
+<th>CMIN/DF</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Default model</td>
+<td>12</td>
+<td>0.133</td>
+<td>2</td>
+<td>0.936</td>
+<td>0.067</td>
+</tr>
+<tr class="even">
+<td>Saturated model</td>
+<td>14</td>
+<td>0.000</td>
+<td>0</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class="odd">
+<td>Independence model</td>
+<td>4</td>
+<td>12751.603</td>
+<td>10</td>
+<td>0.000</td>
+<td>1275.160</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<ul>
+<li>The Default model fits well as indicated by the Chi-square (0.133)
+and p-value (0.936), which do not reject the null hypothesis of good
+fit.</li>
+<li>The CMIN/DF (0.067) is extremely low, confirming a well-fitting
+model.</li>
+</ul>
+<p><br><br></p>
+<p>Baseline Comparisons <br></p>
+<table>
+<colgroup>
+<col width="26%" />
+<col width="17%" />
+<col width="15%" />
+<col width="17%" />
+<col width="15%" />
+<col width="6%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Model</th>
+<th>NFI (Delta1)</th>
+<th>RFI (rho1)</th>
+<th>IFI (Delta2)</th>
+<th>TLI (rho2)</th>
+<th>CFI</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Default model</td>
+<td>1.000</td>
+<td>1.000</td>
+<td>1.000</td>
+<td>1.001</td>
+<td>1.000</td>
+</tr>
+<tr class="even">
+<td>Saturated model</td>
+<td>1.000</td>
+<td>1.000</td>
+<td>1.000</td>
+<td>1.001</td>
+<td>1.000</td>
+</tr>
+<tr class="odd">
+<td>Independence model</td>
+<td>0.000</td>
+<td>0.000</td>
+<td>0.000</td>
+<td>0.000</td>
+<td>0.000</td>
+</tr>
+</tbody>
+</table>
+<p><br><br></p>
+<p>RMSEA <br></p>
+<table>
+<thead>
+<tr class="header">
+<th>Model</th>
+<th>RMSEA</th>
+<th>LO 90</th>
+<th>HI 90</th>
+<th>PCLOSE</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Default model</td>
+<td>0.000</td>
+<td>0.000</td>
+<td>0.005</td>
+<td>1.000</td>
+</tr>
+<tr class="even">
+<td>Independence model</td>
+<td>0.375</td>
+<td>0.369</td>
+<td>0.380</td>
+<td>0.000</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<ul>
+<li>The results indicate a Chi-square value (<span
+class="math inline">\(\chi^2\)</span>) of 0.133 with 2 degrees of
+freedom (DF), yielding a p-value of 0.936. <br></li>
+<li>This high p-value indicates that the model fits the data well,
+failing to reject the null hypothesis of good fit.</li>
+</ul>
+<p><br><br><br></p>
+<p>(2)Parameter Estimates <br></p>
+<table>
+<colgroup>
+<col width="30%" />
+<col width="19%" />
+<col width="15%" />
+<col width="10%" />
+<col width="12%" />
+<col width="12%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Dependent Variable</th>
+<th>Predictor</th>
+<th>Estimate</th>
+<th>S.E.</th>
+<th>C.R.</th>
+<th>P</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>ICEPT</td>
+<td>Savings</td>
+<td>0.399</td>
+<td>0.018</td>
+<td>21.683</td>
+<td>&lt;0.001</td>
+</tr>
+<tr class="even">
+<td>SLOPE</td>
+<td>Savings</td>
+<td>0.027</td>
+<td>0.018</td>
+<td>1.467</td>
+<td>0.142</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<ul>
+<li><p>ICEPT (Intercept): The path coefficient from Savings to ICEPT is
+0.399, with a p-value &lt; 0.001. This indicates that the initial level
+of monthly living expenses (ICEPT) is significantly influenced by
+savings. <br></p></li>
+<li><p>SLOPE (Rate of Change): The path coefficient from Savings to
+SLOPE is 0.027, with a p-value = 0.142. This suggests that the rate of
+change in monthly living expenses (SLOPE) is not significantly
+influenced by savings.</p></li>
+</ul>
+<p><br></p>
+<p>Interpretation <br></p>
+<ul>
+<li>Savings significantly impact the initial level of living expenses
+(ICEPT), but there is no significant effect on the rate of change
+(SLOPE).</li>
+<li>Thus, while savings are associated with differences in initial
+living expenses, they do not explain differences in how living expenses
+change over time.</li>
+</ul>
+<p><br><br><br></p>
+<p>To handle missing data, <strong>Regression Imputation</strong> was
+utilized. This method ensures that missing values are estimated based on
+observed data, providing a reliable foundation for subsequent
+analyses.</p>
+<p><br><br></p>
+<p>(1)Model Fit Evaluation <br><br></p>
+<p>After imputing missing values, the model fit was assessed. The
+results of the model fit evaluation are as follows:</p>
+<table>
+<thead>
+<tr class="header">
+<th>Statistic</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Chi-square (<span class="math inline">\(\chi^2\)</span>)</td>
+<td>32.272</td>
+</tr>
+<tr class="even">
+<td>Degrees of Freedom (df)</td>
+<td>3</td>
+</tr>
+<tr class="odd">
+<td>Probability (p-value)</td>
+<td>0.000</td>
+</tr>
+<tr class="even">
+<td>CMIN/DF</td>
+<td>10.757</td>
+</tr>
+</tbody>
+</table>
+<p><br> The Chi-square test indicates that the model is not a good fit
+(<span class="math inline">\(p &lt; 0.001\)</span>). Additionally, the
+CMIN/DF value of 10.757 exceeds the acceptable range, further supporting
+the conclusion that the model does not fit well.</p>
+<p><br> Based on the above evaluation, the model is not suitable for
+explaining the observed data effectively. Further adjustments to the
+model or alternative methodologies may be required to achieve a better
+fit.</p>
+<p><br><br><br><br> <strong>Model Fit Evaluation without Variance
+Constraints on Error Terms</strong> <br><br> (1) Model Fit Evaluation
+<br> The fit of the model without variance constraints on error terms
+was evaluated. <br> The results are presented in the following
+table:</p>
+<table>
+<thead>
+<tr class="header">
+<th>Statistic</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Chi-square (<span class="math inline">\(\chi^2\)</span>)</td>
+<td>0.107</td>
+</tr>
+<tr class="even">
+<td>Degrees of Freedom (df)</td>
+<td>1</td>
+</tr>
+<tr class="odd">
+<td>Probability (p-value)</td>
+<td>0.744</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p>The p-value (<span class="math inline">\(p = 0.744\)</span>)
+indicates that the null hypothesis cannot be rejected, and the model
+fits well according to the Chi-square test.s Therefore, the model is
+considered a good fit based on this evaluation.</p>
+<p><br><br> CMIN <br></p>
+<table>
+<thead>
+<tr class="header">
+<th>Model</th>
+<th>NPAR</th>
+<th>CMIN</th>
+<th>DF</th>
+<th>P</th>
+<th>CMIN/DF</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Default model</td>
+<td>8</td>
+<td>0.107</td>
+<td>1</td>
+<td>0.744</td>
+<td>0.107</td>
+</tr>
+<tr class="even">
+<td>Saturated model</td>
+<td>9</td>
+<td>0.000</td>
+<td>0</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class="odd">
+<td>Independence model</td>
+<td>3</td>
+<td>12280.110</td>
+<td>6</td>
+<td>0.000</td>
+<td>2046.685</td>
+</tr>
+</tbody>
+</table>
+<p><br> From the results above, the Default model (research model) has 8
+parameters, which places it between the Saturated model (9 parameters)
+and the Independence model (3 parameters). Therefore, the model is
+considered acceptable. Additionally, the CMIN/DF value of 0.107 is very
+low, further indicating good model fit.</p>
+<p><br><br> Baseline Comparisons <br></p>
+<table>
+<colgroup>
+<col width="30%" />
+<col width="16%" />
+<col width="13%" />
+<col width="16%" />
+<col width="13%" />
+<col width="9%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Model</th>
+<th>NFI Delta1</th>
+<th>RFI rho1</th>
+<th>IFI Delta2</th>
+<th>TLI rho2</th>
+<th>CFI</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Default model</td>
+<td>1.000</td>
+<td>1.000</td>
+<td>1.000</td>
+<td>1.000</td>
+<td>1.000</td>
+</tr>
+<tr class="even">
+<td>Saturated model</td>
+<td>1.000</td>
+<td>1.000</td>
+<td>1.000</td>
+<td>1.000</td>
+<td>1.000</td>
+</tr>
+<tr class="odd">
+<td>Independence model</td>
+<td>0.000</td>
+<td>0.000</td>
+<td>0.000</td>
+<td>0.000</td>
+<td>0.000</td>
+</tr>
+</tbody>
+</table>
+<p><br><br> Parsimony-Adjusted Measures <br></p>
+<table>
+<thead>
+<tr class="header">
+<th>Model</th>
+<th>PRATIO</th>
+<th>PNFI</th>
+<th>PCFI</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Default model</td>
+<td>0.167</td>
+<td>0.167</td>
+<td>0.167</td>
+</tr>
+<tr class="even">
+<td>Saturated model</td>
+<td>0.000</td>
+<td>0.000</td>
+<td>0.000</td>
+</tr>
+<tr class="odd">
+<td>Independence model</td>
+<td>1.000</td>
+<td>1.000</td>
+<td>1.000</td>
+</tr>
+</tbody>
+</table>
+<p><br><br> RMSEA <br></p>
+<table>
+<thead>
+<tr class="header">
+<th>Model</th>
+<th>RMSEA</th>
+<th>LO 90</th>
+<th>HI 90</th>
+<th>PCLOSE</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Default model</td>
+<td>0.000</td>
+<td>0.000</td>
+<td>0.019</td>
+<td>1.000</td>
+</tr>
+<tr class="even">
+<td>Independence model</td>
+<td>0.475</td>
+<td>0.468</td>
+<td>0.482</td>
+<td>0.000</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p>The baseline comparison indices (NFI, TLI, CFI, etc.) all exceed 0.9,
+suggesting strong model fit. <br> Additionally, the RMSEA value for the
+Default model is 0.000, which is well below the threshold of 0.05,
+further confirming that the model demonstrates excellent fit.</p>
+<p><br><br></p>
+<p>(2)Parameter Estimates in the Model Without Variance Constraints on
+Error Terms</p>
+<p><br><br> Mean Estimates <br></p>
+<table>
+<thead>
+<tr class="header">
+<th>Parameter</th>
+<th>Estimate</th>
+<th>S.E.</th>
+<th>C.R.</th>
+<th>p-value</th>
+<th>Label</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>ICEPT</td>
+<td>178.688</td>
+<td>1.072</td>
+<td>166.652</td>
+<td>***</td>
+<td>IMean</td>
+</tr>
+<tr class="even">
+<td>SLOPE</td>
+<td>27.600</td>
+<td>1.009</td>
+<td>27.364</td>
+<td>***</td>
+<td>SMean</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<ul>
+<li>The mean estimate for ICEPT (initial level of monthly living
+expenses) is 178.688, representing the average monthly living expenses
+in 2011.<br />
+</li>
+<li>The mean estimate for SLOPE (rate of change) is 27.600, indicating a
+statistically significant increase in monthly living expenses each
+year.<br />
+</li>
+<li>The p-values for both parameters are less than 0.001, confirming
+that both estimates are statistically significant.</li>
+</ul>
+<p><br><br> Variance Estimates <br></p>
+<table>
+<thead>
+<tr class="header">
+<th>Parameter</th>
+<th>Estimate</th>
+<th>S.E.</th>
+<th>C.R.</th>
+<th>p-value</th>
+<th>Label</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>ICEPT</td>
+<td>8340.195</td>
+<td>194.100</td>
+<td>42.968</td>
+<td>***</td>
+<td>IVariance</td>
+</tr>
+<tr class="even">
+<td>SLOPE</td>
+<td>2245.592</td>
+<td>326.040</td>
+<td>6.887</td>
+<td>***</td>
+<td>SVariance</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<ul>
+<li>The variance estimate for ICEPT is 8340.195, and for SLOPE, it is
+2245.592. - Both variances are statistically significant with p-values
+less than 0.001. - This indicates significant individual differences in
+both the initial level and the rate of change in monthly living
+expenses. The results suggest that:<br />
+</li>
+</ul>
+<ol style="list-style-type: decimal">
+<li>There is variation in the initial level of living expenses among
+individuals.<br />
+</li>
+<li>There is variation in the rate of change in living expenses across
+individuals.</li>
+</ol>
+<p><br><br> These findings highlight the significance of both the
+average trends and the variability in monthly living expenses over
+time.</p>
 </div>
 </div>
 

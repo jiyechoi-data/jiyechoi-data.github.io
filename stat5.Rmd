@@ -167,7 +167,7 @@ Path analysis will be conducted to examine the causal relationships between Empl
 This research model assumes that Employment Status influences Private Education Expenses, Monthly Savings, and Living Expenses. It also assumes that Private Education Expenses impact Monthly Savings and Living Expenses, and that Monthly Savings influence Living Expenses.
 
 <br><br>
-Model Fit Evaluation (Default Model)
+(1) Model Fit Evaluation (Default Model)
 <br>
 
 - Number of distinct sample moments: 14
@@ -385,7 +385,7 @@ In this model, the second method for handling missing data provided by Amos, **F
 <br><br>
 
 
-Model Fit Evaluation
+(1) Model Fit Evaluation
 <br>
 
 | Measure                  | Value      |
@@ -407,13 +407,16 @@ Comparative Fit Measures
 
 <br><br>
 
-- The default model's Chi-square statistic (\( \chi^2 = 32.272 \)) with **df = 3** and **p-value = 0.000** indicates a poor fit to the data.
+- The default model's Chi-square statistic (\( \chi^2 = 32.272 \)) with df = 3 and p-value = 0.000 indicates a poor fit to the data.
 
-- The **CMIN/DF value of 10.757** exceeds the acceptable threshold (typically \( < 5 \)), further supporting that the model does not fit well.
+- The CMIN/DF value of 10.757 exceeds the acceptable threshold (typically \( < 5 \)), further supporting that the model does not fit well.
 - Compared to the independence model (\( \text{CMIN/DF} = 2046.685 \)), the default model shows a relatively better fit but is still inadequate overall.
 
 <br><br><br><br>
 
+**Model Without Constraints on Error Variance**
+
+<br><br>
 
 <!-- LGCM2 -->
 <p align="center">
@@ -426,7 +429,7 @@ Comparative Fit Measures
 </p>
 <br><br>
 
-Model Fit Results
+(1) Model Fit Results
 <br>
 
 | Metric                  | Value  |
@@ -476,7 +479,7 @@ The additional indices, including NFI, TLI, and CFI, all exceed 0.9 for the Defa
 
 
 <br><br><br><br><br>
-Model Estimation without Variance Constraints on Error Terms
+(2) Model Estimation without Variance Constraints on Error Terms
 <br><br><br>
 Null and Alternative Hypotheses for ICEPT and SLOPE:
 <br><br>
@@ -537,7 +540,7 @@ Using these results, the average monthly living expenses over three years can be
 
 <br><br><br>
 
-**Implied Mean**
+Implied Mean
 
 <br>
 
@@ -562,6 +565,9 @@ A model was created to examine whether the pattern of changes in monthly living 
 
 <br><br>
 
+**Covariate-Added Model**
+<br><br>
+
 <!-- LGCM3 -->
 <p align="center">
   <img src="images/LGCM3.png" style="width:50%; border:0px solid; margin-right: 20px" align="center">
@@ -573,5 +579,218 @@ A model was created to examine whether the pattern of changes in monthly living 
 </p>
 <br><br>
 
-Model Fit Results
+(1) Model Fit Results
 <br>
+
+| Metric                         | Value |
+|--------------------------------|-------|
+| Number of distinct sample moments | 14    |
+| Number of distinct parameters to be estimated | 12    |
+| Degrees of freedom (14 - 12)    | 2     |
+| Chi-square (\(\chi^2\))         | 0.133 |
+| Probability level (\(p\))       | 0.936 |
+
+<br>
+
+The results show that the degrees of freedom (\(df\)) are 2, the chi-square statistic (\(\chi^2\)) is 0.133, and the probability level (\(p\)) is 0.936. Since the \(p\)-value is greater than 0.05, the null hypothesis that the model fits well cannot be rejected. <br> Therefore, according to the chi-square statistic, the model is considered a good fit.
+
+<br><br>
+
+CMIN and Model Fit
+<br>
+
+| Model               | NPAR | CMIN  | DF  | P     | CMIN/DF |
+|---------------------|------|-------|-----|-------|---------|
+| Default model       | 12   | 0.133 | 2   | 0.936 | 0.067   |
+| Saturated model     | 14   | 0.000 | 0   | -     | -       |
+| Independence model  | 4    | 12751.603 | 10  | 0.000 | 1275.160 |
+
+<br>
+
+- The Default model fits well as indicated by the Chi-square (0.133) and p-value (0.936), which do not reject the null hypothesis of good fit.
+- The CMIN/DF (0.067) is extremely low, confirming a well-fitting model.
+
+<br><br>
+
+Baseline Comparisons
+<br>
+
+| Model               | NFI (Delta1) | RFI (rho1) | IFI (Delta2) | TLI (rho2) | CFI |
+|---------------------|--------------|------------|--------------|------------|-----|
+| Default model       | 1.000        | 1.000      | 1.000        | 1.001      | 1.000 |
+| Saturated model     | 1.000        | 1.000      | 1.000        | 1.001      | 1.000 |
+| Independence model  | 0.000        | 0.000      | 0.000        | 0.000      | 0.000 |
+
+
+<br><br>
+
+RMSEA
+<br>
+
+| Model               | RMSEA | LO 90 | HI 90 | PCLOSE |
+|---------------------|-------|-------|-------|--------|
+| Default model       | 0.000 | 0.000 | 0.005 | 1.000  |
+| Independence model  | 0.375 | 0.369 | 0.380 | 0.000  |
+
+<br>
+
+- The results indicate a Chi-square value (\( \chi^2 \)) of 0.133 with 2 degrees of freedom (DF), yielding a p-value of 0.936. <br>
+- This high p-value indicates that the model fits the data well, failing to reject the null hypothesis of good fit.
+
+<br><br><br>
+
+(2) Parameter Estimates
+<br>
+
+| Dependent Variable | Predictor   | Estimate | S.E.  | C.R.   | P      |
+|--------------------|-------------|----------|-------|--------|--------|
+| ICEPT             | Savings     | 0.399    | 0.018 | 21.683 | <0.001 |
+| SLOPE             | Savings     | 0.027    | 0.018 | 1.467  | 0.142  |
+
+<br>
+
+- ICEPT (Intercept):
+The path coefficient from Savings to ICEPT is 0.399, with a p-value < 0.001.
+This indicates that the initial level of monthly living expenses (ICEPT) is significantly influenced by savings.
+<br>
+
+- SLOPE (Rate of Change):
+The path coefficient from Savings to SLOPE is 0.027, with a p-value = 0.142.
+This suggests that the rate of change in monthly living expenses (SLOPE) is not significantly influenced by savings.
+
+<br>
+
+Interpretation
+<br>
+
+- Savings significantly impact the initial level of living expenses (ICEPT), but there is no significant effect on the rate of change (SLOPE).
+- Thus, while savings are associated with differences in initial living expenses, they do not explain differences in how living expenses change over time.
+
+<br><br><br>
+
+To handle missing data, **Regression Imputation** was utilized. This method ensures that missing values are estimated based on observed data, providing a reliable foundation for subsequent analyses.
+
+<br><br>
+
+(1) Model Fit Evaluation
+<br><br>
+
+After imputing missing values, the model fit was assessed. The results of the model fit evaluation are as follows:
+
+
+| Statistic             | Value   |
+|-----------------------|---------|
+| Chi-square (\(\chi^2\)) | 32.272  |
+| Degrees of Freedom (df)| 3       |
+| Probability (p-value) | 0.000   |
+| CMIN/DF              | 10.757  |
+
+<br>
+The Chi-square test indicates that the model is not a good fit (\(p < 0.001\)). Additionally, the CMIN/DF value of 10.757 exceeds the acceptable range, further supporting the conclusion that the model does not fit well.
+
+<br>
+Based on the above evaluation, the model is not suitable for explaining the observed data effectively. Further adjustments to the model or alternative methodologies may be required to achieve a better fit.
+
+<br><br><br><br>
+**Model Fit Evaluation without Variance Constraints on Error Terms**
+<br><br>
+(1) Model Fit Evaluation
+<br>
+The fit of the model without variance constraints on error terms was evaluated. <br> The results are presented in the following table:
+
+
+| Statistic             | Value   |
+|-----------------------|---------|
+| Chi-square (\(\chi^2\)) | 0.107   |
+| Degrees of Freedom (df)| 1       |
+| Probability (p-value) | 0.744   |
+
+<br>
+
+The p-value (\(p = 0.744\)) indicates that the null hypothesis cannot be rejected, and the model fits well according to the Chi-square test.s Therefore, the model is considered a good fit based on this evaluation.
+
+<br><br>
+CMIN
+<br>
+
+| Model                | NPAR | CMIN  | DF | P     | CMIN/DF   |
+|----------------------|-------|-------|----|-------|-----------|
+| Default model        | 8     | 0.107 | 1  | 0.744 | 0.107     |
+| Saturated model      | 9     | 0.000 | 0  | -     | -         |
+| Independence model   | 3     | 12280.110 | 6 | 0.000 | 2046.685 |
+
+<br>
+From the results above, the Default model (research model) has 8 parameters, which places it between the Saturated model (9 parameters) and the Independence model (3 parameters). Therefore, the model is considered acceptable. Additionally, the CMIN/DF value of 0.107 is very low, further indicating good model fit.
+
+<br><br>
+Baseline Comparisons
+<br>
+
+| Model                | NFI Delta1 | RFI rho1 | IFI Delta2 | TLI rho2 | CFI   |
+|----------------------|------------|----------|------------|----------|-------|
+| Default model        | 1.000      | 1.000    | 1.000      | 1.000    | 1.000 |
+| Saturated model      | 1.000      | 1.000    | 1.000      | 1.000    | 1.000 |
+| Independence model   | 0.000      | 0.000    | 0.000      | 0.000    | 0.000 |
+
+<br><br>
+Parsimony-Adjusted Measures
+<br>
+
+| Model                | PRATIO | PNFI | PCFI |
+|----------------------|--------|------|------|
+| Default model        | 0.167  | 0.167| 0.167|
+| Saturated model      | 0.000  | 0.000| 0.000|
+| Independence model   | 1.000  | 1.000| 1.000|
+
+<br><br>
+RMSEA
+<br>
+
+| Model                | RMSEA | LO 90 | HI 90 | PCLOSE |
+|----------------------|-------|-------|-------|--------|
+| Default model        | 0.000 | 0.000 | 0.019 | 1.000  |
+| Independence model   | 0.475 | 0.468 | 0.482 | 0.000  |
+
+<br>
+
+The baseline comparison indices (NFI, TLI, CFI, etc.) all exceed 0.9, suggesting strong model fit. <br> Additionally, the RMSEA value for the Default model is 0.000, which is well below the threshold of 0.05, further confirming that the model demonstrates excellent fit.
+
+<br><br>
+
+(2) Parameter Estimates in the Model Without Variance Constraints on Error Terms
+
+<br><br>
+Mean Estimates
+<br>
+
+| Parameter | Estimate | S.E.  | C.R.      | p-value | Label   |
+|-----------|----------|-------|-----------|---------|---------|
+| ICEPT     | 178.688  | 1.072 | 166.652   | ***     | IMean   |
+| SLOPE     | 27.600   | 1.009 | 27.364    | ***     | SMean   |
+
+<br>
+
+- The mean estimate for ICEPT (initial level of monthly living expenses) is 178.688, representing the average monthly living expenses in 2011.  
+- The mean estimate for SLOPE (rate of change) is 27.600, indicating a statistically significant increase in monthly living expenses each year.  
+- The p-values for both parameters are less than 0.001, confirming that both estimates are statistically significant.
+
+
+
+<br><br>
+Variance Estimates
+<br>
+
+| Parameter | Estimate  | S.E.   | C.R.   | p-value | Label     |
+|-----------|-----------|--------|--------|---------|-----------|
+| ICEPT     | 8340.195  | 194.100 | 42.968 | ***     | IVariance |
+| SLOPE     | 2245.592  | 326.040 | 6.887  | ***     | SVariance |
+
+<br>
+
+- The variance estimate for ICEPT is 8340.195, and for SLOPE, it is 2245.592. - Both variances are statistically significant with p-values less than 0.001. - This indicates significant individual differences in both the initial level and the rate of change in monthly living expenses. The results suggest that:  
+1. There is variation in the initial level of living expenses among individuals.  
+2. There is variation in the rate of change in living expenses across individuals.
+
+<br><br>
+These findings highlight the significance of both the average trends and the variability in monthly living expenses over time.
+
