@@ -208,3 +208,157 @@ This type of model is considered **over-identified** and is the most constrained
 | Savings ← Private Education       | 0.265    | 0.013  | 19.961  | ***    |       |
 | Living Expenses 2013 ← Savings    | -37.592  | 2.603  | -14.446 | ***    |       |
 | Living Expenses 2013 ← Private Education | 1.610   | 0.029  | 56.194  | ***    |       |
+
+<br><br>
+
+Summary
+<br><br>
+
+- Path Coefficient: -14.655
+- p-value: < 0.01
+- Significance Level: \( \alpha = 0.05 \)
+- Interpretation: Employment status significantly and negatively affects private education expenditures.
+
+<br><br><br>
+Path Coefficient Interpretation
+<br><br>
+
+- The **direct effect** can be evaluated based on the magnitude and significance of the path coefficient. 
+
+- The path coefficient for **[Employment → Private Education]** is -14.655, and the p-value is smaller than 0.01, indicating significance at the \( \alpha = 0.05 \) level.
+- This result shows that **employment status** has a significant direct effect on **private education**, with a **negative direction** of influence.
+
+
+<br><br><br><br>
+<h4> 1-2. Effects Analysis </h4>
+<br>
+
+<br>
+
+**Total Effects**
+ <br>
+ 
+| Path                        | Employment | Private Education | Savings |
+|-----------------------------|------------|-------------------|---------|
+| Private Education           | -14.655    | 0.000             | 0.000   |
+| Savings                     | -13.497    | 0.264             | 0.000   |
+| Living Expenses (2013)      | -64.762    | 1.660             | 0.265   |
+
+<br><br>
+
+**Direct Effects**
+ <br>
+ 
+| Path                        | Employment | Private Education | Savings |
+|-----------------------------|------------|-------------------|---------|
+| Private Education           | -14.655    | 0.000             | 0.000   |
+| Savings                     | -9.622     | 0.264             | 0.000   |
+| Living Expenses (2013)      | -37.592    | 1.610             | 0.265   |
+
+<br><br>
+
+**Indirect Effects**
+<br>
+
+| Path                        | Employment | Private Education | Savings |
+|-----------------------------|------------|-------------------|---------|
+| Private Education           | 0.000      | 0.000             | 0.000   |
+| Savings                     | -3.876     | 0.000             | 0.000   |
+| Living Expenses (2013)      | -27.171    | 0.070             | 0.000   |
+
+
+<br><br><br>
+
+
+**Path: Employment → Savings**
+<br><br>
+
+- Total Effect: -13.497
+- Direct Effect: -9.622
+- Indirect Effect: -3.876
+
+<br><br>
+The relationship can be broken down as follows:
+\[
+\text{Total Effect} (-13.497) = \text{Direct Effect} (-9.622) + \text{Indirect Effect} (-3.876)
+\]
+
+<br>
+The Indirect Effect of -3.876 is calculated as:
+\[
+\text{Indirect Effect} (-3.876) = \text{Path Coefficient} (\text{Employment → Private Education}) (-14.655) \times \text{Path Coefficient} (\text{Private Education → Savings}) (0.264)
+\]
+<br><br>
+
+---
+
+<br><br>
+**Path: Employment → Living Expenses**
+
+<br>
+
+- Total Effect: -64.762
+- Direct Effect: -37.592
+- Indirect Effect: -27.171
+
+<br>
+The relationship can be broken down as follows:
+\[
+\text{Total Effect} (-64.762) = \text{Direct Effect} (-37.592) + \text{Indirect Effect} (-27.171)
+\]
+
+<br>
+The Indirect Effect of -27.171 is further decomposed into the following pathways:<br>
+
+1. Employment → Savings → Living Expenses <br>
+2. Employment → Private Education → Savings → Living Expenses <br>
+3. Employment → Private Education → Living Expenses
+<br><br>
+
+---
+
+<br><br>
+Summary
+<br><br>
+
+- The **Indirect Effect** highlights the mediating roles of **Private Education** and **Savings** in the impact of **Employment** on **Living Expenses**.
+
+- The decomposition provides insights into the complex pathways that influence the dependent variable.
+
+
+<br><br><br><br>
+
+**Direct Effect Significance**
+
+<br>
+The significance of the direct effects is as follows:
+<br>
+
+| Path                          | Estimate  | S.E.  | C.R.   | p-value  | Significance |
+|-------------------------------|-----------|-------|--------|----------|--------------|
+| Private Education ← Employment| -14.655   | 0.948 | -15.464| ***      | Significant  |
+| Savings ← Employment          | -9.622    | 2.060 | -4.694 | ***      | Significant  |
+| Savings ← Private Education   | 0.265     | 0.013 | 19.961 | ***      | Significant  |
+| Living Expenses ← Savings     | -37.592   | 2.603 | -14.446| ***      | Significant  |
+| Living Expenses ← Private Education | 1.610| 0.029 | 56.194 | ***      | Significant  |
+
+<br>
+
+Interpretation
+<br><br>
+
+- The path **Private Education ← Employment** has a significant direct effect with a negative coefficient of **-14.655**, indicating that Employment negatively influences Private Education.
+
+- The path **Savings ← Employment** also shows a significant negative direct effect of **-9.622**.
+
+- All direct effects have p-values less than **0.001 (***), indicating high statistical significance.
+
+<br><br><br><br>
+
+**Indirect Effect Significance**
+
+<br>
+
+- The \( p \)-values for all indirect effects were \( p = 0.010 \), which is statistically significant at \( \alpha = 0.05 \).
+- This confirms that the indirect effects in the model are significant and meaningful.
+
