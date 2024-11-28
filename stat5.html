@@ -649,22 +649,24 @@ educational expenses below 2M KRW.</li>
 </ul>
 <p><br><br></p>
 <p>To investigate how monthly living expenses change over time, we will
-address missing data using two imputation methods and then apply
-<strong>Latent Growth Curve Modeling (LGCM)</strong> to analyze the
-data.</p>
+address missing data using two imputation methods: <strong>Regression
+Imputation</strong> and <strong>Full Information Maximum Likelihood
+(FIML)</strong>. Following this, we will apply <strong>Latent Growth
+Curve Modeling (LGCM)</strong> to analyze the data.</p>
 <p><br><br><br></p>
 </div>
-<div id="method-1-regression-imputation" class="section level3">
-<h3>5. Method 1: Regression Imputation</h3>
+<div id="analysis" class="section level3">
+<h3>5. Analysis</h3>
 <br><br>
 <h4>
 1-1. Path Analysis
 </h4>
-<p><br></p>
-<p>Path analysis will be conducted to examine the causal relationships
-between Employment Status, Educational Expenses, Average Monthly
-Savings, and Living Expenses, specifically to understand how Employment
-Status and Educational Expenses influence Living Expenses.</p>
+<p><br> Missing data were handled using Regression Imputation prior to
+conducting path analysis. <br> Path analysis will be conducted to
+examine the causal relationships between Employment Status, Educational
+Expenses, Average Monthly Savings, and Living Expenses, specifically to
+understand how Employment Status and Educational Expenses influence
+Living Expenses.</p>
 <p><br><br><br><br></p>
 <!-- path analysis1 -->
 <p align="center">
@@ -686,7 +688,7 @@ Living Expenses, and that Monthly Savings influence Living Expenses.</p>
 <li>Degrees of freedom: 0 (calculated as 14 - 14)</li>
 </ul>
 <p><br></p>
-<p>Results:</p>
+<p>Results</p>
 <ul>
 <li>Chi-Square: 0.000</li>
 <li>Degrees of Freedom: 0</li>
@@ -782,7 +784,7 @@ real-world data.</p>
 </tbody>
 </table>
 <p><br><br></p>
-<p>Summary <br><br></p>
+<p>Summary <br></p>
 <ul>
 <li>Path Coefficient: -14.655</li>
 <li>p-value: &lt; 0.01</li>
@@ -791,7 +793,7 @@ real-world data.</p>
 <li>Interpretation: Employment status significantly and negatively
 affects private education expenditures.</li>
 </ul>
-<p><br><br><br> Path Coefficient Interpretation <br><br></p>
+<p><br><br> Path Coefficient Interpretation <br></p>
 <ul>
 <li><p>The <strong>direct effect</strong> can be evaluated based on the
 magnitude and significance of the path coefficient.</p></li>
@@ -803,7 +805,7 @@ indicating significance at the <span class="math inline">\(\alpha =
 significant direct effect on <strong>private education</strong>, with a
 <strong>negative direction</strong> of influence.</p></li>
 </ul>
-<br><br><br><br>
+<br><br><br><br><br>
 <h4>
 1-2. Effects Analysis
 </h4>
@@ -923,6 +925,8 @@ significant direct effect on <strong>private education</strong>, with a
 </tbody>
 </table>
 <p><br><br><br></p>
+<hr />
+<p><br><br><br></p>
 <p><strong>Path: Employment → Savings</strong> <br><br></p>
 <ul>
 <li>Total Effect: -13.497</li>
@@ -948,7 +952,7 @@ Coefficient} (\text{Private Education → Savings}) (0.264)
 <li>Direct Effect: -37.592</li>
 <li>Indirect Effect: -27.171</li>
 </ul>
-<p><br> The relationship can be broken down as follows: <span
+<p><br><br> The relationship can be broken down as follows: <span
 class="math display">\[
 \text{Total Effect} (-64.762) = \text{Direct Effect} (-37.592) +
 \text{Indirect Effect} (-27.171)
@@ -958,10 +962,9 @@ following pathways:<br></p>
 <ol style="list-style-type: decimal">
 <li>Employment → Savings → Living Expenses <br></li>
 <li>Employment → Private Education → Savings → Living Expenses <br></li>
-<li>Employment → Private Education → Living Expenses <br><br></li>
+<li>Employment → Private Education → Living Expenses
+<br><br><br><br></li>
 </ol>
-<hr />
-<p><br><br> Summary <br><br></p>
 <ul>
 <li><p>The <strong>Indirect Effect</strong> highlights the mediating
 roles of <strong>Private Education</strong> and <strong>Savings</strong>
@@ -970,6 +973,7 @@ Expenses</strong>.</p></li>
 <li><p>The decomposition provides insights into the complex pathways
 that influence the dependent variable.</p></li>
 </ul>
+<p><br><br></p>
 <p><br><br><br><br></p>
 <p><strong>Direct Effect Significance</strong></p>
 <p><br> The significance of the direct effects is as follows: <br></p>
@@ -1058,9 +1062,9 @@ statistically significant at <span class="math inline">\(\alpha =
 and meaningful.</li>
 </ul>
 <p><br><br><br><br><br></p>
-<h4>
-1-3. Latent Growth Curve Modeling
-</h4>
+</div>
+<div id="latent-growth-curve-model" class="section level3">
+<h3>6. Latent Growth Curve Model</h3>
 <p><br><br><br></p>
 <!-- LGCM -->
 <p align="center">
@@ -1072,9 +1076,106 @@ and meaningful.</li>
 </p>
 <p><br><br></p>
 <p>In this model, the second method for handling missing data provided
-by Amos, Full Information Maximum Likelihood (FIML), is utilized to
-ensure accurate estimation by using all available data points without
-imputing missing values.</p>
+by Amos, <strong>Full Information Maximum Likelihood (FIML)</strong>, is
+utilized to ensure accurate estimation by using all available data
+points without imputing missing values.</p>
+<p><br><br></p>
+<p>Model Fit Evaluation <br></p>
+<table>
+<thead>
+<tr class="header">
+<th>Measure</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Chi-square (<span class="math inline">\(\chi^2\)</span>)</td>
+<td>32.272</td>
+</tr>
+<tr class="even">
+<td>Degrees of Freedom (df)</td>
+<td>3</td>
+</tr>
+<tr class="odd">
+<td>Probability Level (p)</td>
+<td>0.000</td>
+</tr>
+</tbody>
+</table>
+<p><br><br></p>
+<p>Comparative Fit Measures <br></p>
+<table>
+<colgroup>
+<col width="31%" />
+<col width="25%" />
+<col width="11%" />
+<col width="7%" />
+<col width="11%" />
+<col width="11%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Model</th>
+<th>Parameters (NPAR)</th>
+<th>CMIN</th>
+<th>DF</th>
+<th>p-value</th>
+<th>CMIN/DF</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Default model</td>
+<td>6</td>
+<td>32.272</td>
+<td>3</td>
+<td>0.000</td>
+<td>10.757</td>
+</tr>
+<tr class="even">
+<td>Saturated model</td>
+<td>9</td>
+<td>0.000</td>
+<td>0</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class="odd">
+<td>Independence model</td>
+<td>3</td>
+<td>12280.110</td>
+<td>6</td>
+<td>0.000</td>
+<td>2046.685</td>
+</tr>
+</tbody>
+</table>
+<p><br><br></p>
+<ul>
+<li><p>The default model’s Chi-square statistic (<span
+class="math inline">\(\chi^2 = 32.272\)</span>) with <strong>df =
+3</strong> and <strong>p-value = 0.000</strong> indicates a poor fit to
+the data.</p></li>
+<li><p>The <strong>CMIN/DF value of 10.757</strong> exceeds the
+acceptable threshold (typically <span class="math inline">\(&lt;
+5\)</span>), further supporting that the model does not fit
+well.</p></li>
+<li><p>Compared to the independence model (<span
+class="math inline">\(\text{CMIN/DF} = 2046.685\)</span>), the default
+model shows a relatively better fit but is still inadequate
+overall.</p></li>
+</ul>
+<p><br><br><br><br></p>
+<!-- LGCM2 -->
+<p align="center">
+<img src="images/LGCM2.png.png" style="width:50%; border:0px solid; margin-right: 20px" align="center">
+<br><br>
+</p>
+<p align="center" style="font-size: 14px; font-weight: bold;">
+[Fig. Model Without Constraints on Error Variance] <br>
+</p>
+<p><br><br></p>
 </div>
 </div>
 
