@@ -426,3 +426,152 @@ Comparative Fit Measures
 </p>
 <br><br>
 
+Model Fit Results
+<br>
+
+| Metric                  | Value  |
+|-------------------------|--------|
+| Chi-square (χ²)         | 0.107  |
+| Degrees of Freedom (df) | 1      |
+| p-value                 | 0.744  |
+<br>
+
+The model has a degree of freedom of 1, a Chi-square value (χ²) of 0.107, and a p-value of 0.744. <br> This indicates that the null hypothesis that the model fits well cannot be rejected. <br>
+Therefore, the model can be considered a good fit based on the Chi-square test.
+
+<br><br><br>
+CMIN/DF and Other Fit Indices
+<br><br>
+
+| Model               | NPAR | CMIN      | DF  | p-value | CMIN/DF   |
+|---------------------|------|-----------|-----|---------|-----------|
+| Default model       | 8    | 0.107     | 1   | 0.744   | 0.107     |
+| Saturated model     | 9    | 0.000     | 0   | -       | -         |
+| Independence model  | 3    | 12280.110 | 6   | 0.000   | 2046.685  |
+<br>
+
+The Default model, with 8 parameters, fits between the Saturated model (9 parameters) and the Independence model (3 parameters). The low CMIN/DF value (0.107) also supports that the model is a good fit.
+
+<br><br><br>
+Baseline Comparisons
+<br><br>
+
+| Model               | NFI Delta1 | RFI rho1 | IFI Delta2 | TLI rho2 | CFI   |
+|---------------------|------------|----------|------------|----------|-------|
+| Default model       | 1.000      | 1.000    | 1.000      | 1.000    | 1.000 |
+| Saturated model     | 1.000      | 1.000    | 1.000      | 1.000    | 1.000 |
+| Independence model  | 0.000      | 0.000    | 0.000      | 0.000    | 0.000 |
+
+<br><br><br>
+RMSEA (Root Mean Square Error of Approximation)
+<br><br>
+
+| Model               | RMSEA | LO 90 | HI 90 | PCLOSE |
+|---------------------|-------|-------|-------|--------|
+| Default model       | 0.000 | 0.000 | 0.019 | 1.000  |
+| Independence model  | 0.475 | 0.468 | 0.482 | 0.000  |
+<br>
+
+The additional indices, including NFI, TLI, and CFI, all exceed 0.9 for the Default and Saturated models, indicating a good fit. Furthermore, the RMSEA value of 0.000 is below the threshold of 0.05, which supports the conclusion that the model fits well. Therefore, the estimation of parameters can proceed with confidence.
+
+
+<br><br><br><br><br>
+Model Estimation without Variance Constraints on Error Terms
+<br><br><br>
+Null and Alternative Hypotheses for ICEPT and SLOPE:
+<br><br>
+
+- **Null hypothesis (H₀):**
+  - ICEPT = 0
+  - SLOPE = 0
+<br>
+- **Alternative hypothesis (H₁):**
+  - ICEPT ≠ 0
+  - SLOPE ≠ 0
+
+<br><br>
+
+| Variable | Estimate  | SE     | CR      | p-value |
+|----------|-----------|--------|---------|---------|
+| ICEPT    | 178.688   | 1.072  | 166.652 | ***     |
+| SLOPE    | 27.600    | 1.009  | 27.364  | ***     |
+
+<br>
+
+- The mean estimate for ICEPT (intercept) is 178.688, representing the initial level of monthly living expenses in 2011.  
+- The mean estimate for SLOPE (rate of change) is 27.600, indicating an annual increase in monthly living expenses.  
+- Both ICEPT and SLOPE are statistically significant (p < 0.001).
+
+<br><br>
+
+| Variable | Variance  | SE     | CR      | p-value |
+|----------|-----------|--------|---------|---------|
+| ICEPT    | 8340.195  | 194.100| 42.968  | ***     |
+| SLOPE    | 2245.592  | 326.040| 6.887   | ***     |
+
+<br>
+
+- The variance for ICEPT is 8340.195, indicating variability in initial levels of monthly living expenses across households.
+- The variance for SLOPE is 2245.592, reflecting differences in the rate of change in expenses.
+- Both variances are statistically significant (p < 0.001), suggesting meaningful individual-level variability.
+
+<br><br>
+
+The variance estimates for ICEPT and SLOPE are 8340.195 and 2245.592, respectively. Based on the p-value, the variance is statistically significant, indicating meaningful individual differences in the initial levels and rates of change in monthly living expenses. This means that there is variability in both the starting point (initial level) and the change rate of monthly living expenses among individuals.
+
+<br>
+Using these results, the average monthly living expenses over three years can be calculated as follows:
+<br><br>
+
+\[
+\text{2011 Monthly Living Expenses} = 178.688 + 0.000 \times 27.600 = 178.688
+\]
+
+\[
+\text{2012 Monthly Living Expenses} = 178.688 + 0.5 \times 27.600 = 192.488
+\]
+
+\[
+\text{2013 Monthly Living Expenses} = 178.688 + 1.0 \times 27.600 = 206.288
+\]
+
+<br><br><br>
+
+**Implied Mean**
+
+<br>
+
+| Year  | Implied Mean (Monthly Living Expenses) |
+|-------|---------------------------------------|
+| 2011  | 178.688                               |
+| 2012  | 192.488                               |
+| 2013  | 206.287                               |
+
+<br>
+
+Using these implied means, the average monthly living expenses for 2014 can be predicted as:
+<br><br>
+
+\[
+\text{2014 Monthly Living Expenses} = 178.688 + 1.5 \times 27.600 = 220.088
+\]
+
+<br><br><br>
+
+A model was created to examine whether the pattern of changes in monthly living expenses differs based on the level of savings.
+
+<br><br>
+
+<!-- LGCM3 -->
+<p align="center">
+  <img src="images/LGCM3.png" style="width:50%; border:0px solid; margin-right: 20px" align="center">
+    <br><br>
+</p>
+<p align="center" style="font-size: 14px; font-weight: bold;">
+  [Fig. Covariate-Added Model]
+    <br>
+</p>
+<br><br>
+
+Model Fit Results
+<br>

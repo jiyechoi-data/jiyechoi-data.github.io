@@ -1176,6 +1176,317 @@ overall.</p></li>
 [Fig. Model Without Constraints on Error Variance] <br>
 </p>
 <p><br><br></p>
+<p>Model Fit Results <br></p>
+<table>
+<thead>
+<tr class="header">
+<th>Metric</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Chi-square (χ²)</td>
+<td>0.107</td>
+</tr>
+<tr class="even">
+<td>Degrees of Freedom (df)</td>
+<td>1</td>
+</tr>
+<tr class="odd">
+<td>p-value</td>
+<td>0.744</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p>The model has a degree of freedom of 1, a Chi-square value (χ²) of
+0.107, and a p-value of 0.744. <br> This indicates that the null
+hypothesis that the model fits well cannot be rejected. <br> Therefore,
+the model can be considered a good fit based on the Chi-square test.</p>
+<p><br><br><br> CMIN/DF and Other Fit Indices <br><br></p>
+<table>
+<thead>
+<tr class="header">
+<th>Model</th>
+<th>NPAR</th>
+<th>CMIN</th>
+<th>DF</th>
+<th>p-value</th>
+<th>CMIN/DF</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Default model</td>
+<td>8</td>
+<td>0.107</td>
+<td>1</td>
+<td>0.744</td>
+<td>0.107</td>
+</tr>
+<tr class="even">
+<td>Saturated model</td>
+<td>9</td>
+<td>0.000</td>
+<td>0</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr class="odd">
+<td>Independence model</td>
+<td>3</td>
+<td>12280.110</td>
+<td>6</td>
+<td>0.000</td>
+<td>2046.685</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p>The Default model, with 8 parameters, fits between the Saturated
+model (9 parameters) and the Independence model (3 parameters). The low
+CMIN/DF value (0.107) also supports that the model is a good fit.</p>
+<p><br><br><br> Baseline Comparisons <br><br></p>
+<table style="width:100%;">
+<colgroup>
+<col width="29%" />
+<col width="16%" />
+<col width="13%" />
+<col width="16%" />
+<col width="13%" />
+<col width="9%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Model</th>
+<th>NFI Delta1</th>
+<th>RFI rho1</th>
+<th>IFI Delta2</th>
+<th>TLI rho2</th>
+<th>CFI</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Default model</td>
+<td>1.000</td>
+<td>1.000</td>
+<td>1.000</td>
+<td>1.000</td>
+<td>1.000</td>
+</tr>
+<tr class="even">
+<td>Saturated model</td>
+<td>1.000</td>
+<td>1.000</td>
+<td>1.000</td>
+<td>1.000</td>
+<td>1.000</td>
+</tr>
+<tr class="odd">
+<td>Independence model</td>
+<td>0.000</td>
+<td>0.000</td>
+<td>0.000</td>
+<td>0.000</td>
+<td>0.000</td>
+</tr>
+</tbody>
+</table>
+<p><br><br><br> RMSEA (Root Mean Square Error of Approximation)
+<br><br></p>
+<table>
+<thead>
+<tr class="header">
+<th>Model</th>
+<th>RMSEA</th>
+<th>LO 90</th>
+<th>HI 90</th>
+<th>PCLOSE</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Default model</td>
+<td>0.000</td>
+<td>0.000</td>
+<td>0.019</td>
+<td>1.000</td>
+</tr>
+<tr class="even">
+<td>Independence model</td>
+<td>0.475</td>
+<td>0.468</td>
+<td>0.482</td>
+<td>0.000</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p>The additional indices, including NFI, TLI, and CFI, all exceed 0.9
+for the Default and Saturated models, indicating a good fit.
+Furthermore, the RMSEA value of 0.000 is below the threshold of 0.05,
+which supports the conclusion that the model fits well. Therefore, the
+estimation of parameters can proceed with confidence.</p>
+<p><br><br><br><br><br> Model Estimation without Variance Constraints on
+Error Terms <br><br><br> Null and Alternative Hypotheses for ICEPT and
+SLOPE: <br><br></p>
+<ul>
+<li><strong>Null hypothesis (H₀):</strong>
+<ul>
+<li>ICEPT = 0</li>
+<li>SLOPE = 0 <br></li>
+</ul></li>
+<li><strong>Alternative hypothesis (H₁):</strong>
+<ul>
+<li>ICEPT ≠ 0</li>
+<li>SLOPE ≠ 0</li>
+</ul></li>
+</ul>
+<p><br><br></p>
+<table>
+<thead>
+<tr class="header">
+<th>Variable</th>
+<th>Estimate</th>
+<th>SE</th>
+<th>CR</th>
+<th>p-value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>ICEPT</td>
+<td>178.688</td>
+<td>1.072</td>
+<td>166.652</td>
+<td>***</td>
+</tr>
+<tr class="even">
+<td>SLOPE</td>
+<td>27.600</td>
+<td>1.009</td>
+<td>27.364</td>
+<td>***</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<ul>
+<li>The mean estimate for ICEPT (intercept) is 178.688, representing the
+initial level of monthly living expenses in 2011.<br />
+</li>
+<li>The mean estimate for SLOPE (rate of change) is 27.600, indicating
+an annual increase in monthly living expenses.<br />
+</li>
+<li>Both ICEPT and SLOPE are statistically significant (p &lt;
+0.001).</li>
+</ul>
+<p><br><br></p>
+<table>
+<thead>
+<tr class="header">
+<th>Variable</th>
+<th>Variance</th>
+<th>SE</th>
+<th>CR</th>
+<th>p-value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>ICEPT</td>
+<td>8340.195</td>
+<td>194.100</td>
+<td>42.968</td>
+<td>***</td>
+</tr>
+<tr class="even">
+<td>SLOPE</td>
+<td>2245.592</td>
+<td>326.040</td>
+<td>6.887</td>
+<td>***</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<ul>
+<li>The variance for ICEPT is 8340.195, indicating variability in
+initial levels of monthly living expenses across households.</li>
+<li>The variance for SLOPE is 2245.592, reflecting differences in the
+rate of change in expenses.</li>
+<li>Both variances are statistically significant (p &lt; 0.001),
+suggesting meaningful individual-level variability.</li>
+</ul>
+<p><br><br></p>
+<p>The variance estimates for ICEPT and SLOPE are 8340.195 and 2245.592,
+respectively. Based on the p-value, the variance is statistically
+significant, indicating meaningful individual differences in the initial
+levels and rates of change in monthly living expenses. This means that
+there is variability in both the starting point (initial level) and the
+change rate of monthly living expenses among individuals.</p>
+<p><br> Using these results, the average monthly living expenses over
+three years can be calculated as follows: <br><br></p>
+<p><span class="math display">\[
+\text{2011 Monthly Living Expenses} = 178.688 + 0.000 \times 27.600 =
+178.688
+\]</span></p>
+<p><span class="math display">\[
+\text{2012 Monthly Living Expenses} = 178.688 + 0.5 \times 27.600 =
+192.488
+\]</span></p>
+<p><span class="math display">\[
+\text{2013 Monthly Living Expenses} = 178.688 + 1.0 \times 27.600 =
+206.288
+\]</span></p>
+<p><br><br><br></p>
+<p><strong>Implied Mean</strong></p>
+<p><br></p>
+<table>
+<thead>
+<tr class="header">
+<th>Year</th>
+<th>Implied Mean (Monthly Living Expenses)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>2011</td>
+<td>178.688</td>
+</tr>
+<tr class="even">
+<td>2012</td>
+<td>192.488</td>
+</tr>
+<tr class="odd">
+<td>2013</td>
+<td>206.287</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p>Using these implied means, the average monthly living expenses for
+2014 can be predicted as: <br><br></p>
+<p><span class="math display">\[
+\text{2014 Monthly Living Expenses} = 178.688 + 1.5 \times 27.600 =
+220.088
+\]</span></p>
+<p><br><br><br></p>
+<p>A model was created to examine whether the pattern of changes in
+monthly living expenses differs based on the level of savings.</p>
+<p><br><br></p>
+<!-- LGCM3 -->
+<p align="center">
+<img src="images/LGCM3.PNG" style="width:50%; border:0px solid; margin-right: 20px" align="center">
+<br><br>
+</p>
+<p align="center" style="font-size: 14px; font-weight: bold;">
+[Fig. Covariate-Added Model] <br>
+</p>
+<p><br><br></p>
+<p>Model Fit Results <br></p>
 </div>
 </div>
 
