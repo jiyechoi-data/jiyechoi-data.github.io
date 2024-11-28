@@ -164,3 +164,47 @@ Path analysis will be conducted to examine the causal relationships between Empl
 <br><br>
 
 This research model assumes that Employment Status influences Private Education Expenses, Monthly Savings, and Living Expenses. It also assumes that Private Education Expenses impact Monthly Savings and Living Expenses, and that Monthly Savings influence Living Expenses.
+
+<br><br>
+Model Fit Evaluation (Default Model)
+<br>
+
+- Number of distinct sample moments: 14
+- Number of distinct parameters to be estimated: 14
+- Degrees of freedom: 0 (calculated as 14 - 14)
+
+<br>
+
+Results:
+
+- Chi-Square: 0.000
+- Degrees of Freedom: 0
+- Minimum Achieved
+- Probability level cannot be computed
+
+<br><br>
+
+The results show \( \chi^2 = 0 \) and \( df = 0 \). When \( \chi^2 = 0 \), it indicates a perfect fit between the research model and the data, meaning there is no difference between the observed values and the predicted values. The \( df = 0 \) implies that the number of parameters to be estimated is equal to the number of data points, which typically occurs in highly constrained models.
+
+This type of model is considered **over-identified** and is the most constrained form of the model, providing the highest degree of fit but lacking flexibility. Because of this, such models are overly simplistic and cannot capture the complexity of the relationships between variables. Therefore, no meaningful conclusions can be drawn from this model due to its lack of complexity and capacity to represent real-world data.
+
+<br><br><br><br>
+
+<!-- path analysis2 -->
+<p align="center">
+  <img src="images/pathanalysis2.png.png" style="width:80%; border:0px solid; margin-right: 20px" align="center">
+    <br><br>
+</p>
+<p align="center" style="font-size: 14px; font-weight: bold;">
+  [Fig. Graphical Representation of Model Estimates]
+    <br>
+</p>
+<br><br>
+
+| Path                              | Estimate | S.E.   | C.R.    | P      | Label |
+|-----------------------------------|----------|--------|---------|--------|-------|
+| Private Education ← Employment    | -14.655  | 0.948  | -15.464 | ***    |       |
+| Savings ← Employment              | -9.622   | 2.060  | -4.694  | ***    |       |
+| Savings ← Private Education       | 0.265    | 0.013  | 19.961  | ***    |       |
+| Living Expenses 2013 ← Savings    | -37.592  | 2.603  | -14.446 | ***    |       |
+| Living Expenses 2013 ← Private Education | 1.610   | 0.029  | 56.194  | ***    |       |
