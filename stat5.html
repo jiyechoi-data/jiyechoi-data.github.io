@@ -398,54 +398,260 @@ div.tocify {
 <p><br><br><br></p>
 <div id="analyzing-monthly-living-expenses" class="section level2">
 <h2><strong>Analyzing Monthly Living Expenses</strong></h2>
-<p><img src="https://img.shields.io/badge/Using-Python-blue" /> <img
-src="https://img.shields.io/badge/-LASSO-red" /> <img
-src="https://img.shields.io/badge/-XGBoost-success" /></p>
+<p><img src="https://img.shields.io/badge/Using-SPSS-blue" /> <img
+src="https://img.shields.io/badge/Using-AMOS-yellow" /> <img
+src="https://img.shields.io/badge/Analysis-LGCM-orange" /> <img
+src="https://img.shields.io/badge/-PathAnalysis-green" /></p>
 <p><br></p>
-<p>🚨<strong>THIS IS A FICTIONAL PROJECT MEANT AS AN EXAMPLE FOR THE
-STEPBYSTAT COMMUNITY.</strong></p>
 <p><br><br><br></p>
-<div id="figure" class="section level3">
-<h3>1. Figure</h3>
-<p align="center">
-<img src="images/predict_houseprice.png" style="width:80%; border:0px solid; margin-right: 20px" align="center">
-</p>
-<p align="center">
-[Fig. LASSO regression features by importance]
-</p>
-<p><br></p>
-<p><br><br></p>
+<div id="introduction" class="section level3">
+<h3>1. Introduction</h3>
+<p><br> Understanding the relationship between living expenses and
+savings is crucial in today’s economy for effective financial planning.
+This project investigates how various factors such as employment status
+and educational expenses for children influence monthly living expenses.
+Leveraging latent growth curve modeling (LGCM) and path analysis, the
+study uncovers patterns and relationships to provide insights into
+economic behaviors. <br><br><br></p>
 </div>
 <div id="goal" class="section level3">
 <h3>2. Goal</h3>
-<p>To predict the final price of each home using 79 explanatory
-variables describing (almost) every aspect of residential homes in Ames,
-Iowa.</p>
-<p><br></p>
+<p><br> The primary goal of this study is to analyze how monthly living
+expenses evolve over time and to determine whether factors like
+employment status, educational expenses for children, and savings
+significantly impact these changes. Additionally, the study aims to
+evaluate how missing data treatment methods, such as regression
+imputation and full information maximum likelihood (FIML), affect the
+analysis results.</p>
+<p><br><br></p>
 </div>
-<div id="methodology-summary" class="section level3">
-<h3>3. Methodology &amp; Summary</h3>
+<div id="data-and-variables" class="section level3">
+<h3>3. Data and Variables</h3>
+<p><br> This project uses data from the Korean Longitudinal Survey of
+Women &amp; Families (KLoWF), encompassing responses from 9,068
+households over three years (2011–2013). The panel dataset allows for
+tracking changes over time and assessing individual-level variations in
+living expenses. <br> <br> The dataset includes information on various
+financial and demographic factors, with a focus on the following
+variables: <br></p>
 <ul>
-<li>LASSO regressions showed the best performance with a cross
-validation RMSE-score of 0.1121. Although there is a lot of
-multicollinearity among the variables, LASSO regression include feature
-selection; it does not select a substantial number of the available
-variables in its model, as it is supposed to do.</li>
-<li>The XGBoost model also performs very well with a cross validation
-RMSE of 0.1162.</li>
-<li>As those two algorithms are very different, averaging predictions is
-likely to improve the predictions. As the Lasso cross validated RMSE is
-better than XGBoost’s CV score, I decided to weight the Lasso results
-double.</li>
+<li><strong>Monthly Living Expenses</strong>: Average monthly household
+expenses in 10,000 Korean Won (KRW). <br></li>
+<li><strong>Savings</strong>: Total monthly savings, including deposits,
+savings-type insurance, and pensions, expressed in 10,000 KRW. <br></li>
+<li><strong>Employment Status</strong>: A binary variable indicating
+whether the household head is employed (Yes/No). <br></li>
+<li><strong>Educational Expenses</strong>: Monthly spending on
+children’s education, including childcare and extracurricular
+activities, expressed in 10,000 KRW.</li>
+</ul>
+<p><br><br></p>
+</div>
+<div id="exploratory-data-analysis" class="section level3">
+<h3>4. Exploratory Data Analysis</h3>
+<p><br></p>
+<p>Below are the descriptive statistics and frequency analysis results
+from SPSS: <br><br><br></p>
+<table>
+<colgroup>
+<col width="33%" />
+<col width="11%" />
+<col width="19%" />
+<col width="35%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Variable</th>
+<th>Year</th>
+<th>Mean (KRW)</th>
+<th>Standard Deviation (KRW)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Monthly Living Expenses</td>
+<td>2011</td>
+<td>178.75</td>
+<td>50.30</td>
+</tr>
+<tr class="even">
+<td></td>
+<td>2012</td>
+<td>191.31</td>
+<td>55.12</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>2013</td>
+<td>205.15</td>
+<td>60.45</td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<ul>
+<li>Average monthly living expenses show a clear upward trend over the
+three years. <br></li>
+<li>The increasing standard deviation highlights growing variability in
+expenses, indicating widening differences in household spending
+patterns. This could reflect changes in income distribution or spending
+habits among households. <br><br><br><br></li>
+</ul>
+<table>
+<thead>
+<tr class="header">
+<th>Variable</th>
+<th>Category</th>
+<th>Frequency (%)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Employment Status</td>
+<td>Employed</td>
+<td>82.4</td>
+</tr>
+<tr class="even">
+<td></td>
+<td>Unemployed</td>
+<td>17.6</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<ul>
+<li>A significant majority of households (82.4%) have an employed head
+of household, suggesting financial stability through employment.</li>
+<li>A smaller portion (17.6%) of households have an unemployed head of
+household, indicating potential financial challenges for these
+households.</li>
+</ul>
+<p><br><br><br><br></p>
+<table>
+<colgroup>
+<col width="27%" />
+<col width="13%" />
+<col width="22%" />
+<col width="36%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Savings Category</th>
+<th>Frequency</th>
+<th>Percentage (%)</th>
+<th>Cumulative Percentage (%)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1-100</td>
+<td>4285</td>
+<td>47.3</td>
+<td>47.3</td>
+</tr>
+<tr class="even">
+<td>101-200</td>
+<td>4192</td>
+<td>46.2</td>
+<td>93.5</td>
+</tr>
+<tr class="odd">
+<td>201-300</td>
+<td>455</td>
+<td>5.0</td>
+<td>98.5</td>
+</tr>
+<tr class="even">
+<td>301-400</td>
+<td>89</td>
+<td>1.0</td>
+<td>99.5</td>
+</tr>
+<tr class="odd">
+<td>401-1500</td>
+<td>28</td>
+<td>0.3</td>
+<td>99.8</td>
+</tr>
+<tr class="even">
+<td>Total</td>
+<td>9068</td>
+<td>100.0</td>
+<td>100.0</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<ul>
+<li>The largest percentage of households (47.3%) have savings in the
+1-100 (10,000 KRW) range, followed by 46.2% in the 101-200 KRW
+range.</li>
+<li>Very few households save above 300 (10,000 KRW), with only 1% saving
+in the 301-400 (10,000 KRW) range.</li>
+<li>The Cumulative Percentage column shows that over 93% of households
+have savings of 200 (10,000 KRW) or less, suggesting a concentration in
+lower savings categories.</li>
+</ul>
+<p><br><br><br><br></p>
+<table>
+<thead>
+<tr class="header">
+<th>Educational Expenses Category</th>
+<th>Frequency (%)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1-50 (10,000 KRW)</td>
+<td>85.6</td>
+</tr>
+<tr class="even">
+<td>51-100 (10,000 KRW)</td>
+<td>12.0</td>
+</tr>
+<tr class="odd">
+<td>101-150 (10,000 KRW)</td>
+<td>1.8</td>
+</tr>
+<tr class="even">
+<td>151-200 (10,000 KRW)</td>
+<td>0.5</td>
+</tr>
+<tr class="odd">
+<td>201+ (10,000 KRW)</td>
+<td>0.2</td>
+</tr>
+<tr class="even">
+<td>Total</td>
+<td>100.0</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<ul>
+<li>The majority of households (85.6%) spend between 1-50 (10,000 KRW)
+on educational expenses.</li>
+<li>12.0% of households spend between 51-100 (10,000 KRW), while only
+0.2% spend more than 2M KRW.</li>
+<li>The cumulative percentage shows that 99.5% of households have
+educational expenses below 2M KRW.</li>
 </ul>
 <p><br></p>
-</div>
-<div id="code" class="section level3">
-<h3>4. Code</h3>
-<p>Please click <a
-href="https://www.kaggle.com/erikbruin/house-prices-lasso-xgboost-and-a-detailed-eda/report">HERE</a>
-for the analysis report and code.</p>
-<p><br></p>
+<p>To investigate how monthly living expenses change over time, we will
+address missing data using two imputation methods and then apply
+<strong>Latent Growth Curve Modeling (LGCM)</strong> to analyze the
+data.</p>
 </div>
 </div>
 
