@@ -342,9 +342,7 @@ The significance of the direct effects is as follows:
 | Living Expenses ← Savings     | -37.592   | 2.603 | -14.446| ***      | Significant  |
 | Living Expenses ← Private Education | 1.610| 0.029 | 56.194 | ***      | Significant  |
 
-<br>
 
-Interpretation
 <br><br>
 
 - The path **Private Education ← Employment** has a significant direct effect with a negative coefficient of **-14.655**, indicating that Employment negatively influences Private Education.
@@ -353,7 +351,7 @@ Interpretation
 
 - All direct effects have p-values less than **0.001 (***), indicating high statistical significance.
 
-<br><br><br><br>
+<br><br><br>
 
 **Indirect Effect Significance**
 
@@ -361,4 +359,25 @@ Interpretation
 
 - The \( p \)-values for all indirect effects were \( p = 0.010 \), which is statistically significant at \( \alpha = 0.05 \).
 - This confirms that the indirect effects in the model are significant and meaningful.
+
+
+
+<br><br><br><br><br>
+
+<h4> 1-3. Latent Growth Curve Modeling </h4>
+<br><br><br>
+
+<!-- LGCM -->
+<p align="center">
+  <img src="images/LGCM1.png.png" style="width:50%; border:0px solid; margin-right: 20px" align="center">
+    <br><br>
+</p>
+<p align="center" style="font-size: 14px; font-weight: bold;">
+  [Fig. Latent Growth Curve Model]
+    <br>
+</p>
+<br><br>
+
+In this model, the second method for handling missing data provided by Amos, Full Information Maximum Likelihood (FIML), is utilized to ensure accurate estimation by using all available data points without imputing missing values.
+
 
