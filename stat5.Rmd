@@ -135,9 +135,32 @@ Below are the descriptive statistics and frequency analysis results from SPSS:
 - 12.0% of households spend between 51-100 (10,000 KRW), while only 0.2% spend more than 2M KRW.
 - The cumulative percentage shows that 99.5% of households have educational expenses below 2M KRW.
 
-<br>
+<br><br>
 
 To investigate how monthly living expenses change over time, we will address missing data using two imputation methods and then apply **Latent Growth Curve Modeling (LGCM)** to analyze the data.
 
 
+<br><br><br>
 
+### 5. Method 1: Regression Imputation
+
+<br><br>
+<h4> 1-1. Path Analysis </h4>
+<br>
+
+Path analysis will be conducted to examine the causal relationships between Employment Status, Educational Expenses, Average Monthly Savings, and Living Expenses, specifically to understand how Employment Status and Educational Expenses influence Living Expenses.
+
+<br><br><br><br>
+
+<!-- path analysis1 -->
+<p align="center">
+  <img src="images/pathanalysis.png.png" style="width:80%; border:0px solid; margin-right: 20px" align="center">
+    <br><br>
+</p>
+<p align="center" style="font-size: 14px; font-weight: bold;">
+  [Fig. Path Diagram of the Research Model]
+    <br>
+</p>
+<br><br>
+
+This research model assumes that Employment Status influences Private Education Expenses, Monthly Savings, and Living Expenses. It also assumes that Private Education Expenses impact Monthly Savings and Living Expenses, and that Monthly Savings influence Living Expenses.
