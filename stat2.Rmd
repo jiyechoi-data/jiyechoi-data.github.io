@@ -26,42 +26,195 @@ output:
 
 ## **Regional Birth Rate Disparities in South Korea**
 
-![](https://img.shields.io/badge/Using-Python-blue)
-![](https://img.shields.io/badge/-LASSO-red)
-![](https://img.shields.io/badge/-XGBoost-success)
+<img src="https://img.shields.io/badge/Using-R-blue" alt="Using R">
+<img src="https://img.shields.io/badge/Analysis-PCA-orange">
+<img src="https://img.shields.io/badge/-MDS-purple" alt="MDS">
+<img src="https://img.shields.io/badge/-Clustering-success">
+<img src="https://img.shields.io/badge/-Factor%20Analysis-blue" alt="Factor Analysis">
 
 <br>
 
-🚨**THIS IS A FICTIONAL PROJECT MEANT AS AN EXAMPLE FOR THE STEPBYSTAT COMMUNITY.**
 
 <br><br><br>
 
-### 1. Figure
-
-<p align="center">
-<img src="images/predict_houseprice.png" style="width:80%; border:0px solid; margin-right: 20px" align="center">
-</p>
-<p align="center">
-[Fig. LASSO regression features by importance]
-</p>
-
-
+### 1. Introduction
 <br>
+Birth rates in South Korea have reached historically low levels, posing significant social and economic challenges. Understanding the factors that influence regional birth rates is essential for developing effective policies to address this issue. This study explores the complex relationships between socio-economic, educational, welfare, and demographic variables affecting birth rates across different regions.
+<br><br><br><br>
+
+
+### 2. Goal
+The primary objective of this study is to identify the key drivers of declining birth rates and uncover regional patterns using advanced statistical methods. By employing Principal Component Analysis (PCA), Factor Analysis, Cluster Analysis, and Multidimensional Scaling (MDS), this research aims to provide actionable insights for policymakers to design targeted interventions for increasing birth rates.
+
+<br><br><br>
+
+### 3. Analysis
+
+<br><br>
+Variable Descriptions :
+<br><br>
+
+**Dependent Variable**
+<br><br>
+
+- Total Fertility Rate :<br>
+The average number of children a woman is expected to have during her lifetime. <br> Includes age-specific fertility rates (e.g., births per 1,000 women aged 15-19).
 
 <br><br>
 
-### 2. Goal
-To predict the final price of each home using 79 explanatory variables describing (almost) every aspect of residential homes in Ames, Iowa.
+**Independent Variables**
+<br><br>
 
+Family Factors : <br>
+
+- Crude Marriage Rate : Number of marriages per 1,000 population in a given year.<br>
+- Crude Divorce Rate : Number of divorces per 1,000 population in a given year.
+<br><br>
+
+Social Factors : <br>
+
+- Population of Marriageable Age Women : Population of women aged 30-34.<br>
+- Average Age at First Marriage Female : Average age at first marriage by region.<br>
+- EQ5D : Health-related quality of life index, where values closer to 1 indicate better quality.<br>
+- Population Growth Rate : {(Population of comparison year - Population of base year) ÷ Population of base year} × 100.<br>
+<br><br>
+
+Educational Factors : <br>
+
+- Number of Kindergartens : Total number of kindergartens in a region.<br>
+- Number of Elementary Schools : Total number of elementary schools in a region.<br>
+<br><br>
+
+Welfare Factors : <br>
+
+- Number of Childcare Facilities : Number of childcare facilities per 1,000 children aged 0-4.<br>
+- Number of Cultural Facilities : Number of cultural facilities per 100,000 people.<br>
+<br><br>
+
+Economic Factors : <br>
+
+- Fiscal Independence : Ratio of local taxes and non-tax revenue to the total budget. <br>
+- Fiscal Autonomy : Ratio of self-generated revenue to the total budget.<br>
+
+
+<br><br><br><br>
+<h4> 1-1. Exploratory Data Analysis </h4>
 <br>
 
-### 3. Methodology & Summary
+1) Correlation by Domain
+<br><br><br>
 
-  + LASSO regressions showed the best performance with a cross validation RMSE-score of 0.1121. Although there is a lot of multicollinearity among the variables, LASSO regression include feature selection; it does not select a substantial number of the available variables in its model, as it is supposed to do.
-  + The XGBoost model also performs very well with a cross validation RMSE of 0.1162.
-  + As those two algorithms are very different, averaging predictions is likely to improve the predictions. As the Lasso cross validated RMSE is better than XGBoost's CV score, I decided to weight the Lasso results double.
+To understand the relationships between variables, correlation coefficients were calculated for each domain: social, family, education, welfare, and economy.
+<br><br>
 
+```r
+birth = read.csv('birth.csv')
+head(birth)
+data = birth[,-1]
+
+#Social Domain
+round(cor(birth[, c("Average_Age_at_First_Marriage_Female","Population_of_Marriageable_Age_Women","Population_Growth_Rate","EQ5D")]), 4)
+
+#Family Domain
+round(cor(birth[, c("Marriage_Rate","Divorce_Rate")]), 2)
+
+#Education Domain
+round(cor(birth[, c("Number_of_Kindergartens", "Number_of_Elementary Schools")]))
+
+#Welfare Domain
+round(cor(birth[, c("Number_of_Cultural_Facilities", "Number_of_Childcare_Facilities")]))
+
+#Economy Domain
+round(cor(birth[, c("Fiscal_Independence", "Fiscal_Autonomy")]))
+
+#Correlation Matrix
+corr_matrix <- round(cor(birth), 2)
+print(corr_matrix)
+```
+
+<br><br>
+Below is a summary of key results:
+<br><br>
+
+- Social Domain <br>
+
+The highest correlation was observed between Average Age at First Marriage Female and Population of Marriageable Age Women (correlation: 0.096). However, the correlation between Average Age at First Marriage Female and EQ5D (Quality of Life Index) was negligible. 
+<br><br>
+
+- Family Domain <br>
+
+Crude Marriage Rate and Crude Divorce Rate showed a strong positive correlation (0.96). 
+<br><br>
+
+- Education Domain <br>
+
+Number of Kindergartens and Number of Elementary Schools were strongly correlated (0.95).
+<br><br>
+
+- Welfare Domain <br>
+
+Number of Cultural Facilities and Number of Childcare Facilities showed low correlation (-0.24).
+<br><br>
+
+- Economic Domain <br>
+
+Fiscal Independence and Fiscal Autonomy had a moderate positive correlation (0.35).
+<br><br>
+
+- Correlation Matrix <br>
+
+Some variables (e.g., Crude Marriage Rate and Population of Marriageable Age Women) showed moderate correlations, while others (e.g., Number of Kindergartens and Number of Elementary Schools) displayed stronger relationships.
+
+
+<br><br><br>
+
+2) Scatterplot Matrix
+
+<br><br>
+
+```r
+pairs(test, panel = function (x, y, ...) { 
+    points(x, y, ...)
+    abline(lm(y ~ x), col = 'red')
+}, cex = 1.5, pch = "*", bg = "blue",
+    diag.panel = panel.hist, cex.labels = 1, font.labels = 1)
+    
+panel.hist <- function(x, ...) 
+{
+   usr <- par("usr"); on.exit(par(usr))
+   par(usr = c(usr[1:2], 0, 1.5) )
+   h <- hist(x, plot = FALSE)
+   breaks <- h$breaks; nB <- length(breaks)
+   y <- h$counts; y <- y/max(y)
+   rect(breaks[-nB], 0, breaks[-1], y, col = "cyan", ...)
+}
+```
+
+<br><br>
+
+<!--Scatterplot Matrix-->
+<p align="center">
+  <img src="images/scatter.png.png" style="width:80%; border:0px solid; margin-right: 20px" align="center">
+    <br><br>
+</p>
+<p align="center" style="font-size: 14px; font-weight: bold;">
+  [Fig. Scatterplot Matrix]
+    <br>
+</p>
+
+<br><br>
+
+The scatterplot matrix reveals a strong linear relationship between Total Fertility Rate and Average Age at First Marriage, as well as between Number of Kindergartens and Number of Elementary Schools. <br> 
 <br>
+However, Cultural Facilities show no notable linear relationship with other variables, suggesting they may not significantly contribute to explaining fertility rates. <br>
+<br>
+Additionally, the scatterplot matrix highlights the presence of outliers, indicating the need for further data preprocessing before re-evaluating the correlations and patterns.
+
+<br><br><br><br>
+3) Data Preprocessing
+
+
+<br><br><br><br>
 
 ### 4. Code
 

@@ -46,8 +46,10 @@ Understanding the relationship between living expenses and savings is crucial fo
 <br><br><br><br>
 
 
+### 2. Analysis
 
-### 2. Exploratory Data Analysis
+<br><br>
+<h4> 1-1. Exploratory Data Analysis </h4>
 <br>
 This study utilizes data from the Korean Longitudinal Survey of Women and Families (KLoWF), focusing on the following key variables (measured in units of 10,000 Korean Won, KRW):
 
@@ -152,10 +154,8 @@ To investigate how monthly living expenses change over time, we will address mis
 
 <br><br><br><br>
 
-### 3. Analysis
 
-<br><br>
-<h4> 1-1. Path Analysis </h4>
+<h4> 1-2. Path Analysis </h4>
 <br>
 This study examines the causal relationships between Employment Status, Educational Expenses, Savings, and Living Expenses using path analysis. Missing data were handled using **Regression Imputation**.
 
@@ -274,7 +274,7 @@ Insights from Path Analysis :
 
 
 
-<h4> 1-2. Effects Analysis </h4>
+<h4> 1-3. Effects Analysis </h4>
 <br><br>
 
 Key Results:
@@ -296,7 +296,7 @@ Key Results:
 
 <br><br><br><br><br><br>
 
-### 4. Latent Growth Curve Model
+### 3. Latent Growth Curve Model
 <br><br><br>
 
 <!-- LGCM -->
@@ -590,7 +590,7 @@ Variance Estimates
 
 <br><br><br><br><br><br>
 
-### 5. Conclusion
+### 4. Conclusion
 <br><br>
 
 This study examined the dynamics of monthly living expenses in households with female heads over three years, utilizing data from the Korean Longitudinal Survey of Women and Families (KLoWF). Latent Growth Curve Modeling (LGCM) was applied, with missing data addressed through Full Information Maximum Likelihood (FIML) and Regression Imputation.

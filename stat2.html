@@ -399,47 +399,193 @@ div.tocify {
 <div id="regional-birth-rate-disparities-in-south-korea"
 class="section level2">
 <h2><strong>Regional Birth Rate Disparities in South Korea</strong></h2>
-<p><img src="https://img.shields.io/badge/Using-Python-blue" /> <img
-src="https://img.shields.io/badge/-LASSO-red" /> <img
-src="https://img.shields.io/badge/-XGBoost-success" /></p>
+<p><img src="https://img.shields.io/badge/Using-R-blue" alt="Using R">
+<img src="https://img.shields.io/badge/Analysis-PCA-orange">
+<img src="https://img.shields.io/badge/-MDS-purple" alt="MDS">
+<img src="https://img.shields.io/badge/-Clustering-success">
+<img src="https://img.shields.io/badge/-Factor%20Analysis-blue" alt="Factor Analysis"></p>
 <p><br></p>
-<p>🚨<strong>THIS IS A FICTIONAL PROJECT MEANT AS AN EXAMPLE FOR THE
-STEPBYSTAT COMMUNITY.</strong></p>
 <p><br><br><br></p>
-<div id="figure" class="section level3">
-<h3>1. Figure</h3>
-<p align="center">
-<img src="images/predict_houseprice.png" style="width:80%; border:0px solid; margin-right: 20px" align="center">
-</p>
-<p align="center">
-[Fig. LASSO regression features by importance]
-</p>
-<p><br></p>
-<p><br><br></p>
+<div id="introduction" class="section level3">
+<h3>1. Introduction</h3>
+<p><br> Birth rates in South Korea have reached historically low levels,
+posing significant social and economic challenges. Understanding the
+factors that influence regional birth rates is essential for developing
+effective policies to address this issue. This study explores the
+complex relationships between socio-economic, educational, welfare, and
+demographic variables affecting birth rates across different regions.
+<br><br><br><br></p>
 </div>
 <div id="goal" class="section level3">
 <h3>2. Goal</h3>
-<p>To predict the final price of each home using 79 explanatory
-variables describing (almost) every aspect of residential homes in Ames,
-Iowa.</p>
-<p><br></p>
+<p>The primary objective of this study is to identify the key drivers of
+declining birth rates and uncover regional patterns using advanced
+statistical methods. By employing Principal Component Analysis (PCA),
+Factor Analysis, Cluster Analysis, and Multidimensional Scaling (MDS),
+this research aims to provide actionable insights for policymakers to
+design targeted interventions for increasing birth rates.</p>
+<p><br><br><br></p>
 </div>
-<div id="methodology-summary" class="section level3">
-<h3>3. Methodology &amp; Summary</h3>
+<div id="analysis" class="section level3">
+<h3>3. Analysis</h3>
+<p><br><br> Variable Descriptions : <br><br></p>
+<p><strong>Dependent Variable</strong> <br><br></p>
 <ul>
-<li>LASSO regressions showed the best performance with a cross
-validation RMSE-score of 0.1121. Although there is a lot of
-multicollinearity among the variables, LASSO regression include feature
-selection; it does not select a substantial number of the available
-variables in its model, as it is supposed to do.</li>
-<li>The XGBoost model also performs very well with a cross validation
-RMSE of 0.1162.</li>
-<li>As those two algorithms are very different, averaging predictions is
-likely to improve the predictions. As the Lasso cross validated RMSE is
-better than XGBoost’s CV score, I decided to weight the Lasso results
-double.</li>
+<li>Total Fertility Rate :<br> The average number of children a woman is
+expected to have during her lifetime. <br> Includes age-specific
+fertility rates (e.g., births per 1,000 women aged 15-19).</li>
 </ul>
+<p><br><br></p>
+<p><strong>Independent Variables</strong> <br><br></p>
+<p>Family Factors : <br></p>
+<ul>
+<li>Crude Marriage Rate : Number of marriages per 1,000 population in a
+given year.<br></li>
+<li>Crude Divorce Rate : Number of divorces per 1,000 population in a
+given year. <br><br></li>
+</ul>
+<p>Social Factors : <br></p>
+<ul>
+<li>Population of Marriageable Age Women : Population of women aged
+30-34.<br></li>
+<li>Average Age at First Marriage Female : Average age at first marriage
+by region.<br></li>
+<li>EQ5D : Health-related quality of life index, where values closer to
+1 indicate better quality.<br></li>
+<li>Population Growth Rate : {(Population of comparison year -
+Population of base year) ÷ Population of base year} × 100.<br>
+<br><br></li>
+</ul>
+<p>Educational Factors : <br></p>
+<ul>
+<li>Number of Kindergartens : Total number of kindergartens in a
+region.<br></li>
+<li>Number of Elementary Schools : Total number of elementary schools in
+a region.<br> <br><br></li>
+</ul>
+<p>Welfare Factors : <br></p>
+<ul>
+<li>Number of Childcare Facilities : Number of childcare facilities per
+1,000 children aged 0-4.<br></li>
+<li>Number of Cultural Facilities : Number of cultural facilities per
+100,000 people.<br> <br><br></li>
+</ul>
+<p>Economic Factors : <br></p>
+<ul>
+<li>Fiscal Independence : Ratio of local taxes and non-tax revenue to
+the total budget. <br></li>
+<li>Fiscal Autonomy : Ratio of self-generated revenue to the total
+budget.<br></li>
+</ul>
+<br><br><br><br>
+<h4>
+1-1. Exploratory Data Analysis
+</h4>
 <p><br></p>
+<ol style="list-style-type: decimal">
+<li>Correlation by Domain <br><br><br></li>
+</ol>
+<p>To understand the relationships between variables, correlation
+coefficients were calculated for each domain: social, family, education,
+welfare, and economy. <br><br></p>
+<pre class="r"><code>birth = read.csv(&#39;birth.csv&#39;)
+head(birth)
+data = birth[,-1]
+
+#Social Domain
+round(cor(birth[, c(&quot;Average_Age_at_First_Marriage_Female&quot;,&quot;Population_of_Marriageable_Age_Women&quot;,&quot;Population_Growth_Rate&quot;,&quot;EQ5D&quot;)]), 4)
+
+#Family Domain
+round(cor(birth[, c(&quot;Marriage_Rate&quot;,&quot;Divorce_Rate&quot;)]), 2)
+
+#Education Domain
+round(cor(birth[, c(&quot;Number_of_Kindergartens&quot;, &quot;Number_of_Elementary Schools&quot;)]))
+
+#Welfare Domain
+round(cor(birth[, c(&quot;Number_of_Cultural_Facilities&quot;, &quot;Number_of_Childcare_Facilities&quot;)]))
+
+#Economy Domain
+round(cor(birth[, c(&quot;Fiscal_Independence&quot;, &quot;Fiscal_Autonomy&quot;)]))
+
+#Correlation Matrix
+corr_matrix &lt;- round(cor(birth), 2)
+print(corr_matrix)</code></pre>
+<p><br><br> Below is a summary of key results: <br><br></p>
+<ul>
+<li>Social Domain: <br></li>
+</ul>
+<p>The highest correlation was observed between Average Age at First
+Marriage Female and Population of Marriageable Age Women (correlation:
+0.096). However, the correlation between Average Age at First Marriage
+Female and EQ5D (Quality of Life Index) was negligible. <br><br></p>
+<ul>
+<li>Family Domain: <br></li>
+</ul>
+<p>Crude Marriage Rate and Crude Divorce Rate showed a strong positive
+correlation (0.96). <br><br></p>
+<ul>
+<li>Education Domain: <br></li>
+</ul>
+<p>Number of Kindergartens and Number of Elementary Schools were
+strongly correlated (0.95). <br><br></p>
+<ul>
+<li>Welfare Domain: <br></li>
+</ul>
+<p>Number of Cultural Facilities and Number of Childcare Facilities
+showed low correlation (-0.24). <br><br></p>
+<ul>
+<li>Economic Domain: <br></li>
+</ul>
+<p>Fiscal Independence and Fiscal Autonomy had a moderate positive
+correlation (0.35). <br><br></p>
+<ul>
+<li>Correlation Matrix <br></li>
+</ul>
+<p>Some variables (e.g., Crude Marriage Rate and Population of
+Marriageable Age Women) showed moderate correlations, while others
+(e.g., Number of Kindergartens and Number of Elementary Schools)
+displayed stronger relationships.</p>
+<p><br><br><br></p>
+<ol start="2" style="list-style-type: decimal">
+<li>Scatterplot Matrix</li>
+</ol>
+<p><br><br></p>
+<pre class="r"><code>pairs(test, panel = function (x, y, ...) { 
+    points(x, y, ...)
+    abline(lm(y ~ x), col = &#39;red&#39;)
+}, cex = 1.5, pch = &quot;*&quot;, bg = &quot;blue&quot;,
+    diag.panel = panel.hist, cex.labels = 1, font.labels = 1)
+    
+panel.hist &lt;- function(x, ...) 
+{
+   usr &lt;- par(&quot;usr&quot;); on.exit(par(usr))
+   par(usr = c(usr[1:2], 0, 1.5) )
+   h &lt;- hist(x, plot = FALSE)
+   breaks &lt;- h$breaks; nB &lt;- length(breaks)
+   y &lt;- h$counts; y &lt;- y/max(y)
+   rect(breaks[-nB], 0, breaks[-1], y, col = &quot;cyan&quot;, ...)
+}</code></pre>
+<p><br><br></p>
+<!--Scatterplot Matrix-->
+<p align="center">
+<img src="images/scatter.png.png" style="width:80%; border:0px solid; margin-right: 20px" align="center">
+<br><br>
+</p>
+<p align="center" style="font-size: 14px; font-weight: bold;">
+[Fig. Scatterplot Matrix] <br>
+</p>
+<p><br><br></p>
+<p>The scatterplot matrix reveals a strong linear relationship between
+Total Fertility Rate and Average Age at First Marriage, as well as
+between Number of Kindergartens and Number of Elementary Schools. <br>
+<br> However, Cultural Facilities show no notable linear relationship
+with other variables, suggesting they may not significantly contribute
+to explaining fertility rates. <br> <br> Additionally, the scatterplot
+matrix highlights the presence of outliers, indicating the need for
+further data preprocessing before re-evaluating the correlations and
+patterns.</p>
+<p><br><br><br><br> 3) Data Preprocessing</p>
+<p><br><br><br><br></p>
 </div>
 <div id="code" class="section level3">
 <h3>4. Code</h3>
