@@ -614,6 +614,50 @@ Based on the absolute factor loadings, the following groups were identified:
 4. **Age at First Marriage for Women** : This group is represented by the variable *Average Age at First Marriage Female*, which showed a high loading.
 
 
+<br><br><br><br>
+
+<h4> 1-4. Cluster Analysis </h4>
+
+<br><br>
+
+1) **Agglomerative Hierarchical Clustering**
+
+<br><br>
+
+```r
+birth = birth[, -1]
+X <- scale(birth[, names(birth)])
+dj <- dist(x)
+
+plot(cc <- hclust(dj, method = "single"), main = "single")
+plot(cc <- hclust(dj, method = "complete"), main = "complete")
+plot(cc <- hclust(dj, method = "average"), main = "average")
+
+```
+<br><br>
+
+<!--single linkage-->
+<p align="center">
+  <img src="images/single.PNG" style="width:70%; border:0px solid; margin-right: 20px" align="center">
+    <br><br>
+
+<!--complete linkage-->
+<p align="center">
+  <img src="images/complete.PNG" style="width:70%; border:0px solid; margin-right: 20px" align="center">
+    <br><br>
+
+<!--average linkage-->
+<p align="center">
+  <img src="images/average.PNG" style="width:70%; border:0px solid; margin-right: 20px" align="center">
+    <br><br>
+    
+<br><br>
+Agglomerative Hierarchical Clustering was applied using three methods:<br>
+Single Linkage, Complete Linkage, and Average Linkage, to observe how the data is hierarchically classified. <br><br>
+The results showed that the Complete Linkage Method divided the data into two major clusters. <br><br>
+To understand the criteria for these clusters, the data will be analyzed by region.
+
+<br><br><br>
 
 
 

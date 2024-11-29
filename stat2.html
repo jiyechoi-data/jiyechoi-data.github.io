@@ -1001,18 +1001,55 @@ scores&lt;-factanal(scale(test_fit),factors=4,method=&#39;mle&#39;,scores=&#39;r
 <p><br><br> Based on the absolute factor loadings, the following groups
 were identified: <br><br></p>
 <ol style="list-style-type: decimal">
-<li><strong>Parents of Young Children</strong>: This group includes
+<li><strong>Parents of Young Children</strong> : This group includes
 variables such as <em>Population of Marriageable Age Women</em>,
 <em>Number of Kindergartens</em>, and <em>Number of Elementary
 Schools</em>. <br><br></li>
-<li><strong>Marital Status</strong>: This group consists of <em>Crude
+<li><strong>Marital Status</strong> : This group consists of <em>Crude
 Marriage Rate</em> and <em>Crude Divorce Rate</em>. <br><br></li>
-<li><strong>Urban Fiscal Capacity</strong>: This group is defined by
+<li><strong>Urban Fiscal Capacity</strong> : This group is defined by
 <em>Fiscal Independence</em> and <em>Fiscal Autonomy</em>. <br><br></li>
-<li><strong>Age at First Marriage for Women</strong>: This group is
+<li><strong>Age at First Marriage for Women</strong> : This group is
 represented by the variable <em>Average Age at First Marriage
 Female</em>, which showed a high loading.</li>
 </ol>
+<p><br><br><br><br></p>
+<h4>
+1-4. Cluster Analysis
+</h4>
+<p><br><br></p>
+<ol style="list-style-type: decimal">
+<li><strong>Agglomerative Hierarchical Clustering</strong></li>
+</ol>
+<p><br><br></p>
+<pre class="r"><code>birth = birth[, -1]
+X &lt;- scale(birth[, names(birth)])
+dj &lt;- dist(x)
+
+plot(cc &lt;- hclust(dj, method = &quot;single&quot;), main = &quot;single&quot;)
+plot(cc &lt;- hclust(dj, method = &quot;complete&quot;), main = &quot;complete&quot;)
+plot(cc &lt;- hclust(dj, method = &quot;average&quot;), main = &quot;average&quot;)
+</code></pre>
+<p><br><br></p>
+<!--single linkage-->
+<p align="center">
+<p><img src="images/single.PNG" style="width:70%; border:0px solid; margin-right: 20px" align="center">
+<br><br></p>
+<!--complete linkage-->
+<p align="center">
+<p><img src="images/complete.PNG" style="width:70%; border:0px solid; margin-right: 20px" align="center">
+<br><br></p>
+<!--average linkage-->
+<p align="center">
+<p><img src="images/average.PNG" style="width:70%; border:0px solid; margin-right: 20px" align="center">
+<br><br></p>
+<p><br><br> Agglomerative Hierarchical Clustering was applied using
+three methods:<br> Single Linkage, Complete Linkage, and Average
+Linkage, to observe how the data is hierarchically classified. <br><br>
+The results showed that the Complete Linkage Method divided the data
+into two major clusters. <br><br> To understand the criteria for these
+clusters, the data will be analyzed by region.</p>
+<p><br><br><br></p>
 <p><br><br><br><br></p>
 </div>
 <div id="code" class="section level3">
