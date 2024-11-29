@@ -484,7 +484,92 @@ summary(data_pcacor, loading=TRUE)
 <br>
 - To determine the number of principal components, the second method (cumulative proportion) was applied. <br><br> PC1 explains approximately 36% of the total variance, PC2 explains 17%, PC3 explains 11%, PC4 explains 9%, and PC5 explains 7%. <br><br> Together, these five components account for around 80% of the total variance, making them the optimal choice for analysis.
 
+<br><br>
 
+**Principal Component Naming**
+
+<br><br>
+
+<!--PCA-->
+<p align="center">
+  <img src="images/pcaname.JPG" style="width:80%; border:0px solid; margin-right: 20px" align="center">
+    <br><br>
+</p>
+<p align="center" style="font-size: 14px; font-weight: bold;">
+  [Fig. Principal Component Loadings by Variables]
+    <br>
+</p>
+
+<br><br>
+
+Based on the results of the principal component analysis, the components were named as follows:
+<br><br>
+
+- **PC1 (*Urban Development Index*)**: Named due to the high loadings of variables such as *Population of Marriageable Age Women*, *Number of Cultural Facilities*, and *Fiscal Independence*. <br><br>
+- **PC2 (*Demographic Factors*)**: Includes variables like *Average Age at First Marriage Female*, *Total Fertility Rate*, and *Population Growth Rate*. <br><br>
+- **PC3 (*Households with Children*)**: Comprised of variables such as *Number of Childcare Facilities*, *Number of Elementary Schools*, *Crude Marriage Rate*, and *Crude Divorce Rate*. <br><br>
+- **PC4**: Named after *EQ5D*, as it had the highest loading.<br><br>
+- **PC5**: Named *Fiscal Autonomy* due to the dominant influence of this variable. 
+
+<br><br><br><br>
+
+
+<h4> 1-2. MDS </h4>
+
+<br><br>
+
+1) Data Validation
+<br><br>
+
+- The Euclidean distance matrix was created, and classical MDS was applied to determine how well the distances could be reconstructed in 12 dimensions.<br>
+- The first 12 eigenvalues were non-zero, confirming that the Euclidean distance matrix can be accurately represented in 12 dimensions. <br>
+- The maximum difference between the original distance matrix and the reconstructed matrix was \(3.29 \times 10^{-5}\), indicating minimal error.  <br>
+- A comparison with principal component analysis (PCA) showed a maximum difference of \(9.76 \times 10^{-7}\), confirming high similarity.
+<br><br><br><br>
+
+2) Validation of MDS Results
+<br>
+
+- Most eigenvalues obtained from classical MDS were negative.  <br>
+- This suggests that non-metric MDS may be more appropriate for this dataset.
+<br><br><br><br>
+
+3) Non-metric Multidimensional Scaling (Non-metric MDS)
+<br><br><br>
+
+```r
+library("MASS")
+
+(data_mds3 = isoMDS(D))
+x = data_mds3$points[, 1]
+y = data_mds3$points[, 2]
+lim = range(c(x, y)) * 1.2
+plot(x, y, xlab = "Coordinate 1", ylab = "Coordinate 2",
+, ylim = c(-50,50),type = "n")
+text(x, y, rownames(test), cex = 0.7,col = c("blue","black")[data$city])
+```
+<br><br>
+
+<!--Non-metric MDS-->
+<p align="center">
+  <img src="images/mda.PNG" style="width:70%; border:0px solid; margin-right: 20px" align="center">
+    <br><br>
+</p>
+<p align="center" style="font-size: 14px; font-weight: bold;">
+  [Fig. Non-metric Multidimensional Scaling]
+    <br>
+</p>
+
+<br><br>
+
+The results of the non-metric multidimensional scaling (Non-metric MDS) indicate a clear distinction between the Seoul-Incheon region and other regions.
+
+
+<br><br><br><br>
+
+<h4> 1-3. Factor Analysis </h4>
+
+<br><br>
 
 
 
