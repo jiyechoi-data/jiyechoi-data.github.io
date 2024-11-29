@@ -571,6 +571,48 @@ The results of the non-metric multidimensional scaling (Non-metric MDS) indicate
 
 <br><br>
 
+Variables with *uniqueness values greater than 0.5* were identified. These variables (*Number of Childcare Facilities*, *Number of Cultural Facilities*, *Population Growth Rate*, and *EQ5D*) were excluded from the analysis.
+
+<br><br>
+
+```r
+sapply(1:4, function(f)
+factanal(scale(data) ,factors=f , method="mle")$PVAL)
+
+(scores <- factanal(scale(data), factors = 4 method ="mle",scores = "regression")$scores)
+factanal(scale(data), factors = 3, method ="mle")
+
+birth_fit<-birth[,-c(1,7,8,13)] 
+birthfit_cor<-cor(test_fit) 
+sapply(1:4, function(f)
+    factanal(birthfit_cor ,factors=f , method="mle")$PVAL)
+
+scores<-factanal(scale(test_fit),factors=4,method='mle',scores='regression')$scores factanal(covmat=testfit_cor,factors=4,method='mle',n.obs=221)
+
+```
+<br><br><br>
+
+| Variable                              | Factor 1 | Factor 2 | Factor 3 | Factor 4 |
+|---------------------------------------|----------|----------|----------|----------|
+| Average Age at First Marriage Female | -        | -        | -0.131   | **0.799** |
+| Population of Marriageable Age Women | **0.810**| 0.333    | -        | 0.348    |
+| Crude Marriage Rate                   | 0.191    | **0.938**| -        | -        |
+| Number of Childcare Facilities        | **0.985**| 0.148    | -        | -        |
+| Number of Elementary Schools          | **0.947**| 0.110    | -        | -        |
+| Population Growth Rate                | -        | 0.345    | 0.328    | -        |
+| Crude Divorce Rate                    | 0.195    | **0.966**| -        | 0.152    |
+| Fiscal Independence                   | 0.454    | 0.485    | 0.533    | 0.402    |
+| Fiscal Autonomy                       | -        | -        | **0.800**| -0.138   |
+
+<br><br>
+Based on the absolute factor loadings, the following groups were identified:
+<br><br>
+
+1. **Parents of Young Children** : This group includes variables such as *Population of Marriageable Age Women*, *Number of Kindergartens*, and *Number of Elementary Schools*. <br><br>
+2. **Marital Status** : This group consists of *Crude Marriage Rate* and *Crude Divorce Rate*. <br><br>
+3. **Urban Fiscal Capacity** : This group is defined by *Fiscal Independence* and *Fiscal Autonomy*. <br><br>
+4. **Age at First Marriage for Women** : This group is represented by the variable *Average Age at First Marriage Female*, which showed a high loading.
+
 
 
 
