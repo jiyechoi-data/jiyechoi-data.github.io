@@ -417,6 +417,75 @@ pairs(welfare, diag.panel=panel.hist,
 
 The results indicate that the welfare factors exhibit multiple peaks, allowing regions to be classified into several groups.
 
+<br><br>
+
+```r
+economy<-data[, c('Fiscal Autonomy','Fiscal Independence')] 
+pairs(economy, diag.panel=panel.hist,
+  panel=function(x,y){
+    data<-data.frame(cbind(x,y))
+    par(new=TRUE) 
+    den<-bkde2D(data,bandwidth=sapply(data,dpik)) 
+    contour(x=den$x1,y=den$x2,
+    z=den$fhat,axes=FALSE)
+})
+```
+<br><br>
+
+<!--scatterplot_economy-->
+<p align="center">
+  <img src="images/scattereconomy.png.png" style="width:60%; border:0px solid; margin-right: 20px" align="center">
+    <br><br>
+</p>
+<p align="center" style="font-size: 14px; font-weight: bold;">
+  [Fig. Scatterplot for Economy Factors]
+    <br>
+</p>
+
+<br><br>
+
+The results indicate that the economic factors exhibit multiple peaks, enabling regions to be classified into several groups.
+
+<br><br><br><br>
+
+
+<h4> 1-2. PCA </h4>
+
+<br><br>
+
+```r
+birth = birth[-outcity,] 
+round(cor(birth),2)
+
+birth_corr = cor(birth) 
+data_pcacor=princomp(covmat=birth_corr) 
+summary(data_pcacor, loading=TRUE)
+
+birth_corr = cor(test) 
+data_pcacor=princomp(covmat=birth_corr) 
+summary(data_pcacor, loading=TRUE)
+```
+<br><br>
+
+<!--PCA-->
+<p align="center">
+  <img src="images/pca.JPG" style="width:80%; border:0px solid; margin-right: 20px" align="center">
+    <br><br>
+</p>
+<p align="center" style="font-size: 14px; font-weight: bold;">
+  [Fig. Importance of Principal Components]
+    <br>
+</p>
+
+<br><br>
+
+- Kaiser’s Rule: Principal components with eigenvalues less than 1 are excluded.<br>
+- Cumulative Proportion: Principal components PC1, PC2, PC3, PC4, and PC5, which explain 70-80% of the variance, are selected.<br>
+<br>
+- To determine the number of principal components, the second method (cumulative proportion) was applied. <br><br> PC1 explains approximately 36% of the total variance, PC2 explains 17%, PC3 explains 11%, PC4 explains 9%, and PC5 explains 7%. <br><br> Together, these five components account for around 80% of the total variance, making them the optimal choice for analysis.
+
+
+
 
 
 

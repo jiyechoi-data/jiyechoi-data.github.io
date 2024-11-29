@@ -744,6 +744,65 @@ pairs(welfare, diag.panel=panel.hist,
 <p><br><br></p>
 <p>The results indicate that the welfare factors exhibit multiple peaks,
 allowing regions to be classified into several groups.</p>
+<p><br><br></p>
+<pre class="r"><code>economy&lt;-data[, c(&#39;Fiscal Autonomy&#39;,&#39;Fiscal Independence&#39;)] 
+pairs(economy, diag.panel=panel.hist,
+  panel=function(x,y){
+    data&lt;-data.frame(cbind(x,y))
+    par(new=TRUE) 
+    den&lt;-bkde2D(data,bandwidth=sapply(data,dpik)) 
+    contour(x=den$x1,y=den$x2,
+    z=den$fhat,axes=FALSE)
+})</code></pre>
+<p><br><br></p>
+<!--scatterplot_economy-->
+<p align="center">
+<img src="images/scattereconomy.png.png" style="width:60%; border:0px solid; margin-right: 20px" align="center">
+<br><br>
+</p>
+<p align="center" style="font-size: 14px; font-weight: bold;">
+[Fig. Scatterplot for Economy Factors] <br>
+</p>
+<p><br><br></p>
+<p>The results indicate that the economic factors exhibit multiple
+peaks, enabling regions to be classified into several groups.</p>
+<p><br><br><br><br></p>
+<h4>
+1-2. PCA
+</h4>
+<p><br><br></p>
+<pre class="r"><code>birth = birth[-outcity,] 
+round(cor(birth),2)
+
+birth_corr = cor(birth) 
+data_pcacor=princomp(covmat=birth_corr) 
+summary(data_pcacor, loading=TRUE)
+
+birth_corr = cor(test) 
+data_pcacor=princomp(covmat=birth_corr) 
+summary(data_pcacor, loading=TRUE)</code></pre>
+<p><br><br></p>
+<!--PCA-->
+<p align="center">
+<img src="images/pca.JPG" style="width:80%; border:0px solid; margin-right: 20px" align="center">
+<br><br>
+</p>
+<p align="center" style="font-size: 14px; font-weight: bold;">
+[Fig. Importance of Principal Components] <br>
+</p>
+<p><br><br></p>
+<ul>
+<li>Kaiser’s Rule: Principal components with eigenvalues less than 1 are
+excluded.<br></li>
+<li>Cumulative Proportion: Principal components PC1, PC2, PC3, PC4, and
+PC5, which explain 70-80% of the variance, are selected.<br> <br></li>
+<li>To determine the number of principal components, the second method
+(cumulative proportion) was applied. <br><br> PC1 explains approximately
+36% of the total variance, PC2 explains 17%, PC3 explains 11%, PC4
+explains 9%, and PC5 explains 7%. <br><br> Together, these five
+components account for around 80% of the total variance, making them the
+optimal choice for analysis.</li>
+</ul>
 <p><br><br><br><br></p>
 </div>
 <div id="code" class="section level3">
