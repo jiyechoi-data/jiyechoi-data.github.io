@@ -42,7 +42,7 @@ output:
 
 ### 1. Introduction
 <br>
-Understanding the relationship between living expenses and savings is crucial in today's economy for effective financial planning. This project investigates how various factors such as employment status and educational expenses for children influence monthly living expenses. Leveraging latent growth curve modeling (LGCM) and path analysis, the study uncovers patterns and relationships to provide insights into economic behaviors.
+Understanding the relationship between living expenses and savings is crucial in today's economy for effective financial planning. This project investigates how various factors such as employment status and educational expenses for children influence monthly living expenses. Using SPSS for data preprocessing and AMOS for latent growth curve modeling (LGCM) and path analysis, the study uncovers patterns and relationships to provide insights into economic behaviors.
 <br><br><br>
 
 ### 2. Goal
@@ -167,7 +167,7 @@ Path analysis will be conducted to examine the causal relationships between Empl
 This research model assumes that Employment Status influences Private Education Expenses, Monthly Savings, and Living Expenses. It also assumes that Private Education Expenses impact Monthly Savings and Living Expenses, and that Monthly Savings influence Living Expenses.
 
 <br><br>
-(1) Model Fit Evaluation (Default Model)
+Model Fit Evaluation (Default Model)
 <br>
 
 - Number of distinct sample moments: 14
@@ -325,6 +325,7 @@ The Indirect Effect of -27.171 is further decomposed into the following pathways
 
 <br><br>
 
+---
 
 
 <br><br><br><br>
@@ -363,7 +364,7 @@ The significance of the direct effects is as follows:
 
 
 
-<br><br><br><br><br>
+<br><br><br><br><br><br>
 
 ### 6. Latent Growth Curve Model
 <br><br><br>
@@ -385,7 +386,7 @@ In this model, the second method for handling missing data provided by Amos, **F
 <br><br>
 
 
-(1) Model Fit Evaluation
+Model Fit Evaluation
 <br>
 
 | Measure                  | Value      |
@@ -429,7 +430,7 @@ Comparative Fit Measures
 </p>
 <br><br>
 
-(1) Model Fit Results
+Model Fit Results
 <br>
 
 | Metric                  | Value  |
@@ -479,7 +480,7 @@ The additional indices, including NFI, TLI, and CFI, all exceed 0.9 for the Defa
 
 
 <br><br><br><br><br>
-(2) Model Estimation without Variance Constraints on Error Terms
+**Model Estimation without Variance Constraints on Error Terms**
 <br><br><br>
 Null and Alternative Hypotheses for ICEPT and SLOPE:
 <br><br>
@@ -540,9 +541,9 @@ Using these results, the average monthly living expenses over three years can be
 
 <br><br><br>
 
-Implied Mean
+**Implied Mean**
 
-<br>
+<br><br>
 
 | Year  | Implied Mean (Monthly Living Expenses) |
 |-------|---------------------------------------|
@@ -563,10 +564,10 @@ Using these implied means, the average monthly living expenses for 2014 can be p
 
 A model was created to examine whether the pattern of changes in monthly living expenses differs based on the level of savings.
 
-<br><br>
+<br><br><br><br>
 
 **Covariate-Added Model**
-<br><br>
+<br><br><br>
 
 <!-- LGCM3 -->
 <p align="center">
@@ -579,7 +580,7 @@ A model was created to examine whether the pattern of changes in monthly living 
 </p>
 <br><br>
 
-(1) Model Fit Results
+Model Fit Results
 <br>
 
 | Metric                         | Value |
@@ -637,10 +638,10 @@ RMSEA
 - The results indicate a Chi-square value (\( \chi^2 \)) of 0.133 with 2 degrees of freedom (DF), yielding a p-value of 0.936. <br>
 - This high p-value indicates that the model fits the data well, failing to reject the null hypothesis of good fit.
 
-<br><br><br>
+<br><br><br><br><br>
 
-(2) Parameter Estimates
-<br>
+**Parameter Estimates**
+<br><br><br>
 
 | Dependent Variable | Predictor   | Estimate | S.E.  | C.R.   | P      |
 |--------------------|-------------|----------|-------|--------|--------|
@@ -670,9 +671,9 @@ Interpretation
 
 To handle missing data, **Regression Imputation** was utilized. This method ensures that missing values are estimated based on observed data, providing a reliable foundation for subsequent analyses.
 
-<br><br>
+<br><br><br>
 
-(1) Model Fit Evaluation
+Model Fit Evaluation
 <br><br>
 
 After imputing missing values, the model fit was assessed. The results of the model fit evaluation are as follows:
@@ -691,10 +692,10 @@ The Chi-square test indicates that the model is not a good fit (\(p < 0.001\)). 
 <br>
 Based on the above evaluation, the model is not suitable for explaining the observed data effectively. Further adjustments to the model or alternative methodologies may be required to achieve a better fit.
 
-<br><br><br><br>
+<br><br><br><br><br>
 **Model Fit Evaluation without Variance Constraints on Error Terms**
-<br><br>
-(1) Model Fit Evaluation
+<br><br><br>
+Model Fit Evaluation
 <br>
 The fit of the model without variance constraints on error terms was evaluated. <br> The results are presented in the following table:
 
@@ -755,9 +756,9 @@ RMSEA
 
 The baseline comparison indices (NFI, TLI, CFI, etc.) all exceed 0.9, suggesting strong model fit. <br> Additionally, the RMSEA value for the Default model is 0.000, which is well below the threshold of 0.05, further confirming that the model demonstrates excellent fit.
 
-<br><br>
+<br><br><br><br>
 
-(2) Parameter Estimates in the Model Without Variance Constraints on Error Terms
+**Parameter Estimates in the Model Without Variance Constraints on Error Terms**
 
 <br><br>
 Mean Estimates
@@ -794,3 +795,35 @@ Variance Estimates
 <br><br>
 These findings highlight the significance of both the average trends and the variability in monthly living expenses over time.
 
+
+<br><br><br><br><br><br>
+
+### 7. Conclusion
+<br><br>
+
+This study analyzed monthly living expenses over three years in households with female heads, focusing on the impact of employment status and savings. The analysis utilized latent growth curve modeling (LGCM) with data from the Korean Longitudinal Survey of Women and Families (KLoWF) and employed two missing data handling methods: Full Information Maximum Likelihood (FIML) and Regression Imputation.
+
+<br><br>
+**Key Findings**:
+<br><br>
+
+1. Increase in Living Expenses
+Monthly living expenses increased consistently from ₩178,688 in 2011 to ₩206,288 in 2013, indicating a general upward trend in household spending.
+<br><br>
+2. Effect of Savings
+Savings significantly influenced the initial level of living expenses (₩178,688) but had no significant impact on the rate of change (₩27,600 annually). This suggests that while savings reflect the household's starting financial status, they do not alter the growth trajectory of expenses.
+<br><br>
+3. Consistency of Missing Data Methods
+Both FIML and Regression Imputation yielded identical results, demonstrating that either method is reliable for analyzing panel data.
+
+<br><br>
+**Implications**:
+<br><br>
+
+- Financial Planning: The findings underscore the importance of addressing initial financial conditions when designing policies aimed at household financial support.
+<br>
+
+- Methodological Insight: The equivalence of FIML and Regression Imputation results highlights their reliability, offering flexibility in missing data handling for similar analyses.
+
+<br><br>
+This research contributes to understanding the dynamics of household financial behavior and emphasizes the robustness of AMOS-based methodologies for longitudinal data analysis. Future studies could expand by incorporating more detailed expense categories to deepen insights into household spending patterns.
