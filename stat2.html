@@ -1050,7 +1050,66 @@ The results showed that the Complete Linkage Method divided the data
 into two major clusters. <br><br> To understand the criteria for these
 clusters, the data will be analyzed by region.</p>
 <p><br><br><br></p>
+<pre class="r"><code>pr &lt;- prcomp(dj)$x[, 1:2]
+
+plot(pr, pch=(1:2)[cutree(cs, k=2)], col = c(&quot;red&quot;, &quot;black&quot;)[test$city], xlim = range(pr) * c(0.9, 1.5))
+
+
+legend(&quot;topright&quot;, col = c(&quot;red&quot;, &quot;red&quot;, &quot;black&quot;, &quot;black&quot;), legend = c(&quot;1/no&quot;, &quot;2/no&quot;, &quot;1/yes&quot;, &quot;2/yes&quot;), pch = c(1:2, 1:2), title=&quot;Cluster/city&quot;, bty=&quot;n&quot;)
+</code></pre>
+<p><br><br></p>
+<!--cluster_plot-->
+<p align="center">
+<img src="images/cluster_factor.png.png" style="width:60%; border:0px solid; margin-right: 20px" align="center">
+<br><br>
+</p>
+<p align="center" style="font-size: 14px; font-weight: bold;">
+[Fig. Cluster Distribution by Region (PC1 vs. PC2)] <br>
+</p>
+<p><br><br></p>
+<p>The results show the data projected onto the first two principal
+component spaces. <br><br> The shape of the points represents the two
+clusters (1 and 2), while the colors indicate the values of the city
+variable (metropolitan and provincial areas vs. non-metropolitan areas).
+<br> The division along the first principal component is influenced by
+the fact that it represents “Urban Development.” <br><br> However, this
+distinction is not perfectly clear. <br><br></p>
+<ul>
+<li>city = yes: Seoul, Busan, Daegu, Incheon, Gwangju, Daejeon, Ulsan,
+and Gyeonggi Province <br></li>
+<li>city = no: All other regions.</li>
+</ul>
 <p><br><br><br><br></p>
+<ol start="2" style="list-style-type: decimal">
+<li><strong>K-Means Clustering</strong></li>
+</ol>
+<p><br><br></p>
+<pre class="r"><code>wssplot &lt;- function(data, nc=15, seed=1234){ 
+ wss &lt;- (nrow(data)-1)*sum(apply(data, 2, var)) 
+ for (i in 2:nc){
+    set.seed(seed)
+    wss[i] &lt;- sum(kmeans(data, centers=i)$withinss)}
+    
+ plot(1:nc, wss, type=&quot;b&quot;, xlab=&quot;Number of Clusters&quot;, ylab=&quot;Within groups sum of squares&quot;)}
+ 
+wssplot(training.data)
+</code></pre>
+<p><br><br></p>
+<!--kmean-->
+<p align="center">
+<img src="images/kmean.png.png" style="width:60%; border:0px solid; margin-right: 20px" align="center">
+<br><br>
+</p>
+<p align="center" style="font-size: 14px; font-weight: bold;">
+[Fig. K-Means Clustering] <br>
+</p>
+<p><br><br></p>
+<p>To perform K-Means Clustering, the number of groups must be
+specified. The “elbow” method is used by plotting the within-cluster sum
+of squares (WCSS) to determine the optimal number of clusters. In the
+graph, the “elbow” appears between 2 and 4 clusters. <br> Therefore,
+K-Means Clustering will be conducted with 2 clusters.</p>
+<p><br><br><br></p>
 </div>
 <div id="code" class="section level3">
 <h3>4. Code</h3>
