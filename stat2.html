@@ -512,29 +512,29 @@ corr_matrix &lt;- round(cor(birth), 2)
 print(corr_matrix)</code></pre>
 <p><br><br> Below is a summary of key results: <br><br></p>
 <ul>
-<li>Social Domain: <br></li>
+<li>Social Domain <br></li>
 </ul>
 <p>The highest correlation was observed between Average Age at First
 Marriage Female and Population of Marriageable Age Women (correlation:
 0.096). However, the correlation between Average Age at First Marriage
 Female and EQ5D (Quality of Life Index) was negligible. <br><br></p>
 <ul>
-<li>Family Domain: <br></li>
+<li>Family Domain <br></li>
 </ul>
 <p>Crude Marriage Rate and Crude Divorce Rate showed a strong positive
 correlation (0.96). <br><br></p>
 <ul>
-<li>Education Domain: <br></li>
+<li>Education Domain <br></li>
 </ul>
 <p>Number of Kindergartens and Number of Elementary Schools were
 strongly correlated (0.95). <br><br></p>
 <ul>
-<li>Welfare Domain: <br></li>
+<li>Welfare Domain <br></li>
 </ul>
 <p>Number of Cultural Facilities and Number of Childcare Facilities
 showed low correlation (-0.24). <br><br></p>
 <ul>
-<li>Economic Domain: <br></li>
+<li>Economic Domain <br></li>
 </ul>
 <p>Fiscal Independence and Fiscal Autonomy had a moderate positive
 correlation (0.35). <br><br></p>
@@ -585,6 +585,32 @@ matrix highlights the presence of outliers, indicating the need for
 further data preprocessing before re-evaluating the correlations and
 patterns.</p>
 <p><br><br><br><br> 3) Data Preprocessing</p>
+<p><br><br></p>
+<p>To analyze the dataset effectively, the normality of each variable
+was assessed, followed by the identification of noticeable outliers.</p>
+<p><br><br></p>
+<pre class="r"><code>layout(matrix(1:16, nc = 4)) 
+sapply(colnames(data), function(x) {
+        qqnorm(data[[x]], main = x, ) 
+        qqline(data[[x]])
+})</code></pre>
+<p><br><br></p>
+<!--Nornality(before)-->
+<p align="center">
+<img src="images/normality1.png" style="width:90%; border:0px solid; margin-right: 20px" align="center">
+<br><br>
+</p>
+<p align="center" style="font-size: 14px; font-weight: bold;">
+[Fig. Normality Check for Variables] <br>
+</p>
+<p><br><br></p>
+<p>The Q-Q plots revealed that most variables, except for Childcare
+Facilities, EQ5D, Average Age at First Marriage, Divorce Rate, Marriage
+Rate, and Total Fertility Rate, deviated from normality. Additionally,
+many variables were found to have outliers.</p>
+<p><br><br></p>
+<p>To detect potential outliers, chi-square plots were generated for the
+dataset.</p>
 <p><br><br><br><br></p>
 </div>
 <div id="code" class="section level3">

@@ -213,6 +213,38 @@ Additionally, the scatterplot matrix highlights the presence of outliers, indica
 <br><br><br><br>
 3) Data Preprocessing
 
+<br><br>
+
+To analyze the dataset effectively, the normality of each variable was assessed, followed by the identification of noticeable outliers.
+
+<br><br>
+
+```r
+layout(matrix(1:16, nc = 4)) 
+sapply(colnames(data), function(x) {
+        qqnorm(data[[x]], main = x, ) 
+        qqline(data[[x]])
+})
+```
+<br><br>
+
+<!--Nornality(before)-->
+<p align="center">
+  <img src="images/normality1.png" style="width:90%; border:0px solid; margin-right: 20px" align="center">
+    <br><br>
+</p>
+<p align="center" style="font-size: 14px; font-weight: bold;">
+  [Fig. Normality Check for Variables]
+    <br>
+</p>
+
+<br><br>
+
+The Q-Q plots revealed that most variables, except for Childcare Facilities, EQ5D, Average Age at First Marriage, Divorce Rate, Marriage Rate, and Total Fertility Rate, deviated from normality. <br> Additionally, many variables were found to have outliers.
+
+<br><br>
+
+To detect potential outliers, chi-square plots were generated for the dataset.
 
 <br><br><br><br>
 
