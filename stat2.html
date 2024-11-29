@@ -646,6 +646,58 @@ significantly from the expected distribution.</p>
 </p>
 <p><br><br> After removing outliers, Q-Q plots were generated for each
 variable to assess normality.</p>
+<p><br><br><br><br> 4) Data Visualization</p>
+<p><br><br></p>
+<p>Scatterplots by Variable Categories <br><br> The full scatterplot
+matrix provides an overview of pairwise relationships across all
+variables. <br> Below, scatterplots are grouped by categories for
+clearer insights.</p>
+<p><br><br></p>
+<pre class="r"><code>family &lt;- data[, c(&#39;Crude Marriage Rate&#39;, &#39;Crude Divorce Rate&#39;)] 
+pairs(family, diag.panel=panel.hist,
+   panel=function(x,y){
+    data&lt;-data.frame(cbind(x,y))
+    par(new=TRUE) 
+    den&lt;-bkde2D(data,bandwidth=sapply(data,dpik)) 
+    contour(x=den$x1,y=den$x2,
+    z=den$fhat,axes=FALSE)
+})</code></pre>
+<p><br><br></p>
+<!--scatterplot_family-->
+<p align="center">
+<img src="images/scatterfamily.png.png" style="width:60%; border:0px solid; margin-right: 20px" align="center">
+<br><br>
+</p>
+<p align="center" style="font-size: 14px; font-weight: bold;">
+[Fig. Scatterplot for Family Factors] <br>
+</p>
+<p><br><br></p>
+<p>The results indicate that the family factors exhibit a single peak,
+making it difficult to distinguish between regions.</p>
+<p><br><br></p>
+<pre class="r"><code>education&lt;-data[, c(&#39;Number of Kindergartens
+&#39;,&#39;Number of Elementary Schools
+&#39;)] 
+pairs(education, diag.panel=panel.hist,
+  panel=function(x,y){
+    data&lt;-data.frame(cbind(x,y))
+    par(new=TRUE) 
+    den&lt;-bkde2D(data,bandwidth=sapply(data,dpik)) 
+    contour(x=den$x1,y=den$x2,
+    z=den$fhat,axes=FALSE)
+})</code></pre>
+<p><br><br></p>
+<!--scatterplot_edu-->
+<p align="center">
+<img src="images/scatteredu.png.png" style="width:60%; border:0px solid; margin-right: 20px" align="center">
+<br><br>
+</p>
+<p align="center" style="font-size: 14px; font-weight: bold;">
+[Fig. Scatterplot for Education Factors] <br>
+</p>
+<p><br><br></p>
+<p>The results indicate that the education factors exhibit a single
+peak, making it difficult to differentiate between regions.</p>
 <p><br><br><br><br></p>
 </div>
 <div id="code" class="section level3">
