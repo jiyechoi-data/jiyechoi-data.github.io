@@ -296,7 +296,7 @@ Key Results:
 
 <br><br><br><br><br><br>
 
-### 3. Latent Growth Curve Model
+### 4. Latent Growth Curve Model
 <br><br><br>
 
 <!-- LGCM -->
@@ -590,7 +590,7 @@ Variance Estimates
 
 <br><br><br><br><br><br>
 
-### 4. Conclusion
+### 5. Conclusion
 <br><br>
 
 This study examined the dynamics of monthly living expenses in households with female heads over three years, utilizing data from the Korean Longitudinal Survey of Women and Families (KLoWF). Latent Growth Curve Modeling (LGCM) was applied, with missing data addressed through Full Information Maximum Likelihood (FIML) and Regression Imputation.
