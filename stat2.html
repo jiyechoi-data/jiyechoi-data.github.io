@@ -1107,8 +1107,69 @@ wssplot(training.data)
 <p>To perform K-Means Clustering, the number of groups must be
 specified. The “elbow” method is used by plotting the within-cluster sum
 of squares (WCSS) to determine the optimal number of clusters. In the
-graph, the “elbow” appears between 2 and 4 clusters. <br> Therefore,
-K-Means Clustering will be conducted with 2 clusters.</p>
+graph, the “elbow” appears between 2 and 4 clusters. Therefore, K-Means
+Clustering will be conducted with 2 clusters.</p>
+<p><br><br></p>
+<pre class="r"><code>round( sapply(birth, var), digits=1)
+
+rge &lt;- sapply(birth, function(x) diff(range(x))) 
+birth_s &lt;- sweep(birth, 2, rge, FUN = &quot;/&quot;) 
+round( sapply(birth_s, var), digits=5) 
+kmeans(birth_s, centers = 2)$centers * rge
+
+birth_pca &lt;- prcomp(birth_s)
+plot(birth_pca$x[, 1:2], pch = kmeans(birth_s, centers = 2)$cluster)
+</code></pre>
+<p><br><br></p>
+<!--birthplot-->
+<p align="center">
+<img src="images/birthplot.png.png" style="width:60%; border:0px solid; margin-right: 20px" align="center">
+<br><br>
+</p>
+<p align="center" style="font-size: 14px; font-weight: bold;">
+[Fig. Scatter Plot of PC1 vs. PC2] <br>
+</p>
+<p><br><br></p>
+<p>The plot above illustrates the two-group solution in the first two
+principal component spaces derived from the correlation matrix. Similar
+to the results of the Agglomerative Hierarchical Clustering, the two
+groups are well separated along the first principal component score,
+representing “Urban Development.”</p>
+<p><br><br><br><br></p>
+<ol start="3" style="list-style-type: decimal">
+<li><strong>Partitioning around medoids(PAM)</strong></li>
+</ol>
+<p><br><br></p>
+<p>Partitioning Around Medoids (PAM) is an alternative to K-Means
+Clustering, designed to address its sensitivity to outliers. Unlike
+K-Means, which represents clusters using centroids (mean vectors), PAM
+uses medoids (actual data points) to represent clusters. This allows PAM
+to work with different distance metrics, making it suitable for both
+continuous variables and mixed data types. Using this method, the data
+will be re-clustered.</p>
+<p><br><br></p>
+<pre class="r"><code>install.packages(&quot;NbClust&quot;)
+library(NbClust)
+nc &lt;- NbClust(training.data, min.nc=2, max.nc=15, method=&quot;kmeans&quot;) par(mfrow=c(1,1))
+barplot(table(nc$Best.n[1,]),
+ xlab=&quot;Numer of Clusters&quot;, ylab=&quot;Number of Criteria&quot;, 
+ main=&quot;Number of Clusters Chosen&quot;)
+</code></pre>
+<p><br><br></p>
+<!--PAM-->
+<p align="center">
+<img src="images/pam.png.png" style="width:60%; border:0px solid; margin-right: 20px" align="center">
+<br><br>
+</p>
+<p align="center" style="font-size: 14px; font-weight: bold;">
+[Fig. Optimal Number of Clusters Determined by PAM] <br>
+</p>
+<p><br><br></p>
+<p>To determine the optimal number of clusters more accurately, the
+NbClust package was used instead of relying solely on the elbow
+method.</p>
+<p><br><br> The results suggest that 3 clusters are the most appropriate
+solution.</p>
 <p><br><br><br></p>
 </div>
 <div id="code" class="section level3">
