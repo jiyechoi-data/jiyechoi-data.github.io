@@ -76,19 +76,19 @@ Social Factors : <br>
 - Population of Marriageable Age Women : Population of women aged 30-34.<br>
 - Average Age at First Marriage Female : Average age at first marriage by region.<br>
 - EQ5D : Health-related quality of life index, where values closer to 1 indicate better quality.<br>
-- Population Growth Rate : {(Population of comparison year - Population of base year) ÷ Population of base year} × 100.<br>
+- Population Growth Rate : {(Population of comparison year - Population of base year) ÷ Population of base year} × 100.
 <br><br>
 
 Educational Factors : <br>
 
 - Number of Kindergartens : Total number of kindergartens in a region.<br>
-- Number of Elementary Schools : Total number of elementary schools in a region.<br>
+- Number of Elementary Schools : Total number of elementary schools in a region.
 <br><br>
 
 Welfare Factors : <br>
 
 - Number of Childcare Facilities : Number of childcare facilities per 1,000 children aged 0-4.<br>
-- Number of Cultural Facilities : Number of cultural facilities per 100,000 people.<br>
+- Number of Cultural Facilities : Number of cultural facilities per 100,000 people.
 <br><br>
 
 Economic Factors : <br>
@@ -790,11 +790,95 @@ To determine the optimal number of clusters more accurately, the NbClust package
 <br><br>
 The results suggest that 3 clusters are the most appropriate solution.
 
-<br><br><br>
+<br><br>
+
+```r
+install.packages("NbClust") 
+install.packages("caret")
+
+#Standardization
+data2 = data[, -14] 
+names(data2)
+data3 <- scale(data2) 
+summary(data3)
+
+#Model Building
+fit.km=kmeans(data3, 3, nstart=25) 
+fit.km$cluster
+fit.km$size
+fit.km$centers
+
+#Cluster Validation
+fit$cluster <-as.factor(fit.km$cluster)
+
+#Principal Component
+dj <- dist(data3)
+pr <- prcomp(dj)$x[, 1:2]
+
+#Cluster
+library(ggplot2)
+set.seed(1234)
+fit.pam <- pam(data[-1], k=3, stand=TRUE)
+fit.pam$medoids
+clusplot(fit.pam, main="Bivariate Cluster Plot")
+fit <-pam(data3,k=3)
+data3$clustering <- factor(fit$clustering)
+ggplot(data=data3, aes(x=V1,y=V2,color=clustering, shape=clustering))+
+    geom_point() + ggtitle("Clustering of Bivariate Normal Data")
+
+```
+
+<br><br>
+
+<!--Bivariate Cluster Plot-->
+<p align="center">
+  <img src="images/pam_result.png.png" style="width:60%; border:0px solid; margin-right: 20px" align="center">
+    <br><br>
+</p>
+<p align="center" style="font-size: 14px; font-weight: bold;">
+  [Fig. Bivariate Cluster Plot]
+    <br>
+</p>
+
+<br><br>
+
+- This plot visualizes the clusters based on the first two principal components, which explain 56.77% of the variability. <br>
+- The three clusters are well-separated, with Cluster 1 consisting of X regions, Cluster 2 of Y regions, and Cluster 3 of Z regions.<br><br>
+
+The PAM results, visualized in the first two principal component spaces, reveal three distinct clusters. <br><br> 
+
+As shown in the figure, two clusters are primarily separated by the first principal component ("Urban Development"), while the remaining cluster is divided based on the second principal component ("Demographic Factors"). <br><br> 
+
+The interpretation of the ○ and + groups is consistent with the results from Agglomerative Hierarchical Clustering. The △ group, however, can be interpreted as regions with low "Demographic Factors" at the city and district levels.
+
+
+
+<br><br><br><br>
 
 ### 4. Code
 
-Please click [HERE](https://www.kaggle.com/erikbruin/house-prices-lasso-xgboost-and-a-detailed-eda/report) for the analysis report and code.
+Please click [HERE](https://github.com/jiyechoi-data/BirthRate-Analysis/blob/main/scripts/BirthRate-Code) for the code.
+
+<br><br><br><br>
+
+### 5. Conclusion
+
+<br><br>
+This project analyzed key factors influencing birth rates at the city and district levels using PCA, MDS, factor analysis, and clustering. <br><br>
+
+- **Key Factors:** <br>
+Birth rates are influenced by urban development (fiscal independence), demographic factors (population growth), households with children (childcare facilities), quality of life (EQ5D), and fiscal autonomy. 
+
+<br>
+
+- **Regional Grouping:** <br>
+Clustering revealed two major groups: metropolitan/provincial areas (high fiscal independence and cultural infrastructure) and non-metropolitan areas.
+
+<br>
+
+- **Policy Implications:** <br>
+Focus on increasing the population of marriageable-age women.
+Enhance fiscal resources for local governments to implement targeted family policies.
 
 <br>
 
