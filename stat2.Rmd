@@ -359,6 +359,64 @@ pairs(education, diag.panel=panel.hist,
 
 The results indicate that the education factors exhibit a single peak, making it difficult to differentiate between regions.
 
+<br><br>
+
+```r
+society<- data[, c('Marriageable Age Women
+','Average Age at First Marriage','EQ5D','Population Growth Rate')] pairs(society, diag.panel=panel.hist,
+  panel=function(x,y){
+    data<-data.frame(cbind(x,y))
+    par(new=TRUE) 
+    den<-bkde2D(data,bandwidth=sapply(data,dpik)) 
+    contour(x=den$x1,y=den$x2,
+    z=den$fhat,axes=FALSE)
+})
+```
+<br><br>
+
+<!--scatterplot_society-->
+<p align="center">
+  <img src="images/scattersociety.png.png" style="width:60%; border:0px solid; margin-right: 20px" align="center">
+    <br><br>
+</p>
+<p align="center" style="font-size: 14px; font-weight: bold;">
+  [Fig. Scatterplot for Social Factors]
+    <br>
+</p>
+
+<br><br>
+
+The results indicate that the bivariate probability density related to women of marriageable age in the social factors shows two peaks, while the other variables in the social domain exhibit a single peak, making it difficult to distinguish between regions.
+
+<br><br>
+
+```r
+welfare<-data[, c('Number of Childcare Facilities','Number of Cultural Facilities')] 
+pairs(welfare, diag.panel=panel.hist,
+  panel=function(x,y){
+    data<-data.frame(cbind(x,y))
+    par(new=TRUE) 
+    den<-bkde2D(data,bandwidth=sapply(data,dpik)) 
+    contour(x=den$x1,y=den$x2,
+    z=den$fhat,axes=FALSE)
+})
+```
+<br><br>
+
+<!--scatterplot_welfare-->
+<p align="center">
+  <img src="images/scatterwelfare.png.png" style="width:60%; border:0px solid; margin-right: 20px" align="center">
+    <br><br>
+</p>
+<p align="center" style="font-size: 14px; font-weight: bold;">
+  [Fig. Scatterplot for Welfare Factors]
+    <br>
+</p>
+
+<br><br>
+
+The results indicate that the welfare factors exhibit multiple peaks, allowing regions to be classified into several groups.
+
 
 
 

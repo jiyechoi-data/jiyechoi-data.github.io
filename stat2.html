@@ -698,6 +698,52 @@ pairs(education, diag.panel=panel.hist,
 <p><br><br></p>
 <p>The results indicate that the education factors exhibit a single
 peak, making it difficult to differentiate between regions.</p>
+<p><br><br></p>
+<pre class="r"><code>society&lt;- data[, c(&#39;Marriageable Age Women
+&#39;,&#39;Average Age at First Marriage&#39;,&#39;EQ5D&#39;,&#39;Population Growth Rate&#39;)] pairs(society, diag.panel=panel.hist,
+  panel=function(x,y){
+    data&lt;-data.frame(cbind(x,y))
+    par(new=TRUE) 
+    den&lt;-bkde2D(data,bandwidth=sapply(data,dpik)) 
+    contour(x=den$x1,y=den$x2,
+    z=den$fhat,axes=FALSE)
+})</code></pre>
+<p><br><br></p>
+<!--scatterplot_society-->
+<p align="center">
+<img src="images/scattersociety.png.png" style="width:60%; border:0px solid; margin-right: 20px" align="center">
+<br><br>
+</p>
+<p align="center" style="font-size: 14px; font-weight: bold;">
+[Fig. Scatterplot for Social Factors] <br>
+</p>
+<p><br><br></p>
+<p>The results indicate that the bivariate probability density related
+to women of marriageable age in the social factors shows two peaks,
+while the other variables in the social domain exhibit a single peak,
+making it difficult to distinguish between regions.</p>
+<p><br><br></p>
+<pre class="r"><code>welfare&lt;-data[, c(&#39;Number of Childcare Facilities&#39;,&#39;Number of Cultural Facilities&#39;)] 
+pairs(welfare, diag.panel=panel.hist,
+  panel=function(x,y){
+    data&lt;-data.frame(cbind(x,y))
+    par(new=TRUE) 
+    den&lt;-bkde2D(data,bandwidth=sapply(data,dpik)) 
+    contour(x=den$x1,y=den$x2,
+    z=den$fhat,axes=FALSE)
+})</code></pre>
+<p><br><br></p>
+<!--scatterplot_welfare-->
+<p align="center">
+<img src="images/scatterwelfare.png.png" style="width:60%; border:0px solid; margin-right: 20px" align="center">
+<br><br>
+</p>
+<p align="center" style="font-size: 14px; font-weight: bold;">
+[Fig. Scatterplot for Welfare Factors] <br>
+</p>
+<p><br><br></p>
+<p>The results indicate that the welfare factors exhibit multiple peaks,
+allowing regions to be classified into several groups.</p>
 <p><br><br><br><br></p>
 </div>
 <div id="code" class="section level3">
