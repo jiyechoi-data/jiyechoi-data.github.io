@@ -42,114 +42,122 @@ output:
 
 ### 1. Introduction
 <br>
-Understanding the relationship between living expenses and savings is crucial in today's economy for effective financial planning. This project investigates how various factors such as employment status and educational expenses for children influence monthly living expenses. Using SPSS for data preprocessing and AMOS for latent growth curve modeling (LGCM) and path analysis, the study uncovers patterns and relationships to provide insights into economic behaviors.
-<br><br><br>
-
-### 2. Goal
-<br>
-The primary goal of this study is to analyze how monthly living expenses evolve over time and to determine whether factors like employment status, educational expenses for children, and savings significantly impact these changes. Additionally, the study aims to evaluate how missing data treatment methods, such as regression imputation and full information maximum likelihood (FIML), affect the analysis results.
-
-
-
-<br><br>
-
-### 3. Data and Variables
-<br>
-This project uses data from the Korean Longitudinal Survey of Women & Families (KLoWF), encompassing responses from 9,068 households over three years (2011–2013). The panel dataset allows for tracking changes over time and assessing individual-level variations in living expenses. <br>
-<br>
-The dataset includes information on various financial and demographic factors, with a focus on the following variables:
-<br>
-
-- **Monthly Living Expenses**: Average monthly household expenses in 10,000 Korean Won (KRW). <br>
-- **Savings**: Total monthly savings, including deposits, savings-type insurance, and pensions, expressed in 10,000 KRW. <br>
-- **Employment Status**: A binary variable indicating whether the household head is employed (Yes/No). <br>
-- **Educational Expenses**: Monthly spending on children’s education, including childcare and extracurricular activities, expressed in 10,000 KRW.
-
-
-<br><br>
-
-### 4. Exploratory Data Analysis
-<br>
-
-Below are the descriptive statistics and frequency analysis results from SPSS:
-<br><br><br>
-
-
-
-| Variable               |  Year  |  Mean (KRW)  | Standard Deviation (KRW)|
-|------------------------|--------|--------------|-------------------------|
-| Monthly Living Expenses|  2011  |   178.75     |          50.30          |
-|                        |  2012  |   191.31     |          55.12          |
-|                        |  2013  |   205.15     |          60.45          |
-|                        |        |              |                         |
-<br>
-
-- Average monthly living expenses show a clear upward trend over the three years. <br>
-- The increasing standard deviation highlights growing variability in expenses, indicating widening differences in household spending patterns. This could reflect changes in income distribution or spending habits among households.
+Understanding the relationship between living expenses and savings is crucial for effective financial planning. <br> This study aims to analyze how monthly living expenses evolve over time and to determine whether factors such as employment status, educational expenses for children, and savings significantly impact these changes. <br> Using SPSS for data preprocessing and AMOS for latent growth curve modeling (LGCM) and path analysis, the study also evaluates the effects of missing data treatment methods, including regression imputation and full information maximum likelihood (FIML), to uncover meaningful patterns and relationships in economic behaviors.
 <br><br><br><br>
 
 
 
-| Variable              | Category             | Frequency (%) |
-|-----------------------|----------------------|---------------|
-| Employment Status     | Employed             | 82.4          |
-|                       | Unemployed           | 17.6          |
-|                       |                      |               |
+### 2. Exploratory Data Analysis
 <br>
+This study utilizes data from the Korean Longitudinal Survey of Women and Families (KLoWF), focusing on the following key variables (measured in units of 10,000 Korean Won, KRW):
 
-- A significant majority of households (82.4%) have an employed head of household, suggesting financial stability through employment.
-- A smaller portion (17.6%) of households have an unemployed head of household, indicating potential financial challenges for these households.
-
-<br><br><br><br>
-
-
-| Savings Category   | Frequency | Percentage (%) | Cumulative Percentage (%) |
-|--------------------|----------|-----------------|---------------------------|
-| 1-100              | 4285     | 47.3            | 47.3                      |
-| 101-200            | 4192     | 46.2            | 93.5                      |
-| 201-300            | 455      | 5.0             | 98.5                      |
-| 301-400            | 89       | 1.0             | 99.5                      |
-| 401-1500           | 28       | 0.3             | 99.8                      |
-| Total              | 9068     | 100.0           | 100.0                     |
-<br>
-
-- The largest percentage of households (47.3%) have savings in the 1-100 (10,000 KRW) range, followed by 46.2% in the 101-200 KRW range.
-- Very few households save above 300 (10,000 KRW), with only 1% saving in the 301-400 (10,000 KRW) range.
-- The Cumulative Percentage column shows that over 93% of households have savings of 200 (10,000 KRW) or less, suggesting a concentration in lower savings categories.
-
-<br><br><br><br>
-
-
-| Educational Expenses Category | Frequency (%) |
-|-------------------------------|---------------|
-| 1-50 (10,000 KRW)              | 85.6          |
-| 51-100 (10,000 KRW)            | 12.0          |
-| 101-150 (10,000 KRW)           | 1.8           |
-| 151-200 (10,000 KRW)           | 0.5           |
-| 201+ (10,000 KRW)              | 0.2           |
-| Total                          | 100.0         |
 
 <br>
 
-- The majority of households (85.6%) spend between 1-50 (10,000 KRW) on educational expenses.
-- 12.0% of households spend between 51-100 (10,000 KRW), while only 0.2% spend more than 2M KRW.
-- The cumulative percentage shows that 99.5% of households have educational expenses below 2M KRW.
+- **Monthly Living Expenses**: Household expenses reported on a monthly basis.<br>
+- **Savings**: Total monthly savings, including deposits, insurance, and pensions.<br>
+- **Employment Status**: Binary variable indicating whether the household head is employed. <br>
+- **Educational Expenses**: Monthly spending on children’s education, including extracurricular activities.
+
+<br>
+
+This study analyzed the monthly living expenses, savings, and educational expenses of households to uncover significant patterns and trends. 
+
+<br><br><br>
+Below is a summary of the key findings and descriptive statistics:
+<br><br>
+
+Descriptive Statistics for Monthly Living Expenses
+<br><br>
+
+| Year   | Mean (10,000 KRW) | Standard Deviation (10,000 KRW) |
+|--------|--------------------|---------------------------------|
+| 2011   | 178.75            | 50.30                          |
+| 2012   | 191.31            | 55.12                          |
+| 2013   | 205.15            | 60.45                          |
+<br>
+
+- Monthly living expenses increased consistently from 178.75 in 2011 to 205.15 in 2013, showing a clear upward trend.
+ - The increasing standard deviation reflects growing variability, suggesting widening differences in spending patterns among households.
+<br><br>
+
+---
 
 <br><br>
 
-To investigate how monthly living expenses change over time, we will address missing data using two imputation methods: **Regression Imputation** and **Full Information Maximum Likelihood (FIML)**. Following this, we will apply **Latent Growth Curve Modeling (LGCM)** to analyze the data.
+Employment Status
+<br><br>
+
+| Employment Status | Frequency (%) |
+|-------------------|---------------|
+| Employed          | 82.4          |
+| Unemployed        | 17.6          |
+
+<br>
+
+- A significant majority of households (82.4%) had an employed head of household, suggesting financial stability.
+- A smaller proportion (17.6%) had an unemployed head of household, indicating potential financial challenges.
+
+<br><br>
+
+---
+
+<br><br>
+
+Savings
+<br><br>
+
+| Savings Category (10,000 KRW) | Frequency | Percentage (%) | Cumulative Percentage (%) |
+|-------------------------------|-----------|-----------------|---------------------------|
+| 1–100                         | 4,285     | 47.3            | 47.3                      |
+| 101–200                       | 4,192     | 46.2            | 93.5                      |
+| 201–300                       | 455       | 5.0             | 98.5                      |
+| 301–400                       | 89        | 1.0             | 99.5                      |
+| 401–1,500                     | 28        | 0.3             | 99.8                      |
+| Total                     | 9,068     | 100.0       | 100.0                 |
+<br>
+
+- Nearly 93.5% of households saved less than 2 million KRW per month, highlighting financial constraints for most households.
+- Very few households (1.3%) saved more than 3 million KRW, indicating a skewed distribution toward lower savings.
 
 
-<br><br><br>
+<br><br>
 
-### 5. Analysis
+---
+
+<br><br>
+
+Educational Expenses
+<br><br>
+
+
+| Educational Expenses Category (10,000 KRW) | Frequency (%) |
+|--------------------------------------------|---------------|
+| 1–50                                       | 85.6          |
+| 51–100                                     | 12.0          |
+| 101–150                                    | 1.8           |
+| 151–200                                    | 0.5           |
+| 201+                                       | 0.2           |
+| Total                                  | 100.0    |
+
+<br>
+
+- The majority of households (85.6%) spent between 1–50 (10,000 KRW) on educational expenses, indicating relatively low expenditure in this category.
+- Only 0.2% of households reported spending more than 2 million KRW on education, highlighting its rarity.
+
+<br><br><br><br>
+
+To investigate how monthly living expenses change over time, we will address missing data using two imputation methods: **Regression Imputation** and **Full Information Maximum Likelihood (FIML)**. <br> Following this, we will apply Latent Growth Curve Modeling (LGCM) to analyze the data.
+
+
+<br><br><br><br>
+
+### 3. Analysis
 
 <br><br>
 <h4> 1-1. Path Analysis </h4>
 <br>
-Missing data were handled using Regression Imputation prior to conducting path analysis.
-<br>
-Path analysis will be conducted to examine the causal relationships between Employment Status, Educational Expenses, Average Monthly Savings, and Living Expenses, specifically to understand how Employment Status and Educational Expenses influence Living Expenses.
+This study examines the causal relationships between Employment Status, Educational Expenses, Savings, and Living Expenses using path analysis. Missing data were handled using **Regression Imputation**.
 
 <br><br><br><br>
 
@@ -164,32 +172,19 @@ Path analysis will be conducted to examine the causal relationships between Empl
 </p>
 <br><br>
 
-This research model assumes that Employment Status influences Private Education Expenses, Monthly Savings, and Living Expenses. It also assumes that Private Education Expenses impact Monthly Savings and Living Expenses, and that Monthly Savings influence Living Expenses.
-
-<br><br>
 Model Fit Evaluation (Default Model)
 <br>
 
-- Number of distinct sample moments: 14
-- Number of distinct parameters to be estimated: 14
-- Degrees of freedom: 0 (calculated as 14 - 14)
-
-<br>
-
-Results
-
-- Chi-Square: 0.000
-- Degrees of Freedom: 0
-- Minimum Achieved
-- Probability level cannot be computed
+| Metric                 | Value |
+|------------------------|-------|
+| Chi-Square (\( \chi^2 \)) | 0.000 |
+| Degrees of Freedom (df)| 0     |
 
 <br><br>
 
-The results show \( \chi^2 = 0 \) and \( df = 0 \). When \( \chi^2 = 0 \), it indicates a perfect fit between the research model and the data, meaning there is no difference between the observed values and the predicted values. The \( df = 0 \) implies that the number of parameters to be estimated is equal to the number of data points, which typically occurs in highly constrained models.
+\( \chi^2 = 0 \) and \( df = 0 \), indicating a perfect model fit, but this implies an **over-identified model** that lacks flexibility. Such models, while mathematically sound, may oversimplify complex relationships and limit meaningful conclusions.
 
-This type of model is considered **over-identified** and is the most constrained form of the model, providing the highest degree of fit but lacking flexibility. Because of this, such models are overly simplistic and cannot capture the complexity of the relationships between variables. Therefore, no meaningful conclusions can be drawn from this model due to its lack of complexity and capacity to represent real-world data.
-
-<br><br><br><br>
+<br><br><br><br><br>
 
 <!-- path analysis2 -->
 <p align="center">
@@ -202,171 +197,106 @@ This type of model is considered **over-identified** and is the most constrained
 </p>
 <br><br>
 
-| Path                              | Estimate | S.E.   | C.R.    | P      | Label |
-|-----------------------------------|----------|--------|---------|--------|-------|
-| Private Education ← Employment    | -14.655  | 0.948  | -15.464 | ***    |       |
-| Savings ← Employment              | -9.622   | 2.060  | -4.694  | ***    |       |
-| Savings ← Private Education       | 0.265    | 0.013  | 19.961  | ***    |       |
-| Living Expenses 2013 ← Savings    | -37.592  | 2.603  | -14.446 | ***    |       |
-| Living Expenses 2013 ← Private Education | 1.610   | 0.029  | 56.194  | ***    |       |
+Key Path Coefficients
+<br><br>
+
+| Path                              | Estimate | p-value  | Interpretation                                   |
+|-----------------------------------|----------|----------|-------------------------------------------------|
+| Private Education ← Employment    | -14.655  | ***      | Employment significantly decreases education expenses. |
+| Savings ← Employment              | -9.622   | ***      | Employment negatively impacts savings.          |
+| Savings ← Private Education       | 0.265    | ***      | Private education increases savings slightly.   |
+| Living Expenses ← Savings         | -37.592  | ***      | Savings significantly reduces living expenses.  |
+| Living Expenses ← Private Education | 1.610   | ***      | Education expenses increase living expenses slightly. |
 
 <br><br>
 
-Summary
-<br>
-
-- Path Coefficient: -14.655
-- p-value: < 0.01
-- Significance Level: \( \alpha = 0.05 \)
-- Interpretation: Employment status significantly and negatively affects private education expenditures.
+---
 
 <br><br>
-Path Coefficient Interpretation
+Total, Direct, and Indirect Effects
+<br><br>
+
+
+| Effect Type     | Path                        | Total    | Direct   | Indirect | Interpretation                                   |
+|-----------------|-----------------------------|----------|----------|----------|-------------------------------------------------|
+| **Total Effect**| Employment → Savings        | -13.497  | -9.622   | -3.876   | Employment indirectly impacts savings via education. |
+| **Total Effect**| Employment → Living Expenses| -64.762  | -37.592  | -27.171  | Employment influences living expenses through multiple pathways. |
+
+<br><br><br>
+
+Breakdown of Indirect Effects:
+<br><br>
+
+1. Employment → Private Education → Savings  
+   \[
+   -14.655 \times 0.265 = -3.876
+   \]
+   
 <br>
 
-- The **direct effect** can be evaluated based on the magnitude and significance of the path coefficient. 
+2. Employment → Savings → Living Expenses  
+   \[
+   -9.622 \times -37.592 = -27.171
+   \]
+   
 
-- The path coefficient for **[Employment → Private Education]** is -14.655, and the p-value is smaller than 0.01, indicating significance at the \( \alpha = 0.05 \) level.
-- This result shows that **employment status** has a significant direct effect on **private education**, with a **negative direction** of influence.
+<br><br><br>
 
 
-<br><br><br><br><br>
+
+Statistical Significance of Effects
+<br><br>
+
+
+| Path                              | Estimate | S.E.  | C.R.    | p-value  | Significance |
+|-----------------------------------|----------|-------|---------|----------|--------------|
+| Private Education ← Employment    | -14.655  | 0.948 | -15.464 | ***      | Significant  |
+| Savings ← Employment              | -9.622   | 2.060 | -4.694  | ***      | Significant  |
+| Living Expenses ← Savings         | -37.592  | 2.603 | -14.446 | ***      | Significant  |
+| Living Expenses ← Private Education| 1.610   | 0.029 | 56.194  | ***      | Significant  |
+
+<br>
+
+- All paths show statistically significant effects at \( p < 0.001 \).
+
+<br><br><br>
+
+
+
+Insights from Path Analysis :
+<br><br>
+
+- Employment Status negatively impacts both Private Education and Savings, highlighting economic trade-offs.<br>
+- Private Education Expenses slightly increase Living Expenses, whereas Savings significantly reduce them.<br>
+- The total and indirect effects reveal complex mediating roles of savings and education expenses in shaping household living expenses.
+
+<br><br><br><br>
+
+
+
 <h4> 1-2. Effects Analysis </h4>
+<br><br>
+
+Key Results:
 <br>
 
-<br>
-
-**Total Effects**
- <br>
- 
-| Path                        | Employment | Private Education | Savings |
-|-----------------------------|------------|-------------------|---------|
-| Private Education           | -14.655    | 0.000             | 0.000   |
-| Savings                     | -13.497    | 0.264             | 0.000   |
-| Living Expenses (2013)      | -64.762    | 1.660             | 0.265   |
+- Employment's Influence: While employment status reduces living expenses through indirect effects, its direct influence on savings and education emphasizes resource allocation dynamics.
+- Savings as a Mediator: Savings act as a key buffer, mitigating the negative impacts of other variables on living expenses.
 
 <br><br>
 
-**Direct Effects**
- <br>
- 
-| Path                        | Employment | Private Education | Savings |
-|-----------------------------|------------|-------------------|---------|
-| Private Education           | -14.655    | 0.000             | 0.000   |
-| Savings                     | -9.622     | 0.264             | 0.000   |
-| Living Expenses (2013)      | -37.592    | 1.610             | 0.265   |
+| Effect Type | Key Findings |
+|-------------|--------------|
+| Total       | Employment significantly impacts savings and living expenses. |
+| Direct      | Employment's direct effects show strong negative influences. |
+| Indirect    | Indirect pathways highlight the mediating roles of savings and education. |
 
-<br><br>
-
-**Indirect Effects**
-<br>
-
-| Path                        | Employment | Private Education | Savings |
-|-----------------------------|------------|-------------------|---------|
-| Private Education           | 0.000      | 0.000             | 0.000   |
-| Savings                     | -3.876     | 0.000             | 0.000   |
-| Living Expenses (2013)      | -27.171    | 0.070             | 0.000   |
-
-
-<br><br><br>
-
----
-
-<br><br><br>
-
-**Path: Employment → Savings**
-<br><br>
-
-- Total Effect: -13.497
-- Direct Effect: -9.622
-- Indirect Effect: -3.876
-
-<br><br>
-The relationship can be broken down as follows:
-\[
-\text{Total Effect} (-13.497) = \text{Direct Effect} (-9.622) + \text{Indirect Effect} (-3.876)
-\]
-
-<br>
-The Indirect Effect of -3.876 is calculated as:
-\[
-\text{Indirect Effect} (-3.876) = \text{Path Coefficient} (\text{Employment → Private Education}) (-14.655) \times \text{Path Coefficient} (\text{Private Education → Savings}) (0.264)
-\]
-<br><br>
-
----
-
-<br><br>
-**Path: Employment → Living Expenses**
-
-<br>
-
-- Total Effect: -64.762
-- Direct Effect: -37.592
-- Indirect Effect: -27.171
-
-<br><br>
-The relationship can be broken down as follows:
-\[
-\text{Total Effect} (-64.762) = \text{Direct Effect} (-37.592) + \text{Indirect Effect} (-27.171)
-\]
-
-<br>
-The Indirect Effect of -27.171 is further decomposed into the following pathways:<br>
-
-1. Employment → Savings → Living Expenses <br>
-2. Employment → Private Education → Savings → Living Expenses <br>
-3. Employment → Private Education → Living Expenses
-<br><br><br><br>
-
-- The **Indirect Effect** highlights the mediating roles of **Private Education** and **Savings** in the impact of **Employment** on **Living Expenses**.
-
-- The decomposition provides insights into the complex pathways that influence the dependent variable.
-
-<br><br>
-
----
-
-
-<br><br><br><br>
-
-**Direct Effect Significance**
-
-<br>
-The significance of the direct effects is as follows:
-<br>
-
-| Path                          | Estimate  | S.E.  | C.R.   | p-value  | Significance |
-|-------------------------------|-----------|-------|--------|----------|--------------|
-| Private Education ← Employment| -14.655   | 0.948 | -15.464| ***      | Significant  |
-| Savings ← Employment          | -9.622    | 2.060 | -4.694 | ***      | Significant  |
-| Savings ← Private Education   | 0.265     | 0.013 | 19.961 | ***      | Significant  |
-| Living Expenses ← Savings     | -37.592   | 2.603 | -14.446| ***      | Significant  |
-| Living Expenses ← Private Education | 1.610| 0.029 | 56.194 | ***      | Significant  |
-
-
-<br><br>
-
-- The path **Private Education ← Employment** has a significant direct effect with a negative coefficient of **-14.655**, indicating that Employment negatively influences Private Education.
-
-- The path **Savings ← Employment** also shows a significant negative direct effect of **-9.622**.
-
-- All direct effects have p-values less than **0.001 (***), indicating high statistical significance.
-
-<br><br><br>
-
-**Indirect Effect Significance**
-
-<br>
-
-- The \( p \)-values for all indirect effects were \( p = 0.010 \), which is statistically significant at \( \alpha = 0.05 \).
-- This confirms that the indirect effects in the model are significant and meaningful.
 
 
 
 <br><br><br><br><br><br>
 
-### 6. Latent Growth Curve Model
+### 3. Latent Growth Curve Model
 <br><br><br>
 
 <!-- LGCM -->
@@ -389,29 +319,18 @@ In this model, the second method for handling missing data provided by Amos, **F
 Model Fit Evaluation
 <br>
 
-| Measure                  | Value      |
-|--------------------------|------------|
-| Chi-square (\( \chi^2 \))| 32.272     |
-| Degrees of Freedom (df)  | 3          |
-| Probability Level (p)    | 0.000      |
+| Metric                  | Default Model |
+|-------------------------|---------------|
+| Chi-square (\( \chi^2 \))| 32.272        |
+| Degrees of Freedom (df)  | 3             |
+| p-value                 | 0.000         |
+| CMIN/DF                 | 10.757        |
+
 
 <br><br>
 
-Comparative Fit Measures
-<br>
-
-| Model                  | Parameters (NPAR) | CMIN    | DF   | p-value | CMIN/DF |
-|------------------------|-------------------|---------|------|---------|---------|
-| Default model          | 6                 | 32.272  | 3    | 0.000   | 10.757  |
-| Saturated model        | 9                 | 0.000   | 0    | -       | -       |
-| Independence model     | 3                 | 12280.110| 6    | 0.000   | 2046.685|
-
-<br><br>
-
-- The default model's Chi-square statistic (\( \chi^2 = 32.272 \)) with df = 3 and p-value = 0.000 indicates a poor fit to the data.
-
-- The CMIN/DF value of 10.757 exceeds the acceptable threshold (typically \( < 5 \)), further supporting that the model does not fit well.
-- Compared to the independence model (\( \text{CMIN/DF} = 2046.685 \)), the default model shows a relatively better fit but is still inadequate overall.
+- The Default Model's fit (\( \chi^2 = 32.272, p < 0.001 \)) indicates a poor fit, as CMIN/DF exceeds the acceptable threshold of 5.
+- Adjustments to the model, such as removing constraints on error variances, improved the fit significantly.
 
 <br><br><br><br>
 
@@ -433,97 +352,48 @@ Comparative Fit Measures
 Model Fit Results
 <br>
 
-| Metric                  | Value  |
-|-------------------------|--------|
-| Chi-square (χ²)         | 0.107  |
-| Degrees of Freedom (df) | 1      |
-| p-value                 | 0.744  |
+| Metric                  | Default Model |
+|-------------------------|---------------|
+| Chi-square (\( \chi^2 \))| 0.107         |
+| Degrees of Freedom (df)  | 1             |
+| p-value                 | 0.744         |
+| CMIN/DF                 | 0.107         |
 <br>
 
-The model has a degree of freedom of 1, a Chi-square value (χ²) of 0.107, and a p-value of 0.744. <br> This indicates that the null hypothesis that the model fits well cannot be rejected. <br>
-Therefore, the model can be considered a good fit based on the Chi-square test.
-
-<br><br><br>
-CMIN/DF and Other Fit Indices
-<br><br>
-
-| Model               | NPAR | CMIN      | DF  | p-value | CMIN/DF   |
-|---------------------|------|-----------|-----|---------|-----------|
-| Default model       | 8    | 0.107     | 1   | 0.744   | 0.107     |
-| Saturated model     | 9    | 0.000     | 0   | -       | -         |
-| Independence model  | 3    | 12280.110 | 6   | 0.000   | 2046.685  |
-<br>
-
-The Default model, with 8 parameters, fits between the Saturated model (9 parameters) and the Independence model (3 parameters). The low CMIN/DF value (0.107) also supports that the model is a good fit.
-
-<br><br><br>
-Baseline Comparisons
-<br><br>
-
-| Model               | NFI Delta1 | RFI rho1 | IFI Delta2 | TLI rho2 | CFI   |
-|---------------------|------------|----------|------------|----------|-------|
-| Default model       | 1.000      | 1.000    | 1.000      | 1.000    | 1.000 |
-| Saturated model     | 1.000      | 1.000    | 1.000      | 1.000    | 1.000 |
-| Independence model  | 0.000      | 0.000    | 0.000      | 0.000    | 0.000 |
-
-<br><br><br>
-RMSEA (Root Mean Square Error of Approximation)
-<br><br>
-
-| Model               | RMSEA | LO 90 | HI 90 | PCLOSE |
-|---------------------|-------|-------|-------|--------|
-| Default model       | 0.000 | 0.000 | 0.019 | 1.000  |
-| Independence model  | 0.475 | 0.468 | 0.482 | 0.000  |
-<br>
-
-The additional indices, including NFI, TLI, and CFI, all exceed 0.9 for the Default and Saturated models, indicating a good fit. Furthermore, the RMSEA value of 0.000 is below the threshold of 0.05, which supports the conclusion that the model fits well. Therefore, the estimation of parameters can proceed with confidence.
+- After removing constraints on error variances, the model showed excellent fit (\( \chi^2 = 0.107, p = 0.744 \)).
+- The RMSEA value of 0.000 further confirms the model's adequacy.
 
 
 <br><br><br><br><br>
-**Model Estimation without Variance Constraints on Error Terms**
+**Parameter Estimates**
+<br><br>
+
+| Parameter | Estimate  | SE     | CR     | p-value |
+|-----------|-----------|--------|--------|---------|
+| ICEPT     | 178.688   | 1.072  | 166.652| ***     |
+| SLOPE     | 27.600    | 1.009  | 27.364 | ***     |
+
+<br>
+
+- The initial level of monthly living expenses (ICEPT) was 178.688, representing the 2011 average.
+- The annual rate of change (SLOPE) was 27.600, indicating a statistically significant increase over time (\( p < 0.001 \)).
+
+<br><br>
+
+| Parameter | Variance  | SE     | CR     | p-value |
+|-----------|-----------|--------|--------|---------|
+| ICEPT     | 8340.195  | 194.100| 42.968 | ***     |
+| SLOPE     | 2245.592  | 326.040| 6.887  | ***     |
+
+<br>
+
+- Significant variability exists in both initial levels (\( \text{Var}(\text{ICEPT}) = 8340.195 \)) and rates of change (\( \text{Var}(\text{SLOPE}) = 2245.592 \)).
+- This highlights individual differences in spending behavior.
+
+
 <br><br><br>
-Null and Alternative Hypotheses for ICEPT and SLOPE:
-<br><br>
 
-- **Null hypothesis (H₀):**
-  - ICEPT = 0
-  - SLOPE = 0
-<br>
-- **Alternative hypothesis (H₁):**
-  - ICEPT ≠ 0
-  - SLOPE ≠ 0
 
-<br><br>
-
-| Variable | Estimate  | SE     | CR      | p-value |
-|----------|-----------|--------|---------|---------|
-| ICEPT    | 178.688   | 1.072  | 166.652 | ***     |
-| SLOPE    | 27.600    | 1.009  | 27.364  | ***     |
-
-<br>
-
-- The mean estimate for ICEPT (intercept) is 178.688, representing the initial level of monthly living expenses in 2011.  
-- The mean estimate for SLOPE (rate of change) is 27.600, indicating an annual increase in monthly living expenses.  
-- Both ICEPT and SLOPE are statistically significant (p < 0.001).
-
-<br><br>
-
-| Variable | Variance  | SE     | CR      | p-value |
-|----------|-----------|--------|---------|---------|
-| ICEPT    | 8340.195  | 194.100| 42.968  | ***     |
-| SLOPE    | 2245.592  | 326.040| 6.887   | ***     |
-
-<br>
-
-- The variance for ICEPT is 8340.195, indicating variability in initial levels of monthly living expenses across households.
-- The variance for SLOPE is 2245.592, reflecting differences in the rate of change in expenses.
-- Both variances are statistically significant (p < 0.001), suggesting meaningful individual-level variability.
-
-<br><br>
-
-The variance estimates for ICEPT and SLOPE are 8340.195 and 2245.592, respectively. Based on the p-value, the variance is statistically significant, indicating meaningful individual differences in the initial levels and rates of change in monthly living expenses. This means that there is variability in both the starting point (initial level) and the change rate of monthly living expenses among individuals.
-
-<br>
 Using these results, the average monthly living expenses over three years can be calculated as follows:
 <br><br>
 
@@ -583,60 +453,19 @@ A model was created to examine whether the pattern of changes in monthly living 
 Model Fit Results
 <br>
 
-| Metric                         | Value |
-|--------------------------------|-------|
-| Number of distinct sample moments | 14    |
-| Number of distinct parameters to be estimated | 12    |
-| Degrees of freedom (14 - 12)    | 2     |
-| Chi-square (\(\chi^2\))         | 0.133 |
-| Probability level (\(p\))       | 0.936 |
+| Metric              | Value    |
+|---------------------|----------|
+| Chi-square (\( \chi^2 \)) | 0.133    |
+| Degrees of Freedom (df) | 2        |
+| p-value            | 0.936    |
+| CMIN/DF            | 0.067    |
+| RMSEA              | 0.000    |
+
 
 <br>
 
-The results show that the degrees of freedom (\(df\)) are 2, the chi-square statistic (\(\chi^2\)) is 0.133, and the probability level (\(p\)) is 0.936. Since the \(p\)-value is greater than 0.05, the null hypothesis that the model fits well cannot be rejected. <br> Therefore, according to the chi-square statistic, the model is considered a good fit.
-
-<br><br>
-
-CMIN and Model Fit
-<br>
-
-| Model               | NPAR | CMIN  | DF  | P     | CMIN/DF |
-|---------------------|------|-------|-----|-------|---------|
-| Default model       | 12   | 0.133 | 2   | 0.936 | 0.067   |
-| Saturated model     | 14   | 0.000 | 0   | -     | -       |
-| Independence model  | 4    | 12751.603 | 10  | 0.000 | 1275.160 |
-
-<br>
-
-- The Default model fits well as indicated by the Chi-square (0.133) and p-value (0.936), which do not reject the null hypothesis of good fit.
-- The CMIN/DF (0.067) is extremely low, confirming a well-fitting model.
-
-<br><br>
-
-Baseline Comparisons
-<br>
-
-| Model               | NFI (Delta1) | RFI (rho1) | IFI (Delta2) | TLI (rho2) | CFI |
-|---------------------|--------------|------------|--------------|------------|-----|
-| Default model       | 1.000        | 1.000      | 1.000        | 1.001      | 1.000 |
-| Saturated model     | 1.000        | 1.000      | 1.000        | 1.001      | 1.000 |
-| Independence model  | 0.000        | 0.000      | 0.000        | 0.000      | 0.000 |
-
-
-<br><br>
-
-RMSEA
-<br>
-
-| Model               | RMSEA | LO 90 | HI 90 | PCLOSE |
-|---------------------|-------|-------|-------|--------|
-| Default model       | 0.000 | 0.000 | 0.005 | 1.000  |
-| Independence model  | 0.375 | 0.369 | 0.380 | 0.000  |
-
-<br>
-
-- The results indicate a Chi-square value (\( \chi^2 \)) of 0.133 with 2 degrees of freedom (DF), yielding a p-value of 0.936. <br>
-- This high p-value indicates that the model fits the data well, failing to reject the null hypothesis of good fit.
+- The model demonstrated excellent fit (\( \chi^2 = 0.133, p = 0.936 \)).
+- The RMSEA value of 0.000 further supports the model's adequacy.
 
 <br><br><br><br><br>
 
@@ -650,22 +479,15 @@ RMSEA
 
 <br>
 
-- ICEPT (Intercept):
-The path coefficient from Savings to ICEPT is 0.399, with a p-value < 0.001.
-This indicates that the initial level of monthly living expenses (ICEPT) is significantly influenced by savings.
-<br>
-
-- SLOPE (Rate of Change):
-The path coefficient from Savings to SLOPE is 0.027, with a p-value = 0.142.
-This suggests that the rate of change in monthly living expenses (SLOPE) is not significantly influenced by savings.
+- The path coefficient from Savings to ICEPT (0.399) indicates a statistically significant positive influence on the initial level of monthly living expenses (\( p < 0.001 \)).
+- The path coefficient from Savings to SLOPE (0.027) is not statistically significant (\( p = 0.142 \)).
 
 <br>
-
 Interpretation
 <br>
 
 - Savings significantly impact the initial level of living expenses (ICEPT), but there is no significant effect on the rate of change (SLOPE).
-- Thus, while savings are associated with differences in initial living expenses, they do not explain differences in how living expenses change over time.
+- While savings are associated with differences in initial living expenses, they do not explain differences in how living expenses change over time.
 
 <br><br><br>
 
@@ -673,88 +495,52 @@ To handle missing data, **Regression Imputation** was utilized. This method ensu
 
 <br><br><br>
 
-Model Fit Evaluation
+Model Fit Evaluation (After Regression Imputation)
 <br><br>
 
-After imputing missing values, the model fit was assessed. The results of the model fit evaluation are as follows:
 
-
-| Statistic             | Value   |
-|-----------------------|---------|
-| Chi-square (\(\chi^2\)) | 32.272  |
+| Statistic              | Value   |
+|------------------------|---------|
+| Chi-square (\(\chi^2\))| 32.272  |
 | Degrees of Freedom (df)| 3       |
-| Probability (p-value) | 0.000   |
-| CMIN/DF              | 10.757  |
+| Probability (p-value)  | 0.000   |
+| CMIN/DF                | 10.757  |
 
 <br>
-The Chi-square test indicates that the model is not a good fit (\(p < 0.001\)). Additionally, the CMIN/DF value of 10.757 exceeds the acceptable range, further supporting the conclusion that the model does not fit well.
+- The Chi-square test indicates poor model fit (\(p < 0.001\)).<br>
+- The high CMIN/DF value (10.757) exceeds the acceptable threshold (typically \(< 5\)), suggesting the model does not adequately represent the data.<br>
+- These results highlight the need for further model refinement or alternative approaches to achieve a better fit.
 
-<br>
-Based on the above evaluation, the model is not suitable for explaining the observed data effectively. Further adjustments to the model or alternative methodologies may be required to achieve a better fit.
+
 
 <br><br><br><br><br>
 **Model Fit Evaluation without Variance Constraints on Error Terms**
 <br><br><br>
 Model Fit Evaluation
-<br>
+<br><br>
 The fit of the model without variance constraints on error terms was evaluated. <br> The results are presented in the following table:
 
 
-| Statistic             | Value   |
-|-----------------------|---------|
-| Chi-square (\(\chi^2\)) | 0.107   |
+| Statistic              | Value   |
+|------------------------|---------|
+| Chi-square (\(\chi^2\))| 0.107   |
 | Degrees of Freedom (df)| 1       |
-| Probability (p-value) | 0.744   |
-
+| Probability (p-value)  | 0.744   |
+| CMIN/DF                | 0.107   |
 <br>
 
-The p-value (\(p = 0.744\)) indicates that the null hypothesis cannot be rejected, and the model fits well according to the Chi-square test.s Therefore, the model is considered a good fit based on this evaluation.
+- The Chi-square test (\(\chi^2 = 0.107, p = 0.744\)) indicates a good fit.
+- The CMIN/DF value (0.107) is well below the acceptable threshold, confirming excellent model fit.
+<br><br><br>
 
-<br><br>
-CMIN
-<br>
-
-| Model                | NPAR | CMIN  | DF | P     | CMIN/DF   |
-|----------------------|-------|-------|----|-------|-----------|
-| Default model        | 8     | 0.107 | 1  | 0.744 | 0.107     |
-| Saturated model      | 9     | 0.000 | 0  | -     | -         |
-| Independence model   | 3     | 12280.110 | 6 | 0.000 | 2046.685 |
+| Model                | NFI    | TLI    | CFI    | RMSEA  | PCLOSE |
+|----------------------|--------|--------|--------|--------|--------|
+| Default model        | 1.000  | 1.000  | 1.000  | 0.000  | 1.000  |
+| Independence model   | 0.000  | 0.000  | 0.000  | 0.475  | 0.000  |
 
 <br>
-From the results above, the Default model (research model) has 8 parameters, which places it between the Saturated model (9 parameters) and the Independence model (3 parameters). Therefore, the model is considered acceptable. Additionally, the CMIN/DF value of 0.107 is very low, further indicating good model fit.
-
-<br><br>
-Baseline Comparisons
-<br>
-
-| Model                | NFI Delta1 | RFI rho1 | IFI Delta2 | TLI rho2 | CFI   |
-|----------------------|------------|----------|------------|----------|-------|
-| Default model        | 1.000      | 1.000    | 1.000      | 1.000    | 1.000 |
-| Saturated model      | 1.000      | 1.000    | 1.000      | 1.000    | 1.000 |
-| Independence model   | 0.000      | 0.000    | 0.000      | 0.000    | 0.000 |
-
-<br><br>
-Parsimony-Adjusted Measures
-<br>
-
-| Model                | PRATIO | PNFI | PCFI |
-|----------------------|--------|------|------|
-| Default model        | 0.167  | 0.167| 0.167|
-| Saturated model      | 0.000  | 0.000| 0.000|
-| Independence model   | 1.000  | 1.000| 1.000|
-
-<br><br>
-RMSEA
-<br>
-
-| Model                | RMSEA | LO 90 | HI 90 | PCLOSE |
-|----------------------|-------|-------|-------|--------|
-| Default model        | 0.000 | 0.000 | 0.019 | 1.000  |
-| Independence model   | 0.475 | 0.468 | 0.482 | 0.000  |
-
-<br>
-
-The baseline comparison indices (NFI, TLI, CFI, etc.) all exceed 0.9, suggesting strong model fit. <br> Additionally, the RMSEA value for the Default model is 0.000, which is well below the threshold of 0.05, further confirming that the model demonstrates excellent fit.
+- Baseline comparison indices (NFI, TLI, CFI) all exceed 0.9, indicating strong model fit. <br>
+- RMSEA value of 0.000 with PCLOSE = 1.000 supports excellent fit.
 
 <br><br><br><br>
 
@@ -764,66 +550,73 @@ The baseline comparison indices (NFI, TLI, CFI, etc.) all exceed 0.9, suggesting
 Mean Estimates
 <br>
 
-| Parameter | Estimate | S.E.  | C.R.      | p-value | Label   |
-|-----------|----------|-------|-----------|---------|---------|
-| ICEPT     | 178.688  | 1.072 | 166.652   | ***     | IMean   |
-| SLOPE     | 27.600   | 1.009 | 27.364    | ***     | SMean   |
+| Parameter | Estimate | S.E.  | C.R.      | p-value |
+|-----------|----------|-------|-----------|---------|
+| ICEPT     | 178.688  | 1.072 | 166.652   | ***     |
+| SLOPE     | 27.600   | 1.009 | 27.364    | ***     |
 
 <br>
 
-- The mean estimate for ICEPT (initial level of monthly living expenses) is 178.688, representing the average monthly living expenses in 2011.  
-- The mean estimate for SLOPE (rate of change) is 27.600, indicating a statistically significant increase in monthly living expenses each year.  
-- The p-values for both parameters are less than 0.001, confirming that both estimates are statistically significant.
+- ICEPT (Intercept): The initial level of monthly living expenses in 2011 is 178.688.
+- SLOPE (Rate of Change): The annual increase in monthly living expenses is 27.600. 
+- Both estimates are statistically significant (\( p < 0.001 \)).
 
 
 
-<br><br>
+<br><br><br>
 Variance Estimates
 <br>
 
-| Parameter | Estimate  | S.E.   | C.R.   | p-value | Label     |
-|-----------|-----------|--------|--------|---------|-----------|
-| ICEPT     | 8340.195  | 194.100 | 42.968 | ***     | IVariance |
-| SLOPE     | 2245.592  | 326.040 | 6.887  | ***     | SVariance |
+| Parameter | Estimate  | S.E.   | C.R.   | p-value |
+|-----------|-----------|--------|--------|---------|
+| ICEPT     | 8340.195  | 194.100 | 42.968 | ***     |
+| SLOPE     | 2245.592  | 326.040 | 6.887  | ***     |
+
 
 <br>
 
-- The variance estimate for ICEPT is 8340.195, and for SLOPE, it is 2245.592. - Both variances are statistically significant with p-values less than 0.001. - This indicates significant individual differences in both the initial level and the rate of change in monthly living expenses. The results suggest that:  
-1. There is variation in the initial level of living expenses among individuals.  
-2. There is variation in the rate of change in living expenses across individuals.
+-  Variance of ICEPT: 8340.195, indicating variability in initial living expenses among individuals. 
+- Variance of SLOPE: 2245.592, reflecting differences in the rate of change over time. 
+- Both variances are statistically significant (\( p < 0.001 \)).
 
+<br><br><br>
+
+**Key Insights**:
 <br><br>
-These findings highlight the significance of both the average trends and the variability in monthly living expenses over time.
+
+1. There is significant variability in both the starting levels and the rates of change in monthly living expenses. 
+2. These results highlight the importance of accounting for individual differences when analyzing financial behavior trends.
 
 
 <br><br><br><br><br><br>
 
-### 7. Conclusion
+### 4. Conclusion
 <br><br>
 
-This study analyzed monthly living expenses over three years in households with female heads, focusing on the impact of employment status and savings. The analysis utilized latent growth curve modeling (LGCM) with data from the Korean Longitudinal Survey of Women and Families (KLoWF) and employed two missing data handling methods: Full Information Maximum Likelihood (FIML) and Regression Imputation.
+This study examined the dynamics of monthly living expenses in households with female heads over three years, utilizing data from the Korean Longitudinal Survey of Women and Families (KLoWF). Latent Growth Curve Modeling (LGCM) was applied, with missing data addressed through Full Information Maximum Likelihood (FIML) and Regression Imputation.
 
 <br><br>
-**Key Findings**:
+Key Findings:
 <br><br>
 
-1. Increase in Living Expenses
-Monthly living expenses increased consistently from ₩178,688 in 2011 to ₩206,288 in 2013, indicating a general upward trend in household spending.
+1. **Upward Trend in Living Expenses** <br><br>
+Monthly living expenses increased from ₩178,688 in 2011 to ₩206,288 in 2013, reflecting a consistent rise in household spending.
 <br><br>
-2. Effect of Savings
-Savings significantly influenced the initial level of living expenses (₩178,688) but had no significant impact on the rate of change (₩27,600 annually). This suggests that while savings reflect the household's starting financial status, they do not alter the growth trajectory of expenses.
+2. **Impact of Savings** <br><br>
+Savings significantly influenced the initial level of living expenses but did not affect the annual growth rate. This suggests that savings reflect the household’s starting financial position rather than the trajectory of expense growth.
 <br><br>
-3. Consistency of Missing Data Methods
-Both FIML and Regression Imputation yielded identical results, demonstrating that either method is reliable for analyzing panel data.
+3. **Consistency in Missing Data Methods** <br><br>
+Both FIML and Regression Imputation produced identical results, demonstrating their reliability for panel data analysis.
 
 <br><br>
-**Implications**:
+Implications:
 <br><br>
 
-- Financial Planning: The findings underscore the importance of addressing initial financial conditions when designing policies aimed at household financial support.
-<br>
+- **Policy Design:** Addressing initial financial conditions is crucial for effective household financial support policies.
+<br><br>
+- **Methodological Insight:** The equivalence of FIML and Regression Imputation confirms their robustness, offering flexibility in choosing methods for handling missing data.
 
-- Methodological Insight: The equivalence of FIML and Regression Imputation results highlights their reliability, offering flexibility in missing data handling for similar analyses.
+
 
 <br><br>
-This research contributes to understanding the dynamics of household financial behavior and emphasizes the robustness of AMOS-based methodologies for longitudinal data analysis. Future studies could expand by incorporating more detailed expense categories to deepen insights into household spending patterns.
+
