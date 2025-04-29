@@ -28,8 +28,9 @@ output: html_document
 📱 (+82) 10 - 8312 - 8838 <br>
 ✉️ [jc3710@georgetown.edu](mailto:jc3710@georgetown.edu)
 <div style="text-align: right; margin-left: 10px; margin-right: 100px; margin-top: -150px; margin-bottom: 200px;">
-  <img src="images/georgetownlogo.png" style="width: 240px;">
+  <img src="images/georgetownlogo.png" style="width: 240px; max-width: 100%;">
 </div>
+
 
 
 
