@@ -33,7 +33,7 @@ navbar:
     - icon: fas fa-envelope
       href: contact.html
     - icon: ai-cv ai-lg
-      href: files/Resume_Jiye Choi_.pdf
+      href: files/Resume_JiyeChoi_.pdf
     # - icon: fab fa-github
     #   href: http://github.com/
     - icon: fab fa-linkedin-in
