@@ -25,8 +25,8 @@ output: html_document
 #### **Jiye Choi**
 ##### M.S. in Biostatistics&nbsp;&nbsp;|&nbsp;&nbsp;Georgetown University
 📍 Washington, DC <br>
-📱 (+82) 10 - 8312 - 8838 <br>
-✉️ [jc3710@georgetown.edu](mailto:jc3710@georgetown.edu)
+📱 (+1) 703 - 859 - 5867 <br>
+✉️ [jiyechoi.data@gmail.com](mailto:jiyechoi.data@gmail.com)
 <div style="text-align: right; margin-top: -100px; margin-bottom: 300px;">
   <img src="images/georgetownlogo.png" style="width: 180px; max-width: 100%; position: relative; z-index: -1;">
 </div>

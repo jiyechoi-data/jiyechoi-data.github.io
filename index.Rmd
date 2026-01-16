@@ -77,8 +77,9 @@ output: html_document
 <!-- Fade-in sections for scrolling effect -->
 
 <h2 class="fade-in-section" style="font-size: 28px; text-align: left; background-color: #f4f4f4; padding: 10px; border-radius: 5px;"> 🎓 Background</h2><br>
-<p class="fade-in-section" style="font-size: 18px;">With a background in Information and Statistics from Gyeongsang National University in South Korea (Feb 2019), I’ve built a strong foundation in data analysis and statistical methods.<br><br>
-I’ll begin my MS in Biostatistics at Georgetown University in Fall 2025 to further strengthen my technical skills and apply them to public health and medical data.</p>
+<p class="fade-in-section" style="font-size: 18px;">I am currently pursuing an M.S. in Biostatistics at Georgetown University (Fall 2025–Dec 2026), where I focus on building a strong statistical foundation and applying data-driven approaches to public health and medical research.<br><br>
+I previously earned my B.S. in Information and Statistics from Gyeongsang National University in South Korea (Feb 2019), gaining hands-on experience in data analysis and statistical modeling.<br><br>
+I am also exploring research interests in genetics and statistical methods for biomedical data as part of my graduate training.</p>
 <br><br><br>
 
 <!-- Key Projects Section -->
