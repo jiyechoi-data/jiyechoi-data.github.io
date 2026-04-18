@@ -1,0 +1,272 @@
+---
+pagetitle: "Stat1"
+output:
+  html_document:
+    toc: true
+    toc_depth: 5
+    toc_float:
+     collapsed: false
+     smooth_scroll: false
+---
+
+<style>
+  body {
+    font-family: Georgia, "Times New Roman", Times, serif;
+  }
+
+  h1, h2 {
+    color: #333;
+  }
+</style>
+
+<link rel="stylesheet" href="styles.css" type="text/css">
+<link rel="stylesheet" href="site_libs/academicons-1.9.1/css/academicons.min.css"/>
+
+<br><br><br>
+
+## **Bank Customer Behavior Analysis**
+
+![](https://img.shields.io/badge/Using-SAS_Enterprise_Miner-blue)
+![](https://img.shields.io/badge/Method-Association_Rule_Discovery-orange)
+![](https://img.shields.io/badge/Method-Path_Analysis-purple)
+![](https://img.shields.io/badge/Data-Bank_Customer_Data-green)
+![](https://img.shields.io/badge/Evaluation-Support_Confidence_Lift-yellow)
+![](https://img.shields.io/badge/Application-Customer_Insight-teal)
+
+
+
+<br>
+
+
+<br><br><br>
+
+### 1. Introduction
+<br>
+Customer Relationship Management (CRM) leverages customer data to design strategies that improve decision-making and customer satisfaction. This project focuses on using Association Rule Discovery to uncover valuable insights such as Target Marketing, Churn Analysis, and Sales Forecasting.
+<br><br><br>
+
+### 2. Goal
+<br>
+This project aims to analyze bank customer data to uncover relationships between financial services using Association Rule Discovery and Path Analysis. The insights will support personalized product recommendations, enhancing customer satisfaction and loyalty.
+
+
+
+<br><br>
+
+### 3. Figure
+<br>
+**Case 1: Customer Subscription Patterns in Banking Services**
+<br><br><br>
+<h4>1-1. Research Subject</h4>
+<br>
+This analysis aims to identify the types of financial services that bank customers frequently subscribe to together.
+
+- Dataset: BNKSERV  
+- ACCT: Unique customer ID  
+- SERVICE: Subscribed financial services  
+
+The dataset includes 13 types of services offered, as detailed in the appendix.
+
+<br><br>
+<h4>1-2. Association Rule</h4>
+<br>
+The BNKSERV dataset was analyzed using Association Analysis, Graph Exploration, and Market Basket Analysis nodes.
+
+<br><br>
+<!-- Frequency1 -->
+<p align="center">
+  <img src="images/frequency.JPEG" style="width:60%; border:0px solid; margin-right: 20px" align="center">
+    <br><br>
+</p>
+<p align="center" style="font-size: 14px; font-weight: bold;">
+  [Fig. Frequency of Subscribed Services]
+    <br>
+</p>
+<br><br>
+
+Graph Exploration :
+
+- Each customer’s (ACCT) subscribed services are identified.  
+- Among the services, CKING (Checking Account) had the highest subscription frequency, with a total of 6,855 occurrences.
+
+<br><br><br>
+
+<!-- confidence1 -->
+<p align="center">
+  <img src="images/confidence1.PNG" style="width:60%; border:0px solid; margin-right: 20px" align="center">
+    <br><br>
+</p>
+<p align="center" style="font-size: 14px; font-weight: bold;">
+  [Fig. Confidence vs. Support Scatter Plot for the Rule SVG → CKING]
+    <br>
+</p>
+<br><br>
+
+Market Basket Analysis :
+
+- CKING had the highest support of 85.7840%.
+- The "Confidence vs. Support" graph from the association analysis revealed that the rule ‘SVG → CKING’ had both high confidence and support values.
+
+<br><br><br>
+
+<!-- network1 -->
+<p align="center">
+  <img src="images/network1.PNG" style="width:60%; border:0px solid; margin-right: 20px" align="center">
+    <br><br>
+</p>
+<p align="center" style="font-size: 14px; font-weight: bold;">
+  [Fig. Association Rule Network Graph]
+    <br>
+</p>
+<br><br>
+
+Graph Representation of Rules :  
+
+- Nodes represent transaction frequency (larger nodes = higher frequency).  
+- Edge thickness indicates confidence (thicker edges = higher confidence).  
+- CKING and SVG had the largest nodes, and CKING showed notably high confidence levels with other services.  
+
+- Key Metrics for Rule SVG → CKING:  
+
+- Transaction Count (\(n(\text{SVG}, \text{CKING})\)): 4,329  
+- Support:  
+  \[
+  \text{Support} = \frac{4,329}{7,991} = 54.17\%
+  \]
+- Confidence:  
+  \[
+  \text{Confidence} = \frac{4,329}{4,944} = 87.56\%
+  \]
+- Lift:  
+  \[
+  \text{Lift} = \frac{87.56\%}{\frac{6,855}{7,991}} = 1.02
+  \]
+
+
+<br><br><br>
+
+**Case 2: Web Visitor Behavior and Path Analysis**
+<br><br><br>
+<h4>2-1. Research Subject</h4>
+<br>
+This analysis examines website visitor behavior to identify:
+
+- The number of visitors.
+- The most and least viewed webpages.
+- The webpages with the longest viewing durations.
+<br>
+Dataset:
+The dataset, WEBPATH, consists of the following variables:
+
+- REFERRER: Referrer source.
+- REQUESTED_FILE: Webpage visited.
+- SESSION_ID: Unique session identifier.
+- SESSION_SEQUENCE: Order of webpage visits within the same session.
+
+<br><br>
+<h4>2-2. Path Analysis</h4>
+<br>
+The WEBPATH dataset was analyzed using Graph Exploration and Path Analysis nodes to uncover visitor behavior patterns.
+
+<br><br>
+<!-- confidence2 -->
+<p align="center">
+  <img src="images/confidence2.JPEG" style="width:60%; border:0px solid; margin-right: 20px" align="center">
+    <br><br>
+</p>
+<p align="center" style="font-size: 14px; font-weight: bold;">
+  [Fig. Confidence vs. Support Scatter Plot for Association Rules]
+    <br>
+</p>
+<br><br>
+
+Session Identification: Sessions were identified by combining session IDs and visit times.
+<br><br>
+"Confidence vs. Support" Graph:
+<br><br>
+
+- The rule ‘/Department.jsp → /Subcategory.jsp’ had the highest support (40.0%) and confidence (84.1%).
+
+<br><br>
+<!-- confidence2 -->
+<p align="center">
+  <img src="images/network2.PNG" style="width:60%; border:0px solid; margin-right: 20px" align="center">
+    <br><br>
+</p>
+<p align="center" style="font-size: 14px; font-weight: bold;">
+  [Fig. Path Analysis Network Graph]
+    <br>
+</p>
+<br><br>
+Most Frequently Visited Webpage:
+<br><br>
+
+- ‘/Home.jsp’
+- Visit count: 197
+- Visit ratio: 67.9%
+
+<br><br>
+Path Representation of Rules:
+<br><br>
+
+- Nodes represent visit counts (larger nodes = higher counts).
+- Edge thickness indicates confidence (thicker edges = higher confidence).
+- ‘/Home.jsp’ had the largest node, while the strongest associations were:
+- ‘/Billing.jsp ↔ /Summary.jsp’
+- ‘/Registration.jsp → /Confirm.jsp’
+
+<br><br>
+- Key Metrics for Rule ‘/Department.jsp → /Subcategory.jsp’
+
+- Transaction Count (n): 40  
+- Support:  
+  \[
+  \text{Support} = \frac{40}{100} = 40.0\%
+  \]  
+- Confidence:  
+  \[
+  \text{Confidence} = \frac{40}{47.6} = 84.1\%
+  \]  
+- Lift: 
+  \[
+  \text{Lift} = \frac{84.1\%}{67.9\%} = 1.24
+  \]
+
+
+
+
+<br>
+
+
+### 4. Methodology & Summary
+
+This project used data-driven techniques to analyze customer behaviors and web visitor patterns, leveraging the following methodologies:
+<br><br>
+
+- Association Rule Discovery:
+Applied to identify frequent patterns and relationships between subscribed financial services.
+Metrics such as Support, Confidence, and Lift were used to evaluate the strength and significance of the discovered rules.
+
+- Path Analysis:
+Implemented to uncover visitor navigation patterns on the website.
+Combined session data with sequence information to reveal key navigation paths and identify the most frequently visited pages.
+
+- Visualization Techniques:
+Graph Exploration nodes were used to visually represent relationships between entities, such as financial services and webpage navigation paths.
+Network graphs highlighted significant nodes (e.g., frequently subscribed services or visited pages) and connections (e.g., transitions between pages or services).
+
+
+<br><br><br>
+
+### 5. Conclusion
+<br><br>
+Case 1: Banking Services
+
+The analysis of customer subscription patterns revealed that CKING (Checking Account) is a central service with high demand, and its strong association with SVG (Savings Account) presents a valuable cross-selling opportunity. By targeting SVG customers with personalized CKING recommendations, banks can drive service adoption while enhancing customer loyalty. This approach can be further scaled using predictive analytics to identify other key service pairs, tailoring campaigns to maximize customer satisfaction and retention.
+
+<br>
+Case 2: Website Navigation
+
+The path analysis identified ‘/Department.jsp → /Subcategory.jsp’ as a crucial navigation path with high confidence and support. This finding suggests an opportunity to improve website engagement through optimized page layouts and targeted content placement. Additionally, focusing on the most visited page, ‘/Home.jsp,’ as a central hub for user interaction could enhance navigation flow and reduce drop-off rates. Implementing real-time monitoring of navigation behavior could further refine user experiences, leading to higher conversion rates and improved audience retention.
+
+

@@ -11,6 +11,8 @@ navbar:
     #   href: tutorials.html
     - text: "Stat/ML"
       menu: 
+        - text: "Breast Cancer Prediction Analysis using ML Methods"
+          href: breast_cancer_ml.html
         - text: "Bank Customer Behavior Analysis"
           href: stat1.html
         - text: "Regional Birth Rate Disparities in South Korea"
