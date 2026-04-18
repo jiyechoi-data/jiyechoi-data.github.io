@@ -1,5 +1,5 @@
 ---
-pagetitle: "Stat1"
+pagetitle: "breast_cancer_ml"
 output:
   html_document:
     toc: true
@@ -24,15 +24,12 @@ output:
 
 <br><br><br>
 
-## **Bank Customer Behavior Analysis**
+## **Breast Cancer Prediction Analysis using ML Methods**
 
-![](https://img.shields.io/badge/Using-SAS_Enterprise_Miner-blue)
-![](https://img.shields.io/badge/Method-Association_Rule_Discovery-orange)
-![](https://img.shields.io/badge/Method-Path_Analysis-purple)
-![](https://img.shields.io/badge/Data-Bank_Customer_Data-green)
-![](https://img.shields.io/badge/Evaluation-Support_Confidence_Lift-yellow)
-![](https://img.shields.io/badge/Application-Customer_Insight-teal)
-
+![](https://img.shields.io/badge/Using-R-blue)
+![](https://img.shields.io/badge/Method-Logistic%20%7C%20LASSO%20%7C%20Tree%20%7C%20RF%20%7C%20XGBoost-orange)
+![](https://img.shields.io/badge/Data-UCI_Breast_Cancer_Wisconsin-green)
+![](https://img.shields.io/badge/Evaluation-ROC%2FAUC%20%7C%20Sensitivity%20%7C%20Confusion_Matrix-purple)
 
 
 <br>
@@ -42,22 +39,258 @@ output:
 
 ### 1. Introduction
 <br>
-Customer Relationship Management (CRM) leverages customer data to design strategies that improve decision-making and customer satisfaction. This project focuses on using Association Rule Discovery to uncover valuable insights such as Target Marketing, Churn Analysis, and Sales Forecasting.
+Breast cancer is one of the most prevalent cancers worldwide, making early and accurate 
+diagnosis critical for improving patient outcomes. This project applies a comparative 
+machine learning approach to the UCI Breast Cancer Wisconsin dataset, evaluating multiple 
+classification models to distinguish malignant from benign tumors.
+
 <br><br><br>
 
 ### 2. Goal
 <br>
-This project aims to analyze bank customer data to uncover relationships between financial services using Association Rule Discovery and Path Analysis. The insights will support personalized product recommendations, enhancing customer satisfaction and loyalty.
+This project develops and compares five classification models — Logistic Regression, LASSO, 
+Decision Tree, Random Forest, and XGBoost — for breast cancer prediction. Model performance 
+is evaluated with a focus on sensitivity and ROC/AUC, given the severe clinical 
+consequences of misclassifying malignant tumors as benign.
 
+
+
+<br><br><br>
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE)
+library(mlbench)
+library(caret)
+library(dplyr)
+library(ggplot2)
+library(tidyr)
+library(corrplot)
+library(glmnet)
+library(randomForest)
+library(rpart)
+library(rpart.plot)
+library(xgboost)
+library(pROC)
+library(car)
+data(BreastCancer)
+```
+
+
+### 3. Exploratory Data Analysis
+<br><br>
+
+#### 3-1. Data Preprocessing
+
+<br><br>
+The raw dataset contains **699 observations and 11 variables**, including one patient ID variable, 9 cytological predictors scored on a 1–10 scale, and one binary target variable (`Class`).
+<br><br><br>
+Three preprocessing steps were applied prior to analysis:
+
+<br>
+**1. Missing value removal**  
+16 observations with missing values in `Bare.nuclei` were removed using `na.omit()`, 
+resulting in a final dataset of **683 observations**.
+<br><br>
+
+**2. ID column removal**  
+The `Id` variable was excluded as it serves as a patient identifier 
+and carries no predictive information.
+<br><br>
+
+**3. Type conversion**  
+All predictors were originally stored as ordered factors with string levels (`"1"` to `"10"`). To enable numerical computation, they were converted to numeric using `as.numeric(as.character(.))`. The intermediate `as.character()` step prevents R from returning factor level indices instead of the actual values.
+
+<br><br>
+
+```{r preprocessing}
+dim(BreastCancer)
+
+dataset <- BreastCancer %>%
+  na.omit() %>%
+  select(-Id) %>%
+  mutate(across(-Class, ~ as.numeric(as.character(.))))
+
+dim(dataset)
+anyNA(dataset)
+glimpse(dataset)
+```
+
+<br><br><br><br>
+
+#### 3-2. Class Distribution
+
+<br>
+The target variable `Class` is binary, consisting of **benign** and **malignant** tumor diagnoses.
+As shown in the plot below, the dataset contains **444 benign (65.0%)** and **239 malignant (35.0%)** 
+observations, indicating a moderate class imbalance.
+
+To account for this imbalance, stratified sampling will be applied during the train/test split 
+to ensure both subsets preserve the original class ratio. Given this class imbalance, sensitivity and ROC/AUC were prioritized over overall accuracy as the primary evaluation metrics.
+<br><br><br>
+
+```{r class_distribution}
+ggplot(dataset, aes(x = Class, fill = Class)) +
+  geom_bar() +
+  geom_text(stat = "count", aes(label = after_stat(count)), vjust = -0.5) +
+  theme_minimal() +
+  labs(title = "Class Distribution", x = "Diagnosis", y = "Count") +
+  scale_y_continuous(expand = expansion(mult = c(0, 0.08))) +
+  guides(fill = "none")
+```
+
+
+<br><br><br><br>
+
+
+#### 3-3. Feature Distributions
+
+<br>
+To examine how each predictor differs across tumor classes, density plots and boxplots were generated for all nine features.
+
+Density plots show the overall shape of each feature distribution and the degree of overlap between benign and malignant cases. <br> Boxplots complement this by highlighting differences in medians, interquartile ranges, and potential outliers.
+
+<br><br><br>
+
+
+```{r feature_distributions, fig.width=10, fig.height=7}
+dataset %>%
+  select(where(is.numeric), Class) %>%
+  pivot_longer(-Class, names_to = "variable", values_to = "value") %>%
+  ggplot(aes(x = value, fill = Class)) +
+  geom_density(alpha = 0.5) +
+  facet_wrap(~ variable, scales = "free") +
+  theme_minimal() +
+  labs(title = "Feature Distributions by Class")
+```
+
+<br><br>
+
+```{r boxplot, fig.width=10, fig.height=7}
+dataset %>%
+  select(where(is.numeric), Class) %>%
+  pivot_longer(-Class, names_to = "variable", values_to = "value") %>%
+  ggplot(aes(x = Class, y = value, fill = Class)) +
+  geom_boxplot(outlier.shape = 21, outlier.size = 1.5) +
+  facet_wrap(~ variable, scales = "free_y") +
+  theme_classic() +
+  labs(title = "Feature Distributions by Class (Boxplot)") +
+  guides(fill = "none")
+```
+
+<br>
+
+Based on the plots, features such as `Bare.nuclei`, `Cell.shape`, `Cell.size`, and `Bl.cromatin` appear to show relatively clear separation between benign and malignant cases, suggesting that they may serve as strong predictors in subsequent models. In contrast, `Mitoses` showed substantial overlap between classes, indicating weaker discriminative power.
+
+
+<br><br><br><br>
+
+#### 3-4. Correlation Analysis
+
+<br>
+A correlation matrix was computed to examine pairwise relationships among the nine predictors and to assess potential multicollinearity prior to modeling.
 
 
 <br><br>
 
-### 3. Figure
+```{r correlation_matrix, fig.width=8, fig.height=7}
+cor_matrix <- dataset %>%
+  select(where(is.numeric)) %>%
+  cor()
+
+corrplot(cor_matrix,
+         method      = "color",
+         type        = "upper",
+         addCoef.col = "black",
+         number.cex  = 0.7,
+         tl.cex      = 0.8,
+         diag        = FALSE,
+         title       = "Correlation Matrix of Predictors",
+         mar         = c(0,0,1,0))
+```
+
+<br>
+
+The strongest correlation was observed between `Cell.size` and `Cell.shape` (r = 0.91), suggesting that these variables capture highly similar information. In addition, `Cell.size` showed strong correlations with several other predictors, indicating it may contribute to multicollinearity.
+
+In contrast, `Mitoses` exhibited consistently weak correlations with other features, suggesting limited redundancy.
+
+These findings motivated a formal assessment of multicollinearity using Variance Inflation Factors (VIF) in the following section.
+
+
+
+
+
+
+<br><br><br><br>
+
+
+### 4. Multicollinearity Check (VIF)
+
+<br>
+
+Although the correlation matrix showed several moderately high pairwise correlations,
+a formal multicollinearity assessment was conducted using the **Variance Inflation Factor (VIF)**. 
+Unlike pairwise correlations, VIF measures how much the variance of each coefficient is inflated due to its relationships with all other predictors.
+
+<br>
+
+A logistic regression model was fitted on the full dataset solely for the purpose of VIF computation, 
+prior to any train/test split. VIF values were interpreted using the following thresholds:
+
+- VIF < 5 : acceptable
+- VIF 5–10 : moderate concern
+- VIF > 10 : severe multicollinearity
+
+<br>
+
+```{r vif, fig.width=7, fig.height=5}
+vif_model <- glm(Class ~ ., data = dataset, family = binomial)
+
+vif_result <- vif(vif_model)  
+print(vif_result)
+```
+
+<br>
+
+```{r vif_plot, fig.width=7, fig.height=5}
+
+vif_df <- data.frame(
+    Variable = names(vif_result),
+    VIF      = as.numeric(vif_result)
+)
+
+ggplot(vif_df, aes(x = reorder(Variable, VIF), y = VIF, fill = VIF > 5)) +
+    geom_col() +
+    geom_hline(yintercept = 5,  linetype = "dashed", color = "orange") +
+    geom_hline(yintercept = 10, linetype = "dashed", color = "red") +
+    coord_flip() +
+    scale_fill_manual(values = c("steelblue", "tomato"),
+                      labels = c("VIF ≤ 5", "VIF > 5"),
+                      name   = "") +
+    theme_minimal() +
+    labs(title = "Variance Inflation Factor (VIF)",
+         x = "", y = "VIF")
+```
+
+
+
+<br>
+
+All nine predictors had VIF values below 5, indicating no evidence of severe multicollinearity. Notably, although a strong pairwise correlation was observed between `Cell.size` and `Cell.shape` (r = 0.91) in the previous section, their VIF values remained within an acceptable range. This suggests that variance inflation is limited when all predictors are considered jointly.
+
+Therefore, all nine predictors were retained for subsequent modeling. However, given the observed pairwise correlations, LASSO regularization was applied to perform data-driven variable selection and to improve the stability of coefficient estimates.
+
+
+<br><br><br><br>
+
+
+
+
+### 5. Model Development
 <br>
 **Case 1: Customer Subscription Patterns in Banking Services**
 <br><br><br>
-<h4>1-1. Research Subject</h4>
+<h4>5-1. Logistic Regression</h4>
 <br>
 This analysis aims to identify the types of financial services that bank customers frequently subscribe to together.
 
@@ -68,21 +301,12 @@ This analysis aims to identify the types of financial services that bank custome
 The dataset includes 13 types of services offered, as detailed in the appendix.
 
 <br><br>
-<h4>1-2. Association Rule</h4>
+<h4>5-2. LASSO</h4>
 <br>
 The BNKSERV dataset was analyzed using Association Analysis, Graph Exploration, and Market Basket Analysis nodes.
 
 <br><br>
-<!-- Frequency1 -->
-<p align="center">
-  <img src="images/frequency.JPEG" style="width:60%; border:0px solid; margin-right: 20px" align="center">
-    <br><br>
-</p>
-<p align="center" style="font-size: 14px; font-weight: bold;">
-  [Fig. Frequency of Subscribed Services]
-    <br>
-</p>
-<br><br>
+
 
 Graph Exploration :
 
@@ -91,16 +315,6 @@ Graph Exploration :
 
 <br><br><br>
 
-<!-- confidence1 -->
-<p align="center">
-  <img src="images/confidence1.PNG" style="width:60%; border:0px solid; margin-right: 20px" align="center">
-    <br><br>
-</p>
-<p align="center" style="font-size: 14px; font-weight: bold;">
-  [Fig. Confidence vs. Support Scatter Plot for the Rule SVG → CKING]
-    <br>
-</p>
-<br><br>
 
 Market Basket Analysis :
 
@@ -109,16 +323,6 @@ Market Basket Analysis :
 
 <br><br><br>
 
-<!-- network1 -->
-<p align="center">
-  <img src="images/network1.PNG" style="width:60%; border:0px solid; margin-right: 20px" align="center">
-    <br><br>
-</p>
-<p align="center" style="font-size: 14px; font-weight: bold;">
-  [Fig. Association Rule Network Graph]
-    <br>
-</p>
-<br><br>
 
 Graph Representation of Rules :  
 
@@ -147,7 +351,7 @@ Graph Representation of Rules :
 
 **Case 2: Web Visitor Behavior and Path Analysis**
 <br><br><br>
-<h4>2-1. Research Subject</h4>
+<h4>5-3. Decision Tree</h4>
 <br>
 This analysis examines website visitor behavior to identify:
 
@@ -164,20 +368,10 @@ The dataset, WEBPATH, consists of the following variables:
 - SESSION_SEQUENCE: Order of webpage visits within the same session.
 
 <br><br>
-<h4>2-2. Path Analysis</h4>
+<h4>5-4. Random Forest</h4>
 <br>
 The WEBPATH dataset was analyzed using Graph Exploration and Path Analysis nodes to uncover visitor behavior patterns.
 
-<br><br>
-<!-- confidence2 -->
-<p align="center">
-  <img src="images/confidence2.JPEG" style="width:60%; border:0px solid; margin-right: 20px" align="center">
-    <br><br>
-</p>
-<p align="center" style="font-size: 14px; font-weight: bold;">
-  [Fig. Confidence vs. Support Scatter Plot for Association Rules]
-    <br>
-</p>
 <br><br>
 
 Session Identification: Sessions were identified by combining session IDs and visit times.
@@ -188,16 +382,7 @@ Session Identification: Sessions were identified by combining session IDs and vi
 - The rule ‘/Department.jsp → /Subcategory.jsp’ had the highest support (40.0%) and confidence (84.1%).
 
 <br><br>
-<!-- confidence2 -->
-<p align="center">
-  <img src="images/network2.PNG" style="width:60%; border:0px solid; margin-right: 20px" align="center">
-    <br><br>
-</p>
-<p align="center" style="font-size: 14px; font-weight: bold;">
-  [Fig. Path Analysis Network Graph]
-    <br>
-</p>
-<br><br>
+
 Most Frequently Visited Webpage:
 <br><br>
 
@@ -231,34 +416,84 @@ Path Representation of Rules:
   \[
   \text{Lift} = \frac{84.1\%}{67.9\%} = 1.24
   \]
+  
+  
+<br><br>
+<h4>5-5. XGBoost</h4>
+<br>
+The WEBPATH dataset was analyzed using Graph Exploration and Path Analysis nodes to uncover visitor behavior patterns.
+
+<br><br><br>
+
+### 6. Model Evaluation
+<br>
+**Case 1: Customer Subscription Patterns in Banking Services**
+<br><br><br>
+<h4>6-1. Confusion Matrix</h4>
+<br>
+This analysis aims to identify the types of financial services that bank customers frequently subscribe to together.
+
+- Dataset: BNKSERV  
+- ACCT: Unique customer ID  
+- SERVICE: Subscribed financial services  
+
+The dataset includes 13 types of services offered, as detailed in the appendix.
+
+<br><br>
+<h4>6-2. ROC / AUC Comparison</h4>
+<br>
+The BNKSERV dataset was analyzed using Association Analysis, Graph Exploration, and Market Basket Analysis nodes.
+
+<br><br>
+
+
+Graph Exploration :
+
+- Each customer’s (ACCT) subscribed services are identified.  
+- Among the services, CKING (Checking Account) had the highest subscription frequency, with a total of 6,855 occurrences.
+
+<br><br><br>
+
+
+Market Basket Analysis :
+
+- CKING had the highest support of 85.7840%.
+- The "Confidence vs. Support" graph from the association analysis revealed that the rule ‘SVG → CKING’ had both high confidence and support values.
+
+<br><br><br>
+
+
+Graph Representation of Rules :  
+
+- Nodes represent transaction frequency (larger nodes = higher frequency).  
+- Edge thickness indicates confidence (thicker edges = higher confidence).  
+- CKING and SVG had the largest nodes, and CKING showed notably high confidence levels with other services.  
+
+- Key Metrics for Rule SVG → CKING:  
+
+- Transaction Count (\(n(\text{SVG}, \text{CKING})\)): 4,329  
+- Support:  
+  \[
+  \text{Support} = \frac{4,329}{7,991} = 54.17\%
+  \]
+- Confidence:  
+  \[
+  \text{Confidence} = \frac{4,329}{4,944} = 87.56\%
+  \]
+- Lift:  
+  \[
+  \text{Lift} = \frac{87.56\%}{\frac{6,855}{7,991}} = 1.02
+  \]
+
+
+<br><br><br>
 
 
 
 
 <br>
 
-
-### 4. Methodology & Summary
-
-This project used data-driven techniques to analyze customer behaviors and web visitor patterns, leveraging the following methodologies:
-<br><br>
-
-- Association Rule Discovery:
-Applied to identify frequent patterns and relationships between subscribed financial services.
-Metrics such as Support, Confidence, and Lift were used to evaluate the strength and significance of the discovered rules.
-
-- Path Analysis:
-Implemented to uncover visitor navigation patterns on the website.
-Combined session data with sequence information to reveal key navigation paths and identify the most frequently visited pages.
-
-- Visualization Techniques:
-Graph Exploration nodes were used to visually represent relationships between entities, such as financial services and webpage navigation paths.
-Network graphs highlighted significant nodes (e.g., frequently subscribed services or visited pages) and connections (e.g., transitions between pages or services).
-
-
-<br><br><br>
-
-### 5. Conclusion
+### 7. Conclusion
 <br><br>
 Case 1: Banking Services
 
