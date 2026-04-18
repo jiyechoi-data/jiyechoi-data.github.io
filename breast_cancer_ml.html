@@ -577,12 +577,12 @@ using Variance Inflation Factors (VIF) in the following section.</p>
 <div id="multicollinearity-check-vif" class="section level3">
 <h3>4. Multicollinearity Check (VIF)</h3>
 <p><br></p>
-<p>Although the correlation matrix revealed several moderately high
+<p>Although the correlation matrix showed several moderately high
 pairwise correlations, a formal multicollinearity assessment was
 conducted using the <strong>Variance Inflation Factor (VIF)</strong>.
 Unlike pairwise correlations, VIF measures how much the variance of each
-coefficient is inflated due to its linear relationship with all other
-predictors simultaneously.</p>
+coefficient is inflated due to its relationships with all other
+predictors.</p>
 <p><br></p>
 <p>A logistic regression model was fitted on the full dataset solely for
 the purpose of VIF computation, prior to any train/test split. VIF
@@ -634,218 +634,538 @@ stability of coefficient estimates.</p>
 </div>
 <div id="model-development" class="section level3">
 <h3>5. Model Development</h3>
-<br> <strong>Case 1: Customer Subscription Patterns in Banking
-Services</strong> <br><br><br>
-<h4>
-5-1. Logistic Regression
-</h4>
-<p><br> This analysis aims to identify the types of financial services
-that bank customers frequently subscribe to together.</p>
-<ul>
-<li>Dataset: BNKSERV<br />
-</li>
-<li>ACCT: Unique customer ID<br />
-</li>
-<li>SERVICE: Subscribed financial services</li>
-</ul>
-<p>The dataset includes 13 types of services offered, as detailed in the
-appendix.</p>
-<br><br>
-<h4>
-5-2. LASSO
-</h4>
-<p><br> The BNKSERV dataset was analyzed using Association Analysis,
-Graph Exploration, and Market Basket Analysis nodes.</p>
-<p><br><br></p>
-<p>Graph Exploration :</p>
-<ul>
-<li>Each customer’s (ACCT) subscribed services are identified.<br />
-</li>
-<li>Among the services, CKING (Checking Account) had the highest
-subscription frequency, with a total of 6,855 occurrences.</li>
-</ul>
+<p><br></p>
+<p>All models were trained on 70% of the data and evaluated on the
+remaining 30%, using stratified sampling to preserve the original class
+ratio across both subsets.</p>
+<p><br></p>
+<pre class="r"><code>set.seed(42)
+train_idx &lt;- createDataPartition(dataset$Class, p = 0.7, list = FALSE)
+train &lt;- dataset[train_idx, ]
+test  &lt;- dataset[-train_idx, ]</code></pre>
 <p><br><br><br></p>
-<p>Market Basket Analysis :</p>
-<ul>
-<li>CKING had the highest support of 85.7840%.</li>
-<li>The “Confidence vs. Support” graph from the association analysis
-revealed that the rule ‘SVG → CKING’ had both high confidence and
-support values.</li>
-</ul>
+<div id="logistic-regression" class="section level4">
+<h4>5-1. Logistic Regression</h4>
+<p><br></p>
+<p>Logistic regression was used as the baseline model, fitted using all
+nine predictors. As a parametric model, it provides interpretable
+coefficients, allowing direct assessment of the direction and magnitude
+of each predictor’s association with malignancy.</p>
+<p><br></p>
+<pre class="r"><code>logit_model &lt;- glm(Class ~ ., data = train, family = binomial)
+summary(logit_model)</code></pre>
+<pre><code>## 
+## Call:
+## glm(formula = Class ~ ., family = binomial, data = train)
+## 
+## Coefficients:
+##                 Estimate Std. Error z value Pr(&gt;|z|)    
+## (Intercept)     -9.94504    1.34220  -7.409 1.27e-13 ***
+## Cl.thickness     0.57128    0.16690   3.423  0.00062 ***
+## Cell.size       -0.09245    0.23124  -0.400  0.68929    
+## Cell.shape       0.38900    0.26543   1.466  0.14278    
+## Marg.adhesion    0.37560    0.13169   2.852  0.00434 ** 
+## Epith.c.size     0.06196    0.16214   0.382  0.70236    
+## Bare.nuclei      0.29833    0.10105   2.952  0.00316 ** 
+## Bl.cromatin      0.42573    0.19595   2.173  0.02981 *  
+## Normal.nucleoli  0.23588    0.11890   1.984  0.04728 *  
+## Mitoses          0.49195    0.36248   1.357  0.17473    
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## (Dispersion parameter for binomial family taken to be 1)
+## 
+##     Null deviance: 620.686  on 478  degrees of freedom
+## Residual deviance:  83.481  on 469  degrees of freedom
+## AIC: 103.48
+## 
+## Number of Fisher Scoring iterations: 8</code></pre>
+<p><br></p>
+<pre class="r"><code>logit_prob &lt;- predict(logit_model, newdata = test, type = &quot;response&quot;)
+logit_pred &lt;- ifelse(logit_prob &gt; 0.5, &quot;malignant&quot;, &quot;benign&quot;)
+logit_pred &lt;- factor(logit_pred, levels = levels(test$Class))
+confusionMatrix(logit_pred, test$Class, positive = &quot;malignant&quot;)</code></pre>
+<pre><code>## Confusion Matrix and Statistics
+## 
+##            Reference
+## Prediction  benign malignant
+##   benign       131         3
+##   malignant      2        68
+##                                          
+##                Accuracy : 0.9755         
+##                  95% CI : (0.9437, 0.992)
+##     No Information Rate : 0.652          
+##     P-Value [Acc &gt; NIR] : &lt;2e-16         
+##                                          
+##                   Kappa : 0.9458         
+##                                          
+##  Mcnemar&#39;s Test P-Value : 1              
+##                                          
+##             Sensitivity : 0.9577         
+##             Specificity : 0.9850         
+##          Pos Pred Value : 0.9714         
+##          Neg Pred Value : 0.9776         
+##              Prevalence : 0.3480         
+##          Detection Rate : 0.3333         
+##    Detection Prevalence : 0.3431         
+##       Balanced Accuracy : 0.9714         
+##                                          
+##        &#39;Positive&#39; Class : malignant      
+## </code></pre>
+<p><br></p>
+<p>Among the predictors, <code>Cl.thickness</code>,
+<code>Marg.adhesion</code>, <code>Bare.nuclei</code>,
+<code>Bl.cromatin</code>, and <code>Normal.nucleoli</code> were
+statistically significant (p &lt; 0.05). <br><br> Notably,
+<code>Cell.size</code> returned a negative coefficient despite its
+strong association with malignancy observed in EDA, likely due to its
+high correlation with <code>Cell.shape</code> (r = 0.91), which absorbed
+much of its predictive contribution. <br><br> This instability in
+coefficient estimation motivated the use of LASSO in the following
+section.</p>
+<p>The model achieved an <strong>accuracy of 97.6%</strong> and a
+<strong>sensitivity of 95.8%</strong>, misclassifying three malignant
+cases as benign.</p>
 <p><br><br><br></p>
-<p>Graph Representation of Rules :</p>
-<ul>
-<li><p>Nodes represent transaction frequency (larger nodes = higher
-frequency).<br />
-</p></li>
-<li><p>Edge thickness indicates confidence (thicker edges = higher
-confidence).<br />
-</p></li>
-<li><p>CKING and SVG had the largest nodes, and CKING showed notably
-high confidence levels with other services.</p></li>
-<li><p>Key Metrics for Rule SVG → CKING:</p></li>
-<li><p>Transaction Count (<span class="math inline">\(n(\text{SVG},
-\text{CKING})\)</span>): 4,329<br />
-</p></li>
-<li><p>Support:<br />
-<span class="math display">\[
-\text{Support} = \frac{4,329}{7,991} = 54.17\%
-\]</span></p></li>
-<li><p>Confidence:<br />
-<span class="math display">\[
-\text{Confidence} = \frac{4,329}{4,944} = 87.56\%
-\]</span></p></li>
-<li><p>Lift:<br />
-<span class="math display">\[
-\text{Lift} = \frac{87.56\%}{\frac{6,855}{7,991}} = 1.02
-\]</span></p></li>
-</ul>
+</div>
+<div id="lasso" class="section level4">
+<h4>5-2. LASSO</h4>
+<p><br></p>
+<p>LASSO (Least Absolute Shrinkage and Selection Operator) was applied
+to address the coefficient instability observed in logistic regression.
+By imposing an L1 penalty, LASSO shrinks less informative coefficients
+toward zero, effectively performing automatic variable selection.</p>
+<p>The optimal penalty parameter lambda was selected via 10-fold
+cross-validation, using <code>lambda.1se</code>, the largest lambda
+within one standard error of the minimum, which favors a simpler model
+without substantial loss in predictive performance.</p>
+<p><br></p>
+<pre class="r"><code>x_train &lt;- model.matrix(Class ~ ., data = train)[, -1]
+x_test  &lt;- model.matrix(Class ~ ., data = test)[, -1]
+y_train &lt;- ifelse(train$Class == &quot;malignant&quot;, 1, 0)
+y_test  &lt;- ifelse(test$Class  == &quot;malignant&quot;, 1, 0)
+
+set.seed(42)
+lasso_cv &lt;- cv.glmnet(x_train, y_train,
+                      family  = &quot;binomial&quot;,
+                      alpha   = 1,
+                      nfolds  = 10)
+plot(lasso_cv)</code></pre>
+<p><img src="breast_cancer_ml_files/figure-html/lasso-1.png" width="672" /></p>
+<p><br></p>
+<pre class="r"><code>coef(lasso_cv, s = &quot;lambda.1se&quot;)</code></pre>
+<pre><code>## 10 x 1 sparse Matrix of class &quot;dgCMatrix&quot;
+##                   lambda.1se
+## (Intercept)     -5.654783814
+## Cl.thickness     0.293999932
+## Cell.size        0.022291895
+## Cell.shape       0.290901083
+## Marg.adhesion    0.126180239
+## Epith.c.size     0.006351731
+## Bare.nuclei      0.250414015
+## Bl.cromatin      0.178865322
+## Normal.nucleoli  0.146072979
+## Mitoses          .</code></pre>
+<p><br></p>
+<pre class="r"><code>lasso_prob &lt;- predict(lasso_cv, newx = x_test, 
+                      s    = &quot;lambda.1se&quot;, 
+                      type = &quot;response&quot;)
+lasso_pred &lt;- ifelse(lasso_prob &gt; 0.5, &quot;malignant&quot;, &quot;benign&quot;)
+lasso_pred &lt;- factor(lasso_pred, levels = levels(test$Class))
+
+confusionMatrix(lasso_pred, test$Class, positive = &quot;malignant&quot;)</code></pre>
+<pre><code>## Confusion Matrix and Statistics
+## 
+##            Reference
+## Prediction  benign malignant
+##   benign       131         4
+##   malignant      2        67
+##                                           
+##                Accuracy : 0.9706          
+##                  95% CI : (0.9371, 0.9891)
+##     No Information Rate : 0.652           
+##     P-Value [Acc &gt; NIR] : &lt;2e-16          
+##                                           
+##                   Kappa : 0.9348          
+##                                           
+##  Mcnemar&#39;s Test P-Value : 0.6831          
+##                                           
+##             Sensitivity : 0.9437          
+##             Specificity : 0.9850          
+##          Pos Pred Value : 0.9710          
+##          Neg Pred Value : 0.9704          
+##              Prevalence : 0.3480          
+##          Detection Rate : 0.3284          
+##    Detection Prevalence : 0.3382          
+##       Balanced Accuracy : 0.9643          
+##                                           
+##        &#39;Positive&#39; Class : malignant       
+## </code></pre>
+<p><br></p>
+<p>LASSO eliminated <code>Mitoses</code> from the model by shrinking its
+coefficient to zero, consistent with its weak discriminative power
+observed in EDA.</p>
+<p>In addition, <code>Cell.size</code>, which showed a negative
+coefficient in logistic regression, was assigned a positive coefficient
+under LASSO, reflecting its true positive association with
+malignancy.</p>
+<p>The model achieved an <strong>accuracy of 97.1%</strong> and a
+<strong>sensitivity of 94.4%</strong>, representing a slight decrease
+compared to logistic regression. However, the resulting model is more
+parsimonious and provides more stable coefficient estimates, making it
+preferable when interpretability is a priority.</p>
 <p><br><br><br></p>
-<strong>Case 2: Web Visitor Behavior and Path Analysis</strong>
-<br><br><br>
-<h4>
-5-3. Decision Tree
-</h4>
-<p><br> This analysis examines website visitor behavior to identify:</p>
-<ul>
-<li><p>The number of visitors.</p></li>
-<li><p>The most and least viewed webpages.</p></li>
-<li><p>The webpages with the longest viewing durations. <br> Dataset:
-The dataset, WEBPATH, consists of the following variables:</p></li>
-<li><p>REFERRER: Referrer source.</p></li>
-<li><p>REQUESTED_FILE: Webpage visited.</p></li>
-<li><p>SESSION_ID: Unique session identifier.</p></li>
-<li><p>SESSION_SEQUENCE: Order of webpage visits within the same
-session.</p></li>
-</ul>
-<br><br>
-<h4>
-5-4. Random Forest
-</h4>
-<p><br> The WEBPATH dataset was analyzed using Graph Exploration and
-Path Analysis nodes to uncover visitor behavior patterns.</p>
-<p><br><br></p>
-<p>Session Identification: Sessions were identified by combining session
-IDs and visit times. <br><br> “Confidence vs. Support” Graph:
-<br><br></p>
-<ul>
-<li>The rule ‘/Department.jsp → /Subcategory.jsp’ had the highest
-support (40.0%) and confidence (84.1%).</li>
-</ul>
-<p><br><br></p>
-<p>Most Frequently Visited Webpage: <br><br></p>
-<ul>
-<li>‘/Home.jsp’</li>
-<li>Visit count: 197</li>
-<li>Visit ratio: 67.9%</li>
-</ul>
-<p><br><br> Path Representation of Rules: <br><br></p>
-<ul>
-<li>Nodes represent visit counts (larger nodes = higher counts).</li>
-<li>Edge thickness indicates confidence (thicker edges = higher
-confidence).</li>
-<li>‘/Home.jsp’ had the largest node, while the strongest associations
-were:</li>
-<li>‘/Billing.jsp ↔︎ /Summary.jsp’</li>
-<li>‘/Registration.jsp → /Confirm.jsp’</li>
-</ul>
-<p><br><br> - Key Metrics for Rule ‘/Department.jsp →
-/Subcategory.jsp’</p>
-<ul>
-<li>Transaction Count (n): 40<br />
-</li>
-<li>Support:<br />
-<span class="math display">\[
-\text{Support} = \frac{40}{100} = 40.0\%
-\]</span><br />
-</li>
-<li>Confidence:<br />
-<span class="math display">\[
-\text{Confidence} = \frac{40}{47.6} = 84.1\%
-\]</span><br />
-</li>
-<li>Lift: <span class="math display">\[
-\text{Lift} = \frac{84.1\%}{67.9\%} = 1.24
-\]</span></li>
-</ul>
-<br><br>
-<h4>
-5-5. XGBoost
-</h4>
-<p><br> The WEBPATH dataset was analyzed using Graph Exploration and
-Path Analysis nodes to uncover visitor behavior patterns.</p>
+</div>
+<div id="decision-tree" class="section level4">
+<h4>5-3. Decision Tree</h4>
+<p><br></p>
+<p>A decision tree was used to provide an interpretable, rule-based
+classification model. <br> Unlike logistic regression, decision trees
+require no assumptions about linearity or variable distributions, and
+the resulting structure can be directly translated into clinical
+decision rules.</p>
+<p>To prevent overfitting, pruning was applied by selecting the optimal
+complexity parameter (cp) based on cross-validated error.</p>
+<p><br></p>
+<pre class="r"><code>tree_model &lt;- rpart(Class ~ .,
+                    data    = train,
+                    method  = &quot;class&quot;,
+                    control = rpart.control(cp = 0.01))
+
+printcp(tree_model)</code></pre>
+<pre><code>## 
+## Classification tree:
+## rpart(formula = Class ~ ., data = train, method = &quot;class&quot;, control = rpart.control(cp = 0.01))
+## 
+## Variables actually used in tree construction:
+## [1] Cell.shape Cell.size 
+## 
+## Root node error: 168/479 = 0.35073
+## 
+## n= 479 
+## 
+##         CP nsplit rel error  xerror     xstd
+## 1 0.785714      0   1.00000 1.00000 0.062167
+## 2 0.065476      1   0.21429 0.23214 0.035627
+## 3 0.010000      2   0.14881 0.15476 0.029516</code></pre>
+<pre class="r"><code>plotcp(tree_model)</code></pre>
+<p><img src="breast_cancer_ml_files/figure-html/decision_tree-1.png" width="672" /></p>
+<p><br></p>
+<pre class="r"><code>best_cp     &lt;- tree_model$cptable[which.min(tree_model$cptable[, &quot;xerror&quot;]), &quot;CP&quot;]
+tree_pruned &lt;- prune(tree_model, cp = best_cp)
+
+rpart.plot(tree_pruned,
+           type  = 4,
+           extra = 104,
+           main  = &quot;Pruned Decision Tree&quot;)</code></pre>
+<p><img src="breast_cancer_ml_files/figure-html/tree_pruned-1.png" width="672" /></p>
+<p><br></p>
+<pre class="r"><code>tree_pred &lt;- predict(tree_pruned, newdata = test, type = &quot;class&quot;)
+confusionMatrix(tree_pred, test$Class, positive = &quot;malignant&quot;)</code></pre>
+<pre><code>## Confusion Matrix and Statistics
+## 
+##            Reference
+## Prediction  benign malignant
+##   benign       127         6
+##   malignant      6        65
+##                                           
+##                Accuracy : 0.9412          
+##                  95% CI : (0.8995, 0.9692)
+##     No Information Rate : 0.652           
+##     P-Value [Acc &gt; NIR] : &lt;2e-16          
+##                                           
+##                   Kappa : 0.8704          
+##                                           
+##  Mcnemar&#39;s Test P-Value : 1               
+##                                           
+##             Sensitivity : 0.9155          
+##             Specificity : 0.9549          
+##          Pos Pred Value : 0.9155          
+##          Neg Pred Value : 0.9549          
+##              Prevalence : 0.3480          
+##          Detection Rate : 0.3186          
+##    Detection Prevalence : 0.3480          
+##       Balanced Accuracy : 0.9352          
+##                                           
+##        &#39;Positive&#39; Class : malignant       
+## </code></pre>
+<p><br></p>
+<p>The pruned tree utilized only two predictors, <code>Cell.size</code>
+and <code>Cell.shape</code>, to construct three terminal nodes. <br> A
+simple decision rule emerged: observations with <code>Cell.size</code>
+below 3 were classified as benign with a probability of 97%, while those
+with both <code>Cell.size</code> and <code>Cell.shape</code> at or above
+3 were classified as malignant with a probability of 92%.</p>
+<p>The model achieved an <strong>accuracy of 94.1%</strong> and a
+<strong>sensitivity of 91.6%</strong>, lower than logistic regression
+and LASSO. <br> This reduction in performance reflects the trade-off
+between interpretability and predictive power. The tree relies on only
+two predictors, discarding information from the remaining seven
+features.</p>
 <p><br><br><br></p>
+</div>
+<div id="random-forest" class="section level4">
+<h4>5-4. Random Forest</h4>
+<p><br></p>
+<p>Random Forest was used as an ensemble method to improve predictive
+performance beyond a single decision tree.<br> It aggregates predictions
+from 500 decision trees, each trained on a random subset of features,
+thereby reducing variance and improving generalization. <br></p>
+<pre class="r"><code>set.seed(42)
+rf_model &lt;- randomForest(Class ~ .,
+                         data       = train,
+                         ntree      = 500,
+                         mtry       = floor(sqrt(ncol(train) - 1)),
+                         importance = TRUE)
+
+varImpPlot(rf_model,
+           main = &quot;Random Forest: Variable Importance&quot;,
+           pch  = 16, col = &quot;darkblue&quot;)</code></pre>
+<p><img src="breast_cancer_ml_files/figure-html/random_forest-1.png" width="672" /></p>
+<p><br></p>
+<pre class="r"><code>rf_prob &lt;- predict(rf_model, newdata = test, type = &quot;prob&quot;)[, &quot;malignant&quot;]
+rf_pred &lt;- predict(rf_model, newdata = test, type = &quot;response&quot;)
+
+confusionMatrix(rf_pred, test$Class, positive = &quot;malignant&quot;)</code></pre>
+<pre><code>## Confusion Matrix and Statistics
+## 
+##            Reference
+## Prediction  benign malignant
+##   benign       131         2
+##   malignant      2        69
+##                                           
+##                Accuracy : 0.9804          
+##                  95% CI : (0.9506, 0.9946)
+##     No Information Rate : 0.652           
+##     P-Value [Acc &gt; NIR] : &lt;2e-16          
+##                                           
+##                   Kappa : 0.9568          
+##                                           
+##  Mcnemar&#39;s Test P-Value : 1               
+##                                           
+##             Sensitivity : 0.9718          
+##             Specificity : 0.9850          
+##          Pos Pred Value : 0.9718          
+##          Neg Pred Value : 0.9850          
+##              Prevalence : 0.3480          
+##          Detection Rate : 0.3382          
+##    Detection Prevalence : 0.3480          
+##       Balanced Accuracy : 0.9784          
+##                                           
+##        &#39;Positive&#39; Class : malignant       
+## </code></pre>
+<p><br></p>
+<p>The variable importance plot indicates that <code>Cell.size</code>,
+<code>Bare.nuclei</code>, and <code>Cell.shape</code> are the most
+influential predictors, consistent with findings from EDA and the
+decision tree model. <br> Unlike the decision tree, Random Forest
+leverages all nine predictors, allowing it to capture more complex
+relationships in the data.</p>
+<p>The model achieved an <strong>accuracy of 97.1%</strong> and a
+<strong>sensitivity of 95.8%</strong>, comparable to logistic
+regression, while providing greater robustness to overfitting.</p>
+<p><br><br><br></p>
+</div>
+<div id="xgboost" class="section level4">
+<h4>5-5. XGBoost</h4>
+<p><br></p>
+<p>XGBoost (Extreme Gradient Boosting) was used as a gradient boosting
+method that builds trees sequentially, with each tree correcting the
+errors of the previous one. In contrast to Random Forest, which builds
+trees independently, XGBoost optimizes a regularized objective function
+and often achieves higher predictive performance.</p>
+<p>Key hyperparameters included a learning rate (eta) of 0.1, a maximum
+tree depth of 4, and a subsampling rate of 0.8.<br> Early stopping was
+applied based on validation AUC, halting training if no improvement was
+observed for 10 consecutive rounds.</p>
+<p><br></p>
+<pre class="r"><code>dtrain &lt;- xgb.DMatrix(data = x_train, label = y_train)
+dtest  &lt;- xgb.DMatrix(data = x_test,  label = y_test)
+
+params &lt;- list(
+  objective        = &quot;binary:logistic&quot;,
+  eval_metric      = &quot;auc&quot;,
+  eta              = 0.1,
+  max_depth        = 4,
+  subsample        = 0.8,
+  colsample_bytree = 0.8
+)
+
+set.seed(42)
+xgb_model &lt;- xgb.train(params                = params,
+                        data                  = dtrain,
+                        nrounds               = 100,
+                        evals                 = list(train = dtrain, test = dtest),
+                        verbose               = 1,
+                        early_stopping_rounds = 10)</code></pre>
+<pre><code>## Multiple eval metrics are present. Will use test_auc for early stopping.
+## Will train until test_auc hasn&#39;t improved in 10 rounds.
+## 
+## [1]  train-auc:0.977109  test-auc:0.967489 
+## [2]  train-auc:0.977320  test-auc:0.970454 
+## [3]  train-auc:0.988344  test-auc:0.992958 
+## [4]  train-auc:0.987684  test-auc:0.993381 
+## [5]  train-auc:0.991253  test-auc:0.993328 
+## [6]  train-auc:0.991971  test-auc:0.994387 
+## [7]  train-auc:0.992172  test-auc:0.994705 
+## [8]  train-auc:0.993138  test-auc:0.995446 
+## [9]  train-auc:0.993426  test-auc:0.995499 
+## [10] train-auc:0.993426  test-auc:0.996135 
+## [11] train-auc:0.995052  test-auc:0.996558 
+## [12] train-auc:0.995091  test-auc:0.996611 
+## [13] train-auc:0.995263  test-auc:0.996505 
+## [14] train-auc:0.995694  test-auc:0.996929 
+## [15] train-auc:0.995598  test-auc:0.996611 
+## [16] train-auc:0.995560  test-auc:0.996611 
+## [17] train-auc:0.995885  test-auc:0.996823 
+## [18] train-auc:0.996306  test-auc:0.996823 
+## [19] train-auc:0.996574  test-auc:0.997141 
+## [20] train-auc:0.996612  test-auc:0.997141 
+## [21] train-auc:0.996919  test-auc:0.997458 
+## [22] train-auc:0.997282  test-auc:0.997776 
+## [23] train-auc:0.997378  test-auc:0.997458 
+## [24] train-auc:0.997550  test-auc:0.997353 
+## [25] train-auc:0.997722  test-auc:0.997247 
+## [26] train-auc:0.997895  test-auc:0.997247 
+## [27] train-auc:0.998009  test-auc:0.997035 
+## [28] train-auc:0.998124  test-auc:0.997247 
+## [29] train-auc:0.998316  test-auc:0.997035 
+## [30] train-auc:0.998373  test-auc:0.997035 
+## [31] train-auc:0.998545  test-auc:0.997035 
+## Stopping. Best iteration:
+## [32] train-auc:0.998679  test-auc:0.996823
+## 
+## [32] train-auc:0.998679  test-auc:0.996823</code></pre>
+<p><br></p>
+<pre class="r"><code>xgb_imp &lt;- xgb.importance(feature_names = colnames(x_train), model = xgb_model)
+xgb.plot.importance(xgb_imp, main = &quot;XGBoost: Variable Importance&quot;)</code></pre>
+<p><img src="breast_cancer_ml_files/figure-html/xgb_imp-1.png" width="672" /></p>
+<p><br></p>
+<pre class="r"><code>xgb_prob &lt;- predict(xgb_model, dtest)
+xgb_pred &lt;- ifelse(xgb_prob &gt; 0.5, &quot;malignant&quot;, &quot;benign&quot;)
+xgb_pred &lt;- factor(xgb_pred, levels = levels(test$Class))
+confusionMatrix(xgb_pred, test$Class, positive = &quot;malignant&quot;)</code></pre>
+<pre><code>## Confusion Matrix and Statistics
+## 
+##            Reference
+## Prediction  benign malignant
+##   benign       131         4
+##   malignant      2        67
+##                                           
+##                Accuracy : 0.9706          
+##                  95% CI : (0.9371, 0.9891)
+##     No Information Rate : 0.652           
+##     P-Value [Acc &gt; NIR] : &lt;2e-16          
+##                                           
+##                   Kappa : 0.9348          
+##                                           
+##  Mcnemar&#39;s Test P-Value : 0.6831          
+##                                           
+##             Sensitivity : 0.9437          
+##             Specificity : 0.9850          
+##          Pos Pred Value : 0.9710          
+##          Neg Pred Value : 0.9704          
+##              Prevalence : 0.3480          
+##          Detection Rate : 0.3284          
+##    Detection Prevalence : 0.3382          
+##       Balanced Accuracy : 0.9643          
+##                                           
+##        &#39;Positive&#39; Class : malignant       
+## </code></pre>
+<p><br></p>
+<p>Consistent with previous models, <code>Cell.size</code>,
+<code>Bare.nuclei</code>, and <code>Cell.shape</code> ranked among the
+most important features. The consistency of variable importance across
+models suggests that these predictors carry the most discriminative
+information for breast cancer classification.</p>
+<p>The model achieved an <strong>accuracy of 97.1%</strong> and a
+<strong>sensitivity of 95.8%</strong>, comparable to logistic regression
+and Random Forest.</p>
+<p><br><br><br><br></p>
+</div>
 </div>
 <div id="model-evaluation" class="section level3">
 <h3>6. Model Evaluation</h3>
-<br> <strong>Case 1: Customer Subscription Patterns in Banking
-Services</strong> <br><br><br>
-<h4>
-6-1. Confusion Matrix
-</h4>
-<p><br> This analysis aims to identify the types of financial services
-that bank customers frequently subscribe to together.</p>
-<ul>
-<li>Dataset: BNKSERV<br />
-</li>
-<li>ACCT: Unique customer ID<br />
-</li>
-<li>SERVICE: Subscribed financial services</li>
-</ul>
-<p>The dataset includes 13 types of services offered, as detailed in the
-appendix.</p>
-<br><br>
+<p><br><br></p>
+<p>Model performance was evaluated across all five classifiers using
+confusion matrices and ROC/AUC analysis. Given the clinical context,
+<strong>sensitivity</strong> was treated as the primary evaluation
+metric, as failing to detect a malignant tumor carries significantly
+greater clinical risk than a false positive.</p>
+<p><br><br></p>
+<div id="confusion-matrix" class="section level4">
+<h4>6-1. Confusion Matrix</h4>
+<p><br></p>
+<p>The table below summarizes key performance metrics for all five
+models on the test set.</p>
+<p><br></p>
+<table>
+<caption>Model Performance Comparison on Test Set</caption>
+<thead>
+<tr class="header">
+<th align="left">Model</th>
+<th align="center">Accuracy</th>
+<th align="center">Sensitivity</th>
+<th align="center">Specificity</th>
+<th align="center">FN</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Logistic Regression</td>
+<td align="center">0.9755</td>
+<td align="center">0.9577</td>
+<td align="center">0.9850</td>
+<td align="center">3</td>
+</tr>
+<tr class="even">
+<td align="left">LASSO</td>
+<td align="center">0.9706</td>
+<td align="center">0.9437</td>
+<td align="center">0.9850</td>
+<td align="center">4</td>
+</tr>
+<tr class="odd">
+<td align="left">Decision Tree</td>
+<td align="center">0.9412</td>
+<td align="center">0.9155</td>
+<td align="center">0.9549</td>
+<td align="center">6</td>
+</tr>
+<tr class="even">
+<td align="left">Random Forest</td>
+<td align="center">0.9706</td>
+<td align="center">0.9577</td>
+<td align="center">0.9850</td>
+<td align="center">3</td>
+</tr>
+<tr class="odd">
+<td align="left">XGBoost</td>
+<td align="center">0.9706</td>
+<td align="center">0.9577</td>
+<td align="center">0.9850</td>
+<td align="center">3</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<p>Logistic Regression, Random Forest, and XGBoost achieved the highest
+sensitivity (95.8%), each misclassifying three malignant cases as
+benign.</p>
+<p>LASSO showed a slightly lower sensitivity (94.4%), likely due to the
+exclusion of <code>Mitoses</code>. The Decision Tree exhibited the
+lowest sensitivity (91.6%), reflecting the limitation of relying on only
+two predictors.</p>
+<p>All models substantially outperformed the No Information Rate
+(65.2%), indicating that each model provides meaningful discriminative
+power beyond naive classification.</p>
+<p><br><br><br></p>
 <h4>
 6-2. ROC / AUC Comparison
 </h4>
-<p><br> The BNKSERV dataset was analyzed using Association Analysis,
-Graph Exploration, and Market Basket Analysis nodes.</p>
-<p><br><br></p>
-<p>Graph Exploration :</p>
-<ul>
-<li>Each customer’s (ACCT) subscribed services are identified.<br />
-</li>
-<li>Among the services, CKING (Checking Account) had the highest
-subscription frequency, with a total of 6,855 occurrences.</li>
-</ul>
-<p><br><br><br></p>
-<p>Market Basket Analysis :</p>
-<ul>
-<li>CKING had the highest support of 85.7840%.</li>
-<li>The “Confidence vs. Support” graph from the association analysis
-revealed that the rule ‘SVG → CKING’ had both high confidence and
-support values.</li>
-</ul>
-<p><br><br><br></p>
-<p>Graph Representation of Rules :</p>
-<ul>
-<li><p>Nodes represent transaction frequency (larger nodes = higher
-frequency).<br />
-</p></li>
-<li><p>Edge thickness indicates confidence (thicker edges = higher
-confidence).<br />
-</p></li>
-<li><p>CKING and SVG had the largest nodes, and CKING showed notably
-high confidence levels with other services.</p></li>
-<li><p>Key Metrics for Rule SVG → CKING:</p></li>
-<li><p>Transaction Count (<span class="math inline">\(n(\text{SVG},
-\text{CKING})\)</span>): 4,329<br />
-</p></li>
-<li><p>Support:<br />
-<span class="math display">\[
-\text{Support} = \frac{4,329}{7,991} = 54.17\%
-\]</span></p></li>
-<li><p>Confidence:<br />
-<span class="math display">\[
-\text{Confidence} = \frac{4,329}{4,944} = 87.56\%
-\]</span></p></li>
-<li><p>Lift:<br />
-<span class="math display">\[
-\text{Lift} = \frac{87.56\%}{\frac{6,855}{7,991}} = 1.02
-\]</span></p></li>
-</ul>
-<p><br><br><br></p>
 <p><br></p>
+<p><br><br><br><br></p>
+</div>
 </div>
 <div id="conclusion" class="section level3">
 <h3>7. Conclusion</h3>
@@ -858,16 +1178,7 @@ recommendations, banks can drive service adoption while enhancing
 customer loyalty. This approach can be further scaled using predictive
 analytics to identify other key service pairs, tailoring campaigns to
 maximize customer satisfaction and retention.</p>
-<p><br> Case 2: Website Navigation</p>
-<p>The path analysis identified ‘/Department.jsp → /Subcategory.jsp’ as
-a crucial navigation path with high confidence and support. This finding
-suggests an opportunity to improve website engagement through optimized
-page layouts and targeted content placement. Additionally, focusing on
-the most visited page, ‘/Home.jsp,’ as a central hub for user
-interaction could enhance navigation flow and reduce drop-off rates.
-Implementing real-time monitoring of navigation behavior could further
-refine user experiences, leading to higher conversion rates and improved
-audience retention.</p>
+<p><br></p>
 </div>
 </div>
 
