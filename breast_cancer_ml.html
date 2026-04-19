@@ -622,17 +622,21 @@ ggplot(vif_df, aes(x = reorder(Variable, VIF), y = VIF, fill = VIF &gt; 5)) +
          x = &quot;&quot;, y = &quot;VIF&quot;)</code></pre>
 <p><img src="breast_cancer_ml_files/figure-html/vif_plot-1.png" width="672" /></p>
 <p><br></p>
-<p>All nine predictors had VIF values below 5, indicating no evidence of
-severe multicollinearity.</p>
-<p>Although a strong pairwise correlation was observed between
-<code>Cell.size</code> and <code>Cell.shape</code> (r = 0.91) in the
-previous section, their VIF values remained within an acceptable range.
-This suggests that variance inflation is limited when all predictors are
-considered jointly.</p>
-<p>Therefore, all nine predictors were retained for subsequent modeling.
-Given the observed pairwise correlations, LASSO regularization was
-applied to perform data-driven variable selection and to improve the
-stability of coefficient estimates.</p>
+<p>All nine predictors returned VIF values below 5, indicating no
+evidence of severe multicollinearity when analyzed collectively.
+However, the exceptionally high pairwise correlation between
+<code>Cell.size</code> and <code>Cell.shape</code> (r = 0.91) still
+requires careful interpretation.</p>
+<p>As will be observed in Section 5-1, <code>Cell.size</code> yields a
+negative and statistically non-significant coefficient within the
+standard logistic regression framework. This outcome may partly reflect
+coefficient instability associated with the high inter-correlation
+between these predictors, even when formal VIF thresholds are not
+exceeded.</p>
+<p>These findings directly inform the application of LASSO
+regularization in Section 5-2, which utilizes data-driven shrinkage to
+enhance the stability and reliability of the parameter estimates while
+performing autonomous variable selection.</p>
 <p><br><br><br><br></p>
 </div>
 <div id="model-development" class="section level3">
