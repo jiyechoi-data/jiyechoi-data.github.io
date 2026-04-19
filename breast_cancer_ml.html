@@ -415,18 +415,20 @@ src="https://img.shields.io/badge/Evaluation-ROC%2FAUC%20%7C%20Sensitivity%20%7C
 <h3>1. Introduction</h3>
 <p><br> Breast cancer is one of the most prevalent cancers worldwide,
 making early and accurate diagnosis critical for improving patient
-outcomes. This project applies a comparative machine learning approach
-to the UCI Breast Cancer Wisconsin dataset, evaluating multiple
-classification models to distinguish malignant from benign tumors.</p>
+outcomes. <br></p>
+<p>This project applies a comparative machine learning approach to the
+UCI Breast Cancer Wisconsin dataset, evaluating multiple classification
+models to distinguish malignant from benign tumors.</p>
 <p><br><br><br></p>
 </div>
 <div id="goal" class="section level3">
 <h3>2. Goal</h3>
-<p><br> This project develops and compares five classification models —
-Logistic Regression, LASSO, Decision Tree, Random Forest, and XGBoost —
-for breast cancer prediction. Model performance is evaluated with a
-focus on sensitivity and ROC/AUC, given the severe clinical consequences
-of misclassifying malignant tumors as benign.</p>
+<p><br> This project develops and compares five classification models,
+including Logistic Regression, LASSO, Decision Tree, Random Forest, and
+XGBoost, for breast cancer prediction. <br></p>
+<p>Model performance is evaluated with a focus on sensitivity and
+ROC/AUC, given the clinical importance of minimizing false
+negatives.</p>
 <p><br><br><br></p>
 </div>
 <div id="exploratory-data-analysis" class="section level3">
@@ -484,7 +486,7 @@ dim(dataset)</code></pre>
 <h4>3-2. Class Distribution</h4>
 <p><br> The target variable <code>Class</code> is binary, consisting of
 <strong>benign</strong> and <strong>malignant</strong> tumor diagnoses.
-As shown in the plot below, the dataset contains <strong>444 benign
+<br> As shown in the plot below, the dataset contains <strong>444 benign
 (65.0%)</strong> and <strong>239 malignant (35.0%)</strong>
 observations, indicating a moderate class imbalance.</p>
 <p>To account for this imbalance, stratified sampling will be applied
@@ -507,7 +509,7 @@ prioritized over overall accuracy as the primary evaluation metrics.
 <p><br> To examine how each predictor differs across tumor classes,
 density plots and boxplots were generated for all nine features.</p>
 <p>Density plots show the overall shape of each feature distribution and
-the degree of overlap between benign and malignant cases. <br> Boxplots
+the degree of overlap between benign and malignant cases. Boxplots
 complement this by highlighting differences in medians, interquartile
 ranges, and potential outliers.</p>
 <p><br><br><br></p>
@@ -577,11 +579,11 @@ using Variance Inflation Factors (VIF) in the following section.</p>
 <div id="multicollinearity-check-vif" class="section level3">
 <h3>4. Multicollinearity Check (VIF)</h3>
 <p><br></p>
-<p>Although the correlation matrix showed several moderately high
+<p>Although the correlation matrix indicated several moderately high
 pairwise correlations, a formal multicollinearity assessment was
 conducted using the <strong>Variance Inflation Factor (VIF)</strong>.
 Unlike pairwise correlations, VIF measures how much the variance of each
-coefficient is inflated due to its relationships with all other
+coefficient is inflated due to its relationships with other
 predictors.</p>
 <p><br></p>
 <p>A logistic regression model was fitted on the full dataset solely for
@@ -621,14 +623,15 @@ ggplot(vif_df, aes(x = reorder(Variable, VIF), y = VIF, fill = VIF &gt; 5)) +
 <p><img src="breast_cancer_ml_files/figure-html/vif_plot-1.png" width="672" /></p>
 <p><br></p>
 <p>All nine predictors had VIF values below 5, indicating no evidence of
-severe multicollinearity. Notably, although a strong pairwise
-correlation was observed between <code>Cell.size</code> and
-<code>Cell.shape</code> (r = 0.91) in the previous section, their VIF
-values remained within an acceptable range. This suggests that variance
-inflation is limited when all predictors are considered jointly.</p>
+severe multicollinearity.</p>
+<p>Although a strong pairwise correlation was observed between
+<code>Cell.size</code> and <code>Cell.shape</code> (r = 0.91) in the
+previous section, their VIF values remained within an acceptable range.
+This suggests that variance inflation is limited when all predictors are
+considered jointly.</p>
 <p>Therefore, all nine predictors were retained for subsequent modeling.
-However, given the observed pairwise correlations, LASSO regularization
-was applied to perform data-driven variable selection and to improve the
+Given the observed pairwise correlations, LASSO regularization was
+applied to perform data-driven variable selection and to improve the
 stability of coefficient estimates.</p>
 <p><br><br><br><br></p>
 </div>
@@ -647,8 +650,8 @@ test  &lt;- dataset[-train_idx, ]</code></pre>
 <div id="logistic-regression" class="section level4">
 <h4>5-1. Logistic Regression</h4>
 <p><br></p>
-<p>Logistic regression was used as the baseline model, fitted using all
-nine predictors. As a parametric model, it provides interpretable
+<p>Logistic regression was used as the baseline model, incorporating all
+nine predictors. <br> As a parametric model, it provides interpretable
 coefficients, allowing direct assessment of the direction and magnitude
 of each predictor’s association with malignancy.</p>
 <p><br></p>
@@ -716,13 +719,13 @@ confusionMatrix(logit_pred, test$Class, positive = &quot;malignant&quot;)</code>
 <p>Among the predictors, <code>Cl.thickness</code>,
 <code>Marg.adhesion</code>, <code>Bare.nuclei</code>,
 <code>Bl.cromatin</code>, and <code>Normal.nucleoli</code> were
-statistically significant (p &lt; 0.05). <br><br> Notably,
-<code>Cell.size</code> returned a negative coefficient despite its
-strong association with malignancy observed in EDA, likely due to its
-high correlation with <code>Cell.shape</code> (r = 0.91), which absorbed
-much of its predictive contribution. <br><br> This instability in
-coefficient estimation motivated the use of LASSO in the following
-section.</p>
+statistically significant (p &lt; 0.05).</p>
+<p><code>Cell.size</code> returned a negative coefficient despite its
+strong association with malignancy observed in EDA. This is likely due
+to its high correlation with <code>Cell.shape</code> (r = 0.91), which
+absorbed much of its predictive contribution.</p>
+<p>This instability in coefficient estimation motivated the use of LASSO
+in the following section.</p>
 <p>The model achieved an <strong>accuracy of 97.6%</strong> and a
 <strong>sensitivity of 95.8%</strong>, misclassifying three malignant
 cases as benign.</p>
@@ -805,10 +808,9 @@ confusionMatrix(lasso_pred, test$Class, positive = &quot;malignant&quot;)</code>
 <p>LASSO eliminated <code>Mitoses</code> from the model by shrinking its
 coefficient to zero, consistent with its weak discriminative power
 observed in EDA.</p>
-<p>In addition, <code>Cell.size</code>, which showed a negative
-coefficient in logistic regression, was assigned a positive coefficient
-under LASSO, reflecting its true positive association with
-malignancy.</p>
+<p><code>Cell.size</code>, which showed a negative coefficient in
+logistic regression, was assigned a positive coefficient under LASSO,
+reflecting its true positive association with malignancy.</p>
 <p>The model achieved an <strong>accuracy of 97.1%</strong> and a
 <strong>sensitivity of 94.4%</strong>, representing a slight decrease
 compared to logistic regression. However, the resulting model is more
@@ -825,7 +827,7 @@ require no assumptions about linearity or variable distributions, and
 the resulting structure can be directly translated into clinical
 decision rules.</p>
 <p>To prevent overfitting, pruning was applied by selecting the optimal
-complexity parameter (cp) based on cross-validated error.</p>
+complexity parameter (cp) based on cross-validated error rates.</p>
 <p><br></p>
 <pre class="r"><code>tree_model &lt;- rpart(Class ~ .,
                     data    = train,
@@ -897,10 +899,10 @@ below 3 were classified as benign with a probability of 97%, while those
 with both <code>Cell.size</code> and <code>Cell.shape</code> at or above
 3 were classified as malignant with a probability of 92%.</p>
 <p>The model achieved an <strong>accuracy of 94.1%</strong> and a
-<strong>sensitivity of 91.6%</strong>, lower than logistic regression
-and LASSO. <br> This reduction in performance reflects the trade-off
-between interpretability and predictive power. The tree relies on only
-two predictors, discarding information from the remaining seven
+<strong>sensitivity of 91.6%</strong>, lower than that of logistic
+regression and LASSO. <br> This reduction in performance reflects the
+trade-off between interpretability and predictive power. The tree relies
+on only two predictors, discarding information from the remaining seven
 features.</p>
 <p><br><br><br></p>
 </div>
@@ -955,15 +957,18 @@ confusionMatrix(rf_pred, test$Class, positive = &quot;malignant&quot;)</code></p
 ##        &#39;Positive&#39; Class : malignant       
 ## </code></pre>
 <p><br></p>
-<p>The variable importance plot indicates that <code>Cell.size</code>,
-<code>Bare.nuclei</code>, and <code>Cell.shape</code> are the most
-influential predictors, consistent with findings from EDA and the
-decision tree model. <br> Unlike the decision tree, Random Forest
-leverages all nine predictors, allowing it to capture more complex
-relationships in the data.</p>
-<p>The model achieved an <strong>accuracy of 97.1%</strong> and a
-<strong>sensitivity of 95.8%</strong>, comparable to logistic
-regression, while providing greater robustness to overfitting.</p>
+<p>The variable importance plot shows that <code>Bare.nuclei</code>,
+<code>Cell.shape</code>, and <code>Cell.size</code> are consistently
+ranked among the most influential predictors across both
+MeanDecreaseAccuracy and MeanDecreaseGini metrics, consistent with
+findings from EDA and the decision tree model.</p>
+<p>Unlike the decision tree, Random Forest leverages all nine
+predictors, allowing it to capture more complex relationships in the
+data.</p>
+<p>The model achieved an <strong>accuracy of 98.0%</strong> and a
+<strong>sensitivity of 97.2%</strong>, slightly outperforming logistic
+regression and reducing false negatives from three to two cases, while
+providing greater robustness to overfitting.</p>
 <p><br><br><br></p>
 </div>
 <div id="xgboost" class="section level4">
@@ -1073,14 +1078,15 @@ confusionMatrix(xgb_pred, test$Class, positive = &quot;malignant&quot;)</code></
 ##        &#39;Positive&#39; Class : malignant       
 ## </code></pre>
 <p><br></p>
-<p>Consistent with previous models, <code>Cell.size</code>,
-<code>Bare.nuclei</code>, and <code>Cell.shape</code> ranked among the
+<p>Consistent with previous models, <code>Cell.shape</code>,
+<code>Cell.size</code>, and <code>Bare.nuclei</code> ranked among the
 most important features. The consistency of variable importance across
 models suggests that these predictors carry the most discriminative
 information for breast cancer classification.</p>
 <p>The model achieved an <strong>accuracy of 97.1%</strong> and a
-<strong>sensitivity of 95.8%</strong>, comparable to logistic regression
-and Random Forest.</p>
+<strong>sensitivity of 94.4%</strong>, slightly lower than logistic
+regression and Random Forest, misclassifying four malignant cases as
+benign.</p>
 <p><br><br><br><br></p>
 </div>
 </div>
@@ -1088,10 +1094,10 @@ and Random Forest.</p>
 <h3>6. Model Evaluation</h3>
 <p><br><br></p>
 <p>Model performance was evaluated across all five classifiers using
-confusion matrices and ROC/AUC analysis. Given the clinical context,
-<strong>sensitivity</strong> was treated as the primary evaluation
-metric, as failing to detect a malignant tumor carries significantly
-greater clinical risk than a false positive.</p>
+confusion matrices and ROC/AUC analysis. &lt;br Given the clinical
+context, <strong>sensitivity</strong> was treated as the primary
+evaluation metric, as failing to detect a malignant tumor carries
+significantly greater clinical risk than a false positive.</p>
 <p><br><br></p>
 <div id="confusion-matrix" class="section level4">
 <h4>6-1. Confusion Matrix</h4>
@@ -1134,51 +1140,131 @@ models on the test set.</p>
 </tr>
 <tr class="even">
 <td align="left">Random Forest</td>
-<td align="center">0.9706</td>
-<td align="center">0.9577</td>
+<td align="center">0.9804</td>
+<td align="center">0.9718</td>
 <td align="center">0.9850</td>
-<td align="center">3</td>
+<td align="center">2</td>
 </tr>
 <tr class="odd">
 <td align="left">XGBoost</td>
 <td align="center">0.9706</td>
-<td align="center">0.9577</td>
+<td align="center">0.9437</td>
 <td align="center">0.9850</td>
-<td align="center">3</td>
+<td align="center">4</td>
 </tr>
 </tbody>
 </table>
 <p><br></p>
-<p>Logistic Regression, Random Forest, and XGBoost achieved the highest
-sensitivity (95.8%), each misclassifying three malignant cases as
-benign.</p>
-<p>LASSO showed a slightly lower sensitivity (94.4%), likely due to the
-exclusion of <code>Mitoses</code>. The Decision Tree exhibited the
-lowest sensitivity (91.6%), reflecting the limitation of relying on only
-two predictors.</p>
+<p>Random Forest achieved the highest sensitivity (97.2%),
+misclassifying only two malignant cases as benign. Logistic Regression
+followed with a sensitivity of 95.8%.</p>
+<p>LASSO and XGBoost both achieved a sensitivity of 94.4%, slightly
+lower than that of Logistic Regression and Random Forest. The Decision
+Tree exhibited the lowest sensitivity (91.6%), reflecting the limitation
+of relying on only two predictors.</p>
 <p>All models substantially outperformed the No Information Rate
 (65.2%), indicating that each model provides meaningful discriminative
 power beyond naive classification.</p>
 <p><br><br><br></p>
-<h4>
-6-2. ROC / AUC Comparison
-</h4>
+</div>
+<div id="roc-auc-comparison" class="section level4">
+<h4>6-2. ROC / AUC Comparison</h4>
 <p><br></p>
+<p>ROC curves were generated for all five models to evaluate
+discriminative performance across all possible classification
+thresholds. The Area Under the Curve (AUC) provides a
+threshold-independent summary of each model’s ability to distinguish
+malignant from benign cases.</p>
+<p><br></p>
+<pre class="r"><code>roc_logit &lt;- roc(test$Class, logit_prob,
+                 levels = c(&quot;benign&quot;, &quot;malignant&quot;))
+roc_lasso &lt;- roc(test$Class, as.numeric(lasso_prob),
+                 levels = c(&quot;benign&quot;, &quot;malignant&quot;))
+roc_tree  &lt;- roc(test$Class, predict(tree_pruned, newdata = test, type = &quot;prob&quot;)[, &quot;malignant&quot;],
+                 levels = c(&quot;benign&quot;, &quot;malignant&quot;))
+roc_rf    &lt;- roc(test$Class, rf_prob,
+                 levels = c(&quot;benign&quot;, &quot;malignant&quot;))
+roc_xgb   &lt;- roc(test$Class, xgb_prob,
+                 levels = c(&quot;benign&quot;, &quot;malignant&quot;))
+
+auc_df &lt;- data.frame(
+  Model = c(&quot;Logistic&quot;, &quot;LASSO&quot;, &quot;Decision Tree&quot;, &quot;Random Forest&quot;, &quot;XGBoost&quot;),
+  AUC   = round(c(auc(roc_logit), auc(roc_lasso), auc(roc_tree),
+                  auc(roc_rf),    auc(roc_xgb)), 4)
+)
+print(auc_df)</code></pre>
+<pre><code>##           Model    AUC
+## 1      Logistic 0.9988
+## 2         LASSO 0.9987
+## 3 Decision Tree 0.9538
+## 4 Random Forest 0.9985
+## 5       XGBoost 0.9978</code></pre>
+<pre class="r"><code>plot(roc_logit, col = &quot;blue&quot;,   lwd = 2, main = &quot;ROC Curve Comparison&quot;)
+plot(roc_lasso, col = &quot;red&quot;,    lwd = 2, add = TRUE)
+plot(roc_tree,  col = &quot;green&quot;,  lwd = 2, add = TRUE)
+plot(roc_rf,    col = &quot;purple&quot;, lwd = 2, add = TRUE)
+plot(roc_xgb,   col = &quot;orange&quot;, lwd = 2, add = TRUE)
+
+legend(&quot;bottomright&quot;,
+       legend = paste(auc_df$Model, &quot;=&quot;, auc_df$AUC),
+       col    = c(&quot;blue&quot;, &quot;red&quot;, &quot;green&quot;, &quot;purple&quot;, &quot;orange&quot;),
+       lwd    = 2,
+       cex    = 0.7,
+       bty    = &quot;n&quot;)</code></pre>
+<p><img src="breast_cancer_ml_files/figure-html/roc_auc-1.png" width="768" /></p>
+<p><br></p>
+<p>Logistic Regression achieved the highest AUC (0.9988), followed
+closely by LASSO (0.9987) and Random Forest (0.9985). XGBoost also
+performed strongly with an AUC of 0.9978. The Decision Tree showed a
+notably lower AUC (0.9538), consistent with its reliance on only two
+predictors.</p>
+<p>The marginal AUC differences among the top four models suggest that
+the strong discriminative signal in this dataset is primarily driven by
+the underlying cytological features, rather than by differences in
+modeling approach.</p>
+<p>When considered alongside sensitivity, Random Forest can be regarded
+as the best overall model, achieving the highest sensitivity (97.2%)
+while maintaining a near-optimal AUC (0.9985).</p>
 <p><br><br><br><br></p>
 </div>
 </div>
 <div id="conclusion" class="section level3">
 <h3>7. Conclusion</h3>
-<p><br><br> Case 1: Banking Services</p>
-<p>The analysis of customer subscription patterns revealed that CKING
-(Checking Account) is a central service with high demand, and its strong
-association with SVG (Savings Account) presents a valuable cross-selling
-opportunity. By targeting SVG customers with personalized CKING
-recommendations, banks can drive service adoption while enhancing
-customer loyalty. This approach can be further scaled using predictive
-analytics to identify other key service pairs, tailoring campaigns to
-maximize customer satisfaction and retention.</p>
 <p><br></p>
+<p>This project applied and compared five classification models,
+including Logistic Regression, LASSO, Decision Tree, Random Forest, and
+XGBoost, for breast cancer diagnosis using the UCI Breast Cancer
+Wisconsin dataset.</p>
+<p><br></p>
+<p>Across all models, <code>Cell.shape</code>, <code>Cell.size</code>,
+and <code>Bare.nuclei</code> consistently emerged as the most
+discriminative predictors, a finding supported by EDA, variable
+importance plots, and the decision tree structure. <code>Mitoses</code>,
+in contrast, showed limited predictive value and was eliminated by LASSO
+through coefficient shrinkage.</p>
+<p><br></p>
+<p>Among the five models, <strong>Random Forest</strong> can be
+considered the best overall performer, achieving the highest sensitivity
+(97.2%) and accuracy (98.0%), misclassifying only two malignant cases as
+benign. Although Logistic Regression achieved a marginally higher AUC
+(0.9988), the difference was negligible in practice, and its superior
+sensitivity makes Random Forest more suitable in this clinical
+context.</p>
+<p><br></p>
+<p>The Decision Tree, despite its lower predictive performance, offered
+the most interpretable output in the form of a simple two-variable rule
+that could be directly translated into clinical screening
+guidelines.</p>
+<p><br></p>
+<p>Several limitations should be acknowledged. The dataset is relatively
+small (n = 683) and based on cytological assessments from a single
+institution, which may limit generalizability. Additionally, the use of
+a single train/test split without repeated cross-validation means that
+performance estimates may be sensitive to the specific data partition.
+Future work could explore repeated cross-validation, threshold
+optimization to further improve sensitivity, and validation on
+independent external datasets.</p>
+<p><br><br><br></p>
 </div>
 </div>
 
